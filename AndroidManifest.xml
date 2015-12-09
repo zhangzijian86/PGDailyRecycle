@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pg.pg"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar">
+        <activity
+            android:name="com.pg.pg.SplashActivity"
+            android:label="@string/app_name" 
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- GuideViewActivity -->
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.init.GuideViewActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		 <!-- MainActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MainActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+ 		 <!-- RecycleActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.RecycleActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+     	 <!-- MineActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MineActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		 <!-- LoginActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.LoginActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+	</application>
+
+</manifest>

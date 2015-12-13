@@ -32,6 +32,8 @@
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MineActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		 <!-- LoginActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.LoginActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		 <!-- RegisterActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 	</application>
 
 </manifest>

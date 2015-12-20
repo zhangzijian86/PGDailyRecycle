@@ -1,8 +1,5 @@
 package com.pg.pg.login;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.pg.pg.R;
 import com.pg.pg.main.MainActivity;
 import com.pg.pg.tools.LoadingProgressDialog;
@@ -12,10 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -92,7 +86,6 @@ public class LoginActivity extends Activity {
  			try{
  				Operaton operaton=new Operaton();
  				String result=operaton.login("Login", params[0], params[1]);
- 				Log.d("=========result===========", result);
  				return result;
  			}catch(Exception e){
  				e.printStackTrace();

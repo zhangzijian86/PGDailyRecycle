@@ -40,21 +40,22 @@ public class Operaton
 		try {
 			HttpEntity entity=new UrlEncodedFormEntity(params, HTTP.UTF_8);
 			HttpPost httpPost=connNet.gethttPost(url);
-			System.out.println(httpPost.toString());
 			httpPost.setEntity(entity);
 			HttpClient client=new DefaultHttpClient();
 			HttpResponse httpResponse=client.execute(httpPost);
 			if (httpResponse.getStatusLine().getStatusCode()==HttpStatus.SC_OK) 
 			{
 				result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
-				result = "success";
+				if(result.equals("success")){		
+				}else{
+					result="false";
+				}
 			}
 			else
 			{
 				result="false";
 			}
 		} catch (UnsupportedEncodingException e) {
-
 			e.printStackTrace();
 		} catch (ClientProtocolException e) {
 

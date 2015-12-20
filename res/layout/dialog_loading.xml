@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dip"
+        android:background="@drawable/loading_background"
          />
-    <!-- android:background="@drawable/loading_background" -->
 
     <TextView
         android:id="@+id/loadingDialogTxt"

@@ -69,12 +69,12 @@ public class Operaton
 		}
 		return result;
 	}
-	public String checkusername(String url,String username) 
+	public String checkPhoneNumber(String url,String phoneNumber) 
 	{
 		String result=null;
 		ConnNet connNet=new ConnNet();
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("username", username));
+		params.add(new BasicNameValuePair("phoneNumber", phoneNumber));
 		try {
 			HttpEntity entity=new UrlEncodedFormEntity(params, HTTP.UTF_8);
 			HttpPost httpPost=connNet.gethttPost(url);

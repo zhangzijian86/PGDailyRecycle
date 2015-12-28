@@ -10,6 +10,7 @@ import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,7 +26,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
-
 	private Button btqueding;
 	private Button yanzhengmaBtn;
 	private EditText shoujihaoma;
@@ -48,7 +48,14 @@ public class RegisterActivity extends Activity {
 				String phoneNumber = shoujihaoma.getText().toString().trim();
 				String yanZhengMa = yanzhengma.getText().toString().trim();
 				if(!TextUtils.isEmpty(phoneNumber)&&!TextUtils.isEmpty(yanZhengMa)){
-					new UserRegisterAsyncTask().execute(new String[]{phoneNumber,yanZhengMa});
+					if(yanzhengmaReturn.equals(yanZhengMa)){
+						 Intent intent = new Intent();
+						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
+						 intent.putExtra("phoneNumber", phoneNumber);
+						 startActivity(intent);
+					}else{
+						Toast.makeText(getApplicationContext(), "验证码错误！", Toast.LENGTH_SHORT).show();
+					}
 				}else{
 					Toast.makeText(getApplicationContext(), "手机号或者验证码不能为空！", Toast.LENGTH_SHORT).show();
 				}
@@ -112,67 +119,6 @@ public class RegisterActivity extends Activity {
 	 * 第二个参数表示进度的刻度
 	 * 第三个参数表示返回的结果类型
 	 * */
-	private class UserRegisterAsyncTask extends AsyncTask<String, String, String>{
-		//任务执行之前的操作
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			dialog.show();//显示dialog，数据正在处理....
-		}
-		//完成耗时操作
-		@Override
-		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			try{
-//				Map<String,String> userInforMap = new HashMap<String,String>();
-//				userInforMap.put("phoneNumber", params[0]);
-//				userInforMap.put("yanZhengCode", params[1]);
-//				String jsonResult = HttpUtils.doPost("/anyCare/userRegister.action", userInforMap);
-//				if(jsonResult!=null&&!"".equals(jsonResult)){
-//					return jsonResult;
-//				}else{
-//					return "";
-//				}
-				return "";
-			}catch(Exception e){
-				e.printStackTrace();
-				return "";
-			}
-		}
-		
-		@Override
-		protected void onProgressUpdate(String... values) {
-			// TODO Auto-generated method stub
-			super.onProgressUpdate(values);
-			
-		}
-		
-		//数据处理完毕后更新UI操作
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			if(result.length()==32){
-				Toast.makeText(getApplicationContext(), "注册成功！", Toast.LENGTH_SHORT).show();
-//				saveUserInfor(result);
-//				startActivity(new Intent(getApplication(), AnyCareRegister2Activity.class));
-				overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
-			}else if("0".equals(result)){
-				Toast.makeText(getApplicationContext(), "手机号已注册！", Toast.LENGTH_SHORT).show();
-			}else if("".equals(result)){
-				Toast.makeText(getApplicationContext(), "注册失败，请重新注册！", Toast.LENGTH_SHORT).show();
-			}
-			dialog.dismiss();//dialog关闭，数据处理完毕
-		}
-	}
-	
-	/**
-	 * dis：AsyncTask参数类型：
-	 * 第一个参数标书传入到异步任务中并进行操作，通常是网络的路径
-	 * 第二个参数表示进度的刻度
-	 * 第三个参数表示返回的结果类型
-	 * */
 	private class UserRegisterYanZhengMaAsyncTask extends AsyncTask<String, String, String>{
 		//任务执行之前的操作
 		@Override
@@ -189,14 +135,6 @@ public class RegisterActivity extends Activity {
 				Operaton operaton=new Operaton();
  				String result=operaton.checkPhoneNumber("Check", params[0]);
  				return result;
-//				Map<String,String> userInforMap = new HashMap<String,String>();
-//				userInforMap.put("phoneNumber", params[0]);
-//				String jsonResult = HttpUtils.doPost("/anyCare/userCaptchaByPhone.action", userInforMap);
-//				if(jsonResult!=null&&!"".equals(jsonResult)){
-//					return jsonResult;
-//				}else{
-//					return "";
-//				}
 			}catch(Exception e){
 				e.printStackTrace();
 				return "false";

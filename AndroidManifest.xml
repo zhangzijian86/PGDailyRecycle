@@ -36,6 +36,9 @@
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.LoginActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		 <!-- RegisterActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		 <!-- RegisterPasswordActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterPasswordActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		
 	</application>
 
 </manifest>

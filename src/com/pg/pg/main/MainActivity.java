@@ -22,12 +22,11 @@ public class MainActivity  extends TabActivity implements OnCheckedChangeListene
 	private Intent mMineIntent;
 	RadioButton mRcycleRadioButton;
 	RadioButton mMineRadioButton;
-
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);        
         this.mRcycleIntent = new Intent(this,RecycleActivity.class);
         this.mMineIntent = new Intent(this,MineActivity.class);
         mRcycleRadioButton = ((RadioButton) findViewById(R.id.radio_button0));

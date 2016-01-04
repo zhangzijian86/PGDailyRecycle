@@ -74,6 +74,7 @@
 		        android:paddingRight="10dip"
 		        android:layout_weight="1"
 		        android:textSize="18sp"
+		        android:background="@drawable/input_textedit"  
 	            />
 	        <!-- android:background="@drawable/input_textedit" -->
 	        <LinearLayout
@@ -94,8 +95,11 @@
 			        android:gravity="center_vertical"
 			        android:hint="请输入验证码"
 			        android:textColorHint="#d3d3d3"
+			        android:paddingLeft="10dip"
+		        	 android:paddingRight="10dip"
 			        android:layout_weight="1"
 			        android:textSize="18sp"
+			        android:background="@drawable/input_textedit"  
 		            />
 		        <!-- android:background="@drawable/zuounselectbutton" -->
 		        <Button
@@ -105,6 +109,7 @@
 			        android:text="&#160;&#160;验证码 &#160;&#160;"
 			        android:textColor="#ffffff"
 			        android:gravity="center"
+			        android:background="@drawable/zhuce_queding"  
 			        android:textSize="18sp" />
 		        <!-- android:background="@drawable/youselectbutton" -->
 	        </LinearLayout>
@@ -121,10 +126,11 @@
 		        <Button
 		            android:id="@+id/queding"
 		            android:layout_width="fill_parent"
-		        	android:layout_height="fill_parent"		           
+		        	  android:layout_height="fill_parent"		           
 		            android:text="确定"
 		            android:textColor="#ffffff"
 		            android:gravity="center"
+		            android:background="@drawable/zhuce_queding"  
 			        android:textSize="18sp" />
 		        <!--  android:background="@drawable/orange_button" -->		        
 		    </LinearLayout>

@@ -1,151 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#F0F0F0"
-    android:orientation="vertical" >
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="11"
-        android:background="#FFFFFF"
-        android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:text="登陆"
-            android:textColor="#FD7A5C"
-            android:textSize="20sp" />
-    </RelativeLayout>
-
+     >  
+    
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:gravity="center_horizontal|center_vertical"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dip"
-               />
-            <!--   android:background="@drawable/titleicon" -->            
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/nameedittext"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="30dip"
-                android:layout_marginRight="30dip"
-                android:layout_marginTop="4dip"
-                android:layout_marginBottom="4dip"
-                android:layout_weight="1"               
-                android:gravity="center_vertical"
-                android:hint="请输入手机号"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:textColorHint="#d3d3d3"
-                android:textSize="18sp"
-                android:inputType="phone" />
-            <!--  android:background="@drawable/input_textedit" -->
-
-            <EditText
-                android:id="@+id/passwdedittext"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="30dip"
-                android:layout_marginRight="30dip"
-                android:layout_marginTop="4dip"
-                android:layout_marginBottom="4dip"
-                android:layout_weight="1"                
-                android:gravity="center_vertical"
-                android:hint="请输入密码"
-                android:inputType="textPassword"
-                android:paddingLeft="10dip"
-                android:paddingRight="10dip"
-                android:textColorHint="#d3d3d3"
-                android:textSize="18sp" />
-            <!-- android:background="@drawable/input_textedit" -->
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="30dip"
-                android:layout_marginRight="30dip"
-                android:layout_marginTop="8dip"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/denglu"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"                    
-                    android:gravity="center"
-                    android:text="登录"
-                    android:textColor="#ffffff"
-                    android:textSize="18sp" />
-                <!-- android:background="@drawable/zuoselectbutton" -->
-
-                <Button
-                    android:id="@+id/zhuce"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"                    
-                    android:gravity="center"
-                    android:text="注册"
-                    android:textColor="#d3d3d3"
-                    android:textSize="18sp" />
-                <!-- android:background="@drawable/youunselectbutton" -->
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/wangji"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="5dip"
-                    android:gravity="center"
-                    android:text="忘记密码？"
-                    android:textColor="#FD7B5D"
-                    android:textSize="18sp" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical" >
-        </LinearLayout>
+        android:id="@+id/tou"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="6dip"
+        android:text="@string/shouye_tou" 
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#FD7B5D"
+		 android:gravity="center"		 
+        />
     </LinearLayout>
 
-</LinearLayout>
+    
+    <ImageView
+        android:id="@+id/tu"
+        android:layout_below="@id/tou"
+	    android:layout_marginTop="30dip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:background="@drawable/title"
+	 />    
+
+    
+	<EditText 
+	    android:layout_below="@id/tu"
+	    android:layout_marginTop="28dip"
+		android:id="@+id/nameedittext"		
+		android:layout_width="260dip"
+		android:layout_height="33dip"
+		android:gravity="center_vertical"
+		android:paddingLeft="10dip"
+		android:paddingRight="10dip"
+		android:layout_centerInParent="true"
+		android:background="@drawable/shouye_textedit" 
+	 />
+	
+	<TextView
+	    android:id="@+id/nametext"	
+	    android:layout_below="@id/tu"	
+		android:layout_marginTop="35dip"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:text="@string/shouye_name"
+		android:textColor="#d3d3d3"
+	    />	     
+     
+    
+	<EditText 	    
+	    android:layout_marginTop="14dip"	    
+		android:id="@+id/passwdedittext"	
+		android:layout_below="@id/nameedittext"		
+		android:layout_width="260dip"
+		android:layout_height="33dip"
+		android:gravity="center_vertical"
+		android:layout_centerInParent="true"
+		android:paddingLeft="10dip"
+		android:paddingRight="10dip"
+		android:background="@drawable/shouye_textedit"  
+		android:inputType="textPassword"
+	 />
+	
+	<TextView
+	    android:id="@+id/passwdtext"	
+	    android:layout_below="@id/nameedittext"	
+		android:layout_marginTop="21dip"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:text="@string/shouye_passwd"
+		android:textColor="#d3d3d3"
+	    />	    
+     
+	 <LinearLayout
+	     		 android:id="@+id/anniu"
+		        android:layout_below="@id/passwdedittext"	
+        		 android:layout_alignRight="@id/passwdedittext"
+        		 android:layout_alignLeft="@id/passwdedittext"
+               android:layout_marginTop="35dip"
+               android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		 >
+	
+   <Button 
+        android:id="@+id/denglu"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+		 android:layout_height="37sp"
+        android:text="@string/shouye_denglu"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:background="@drawable/shouye_denglubutton"  
+       />
+   
+   <Button 
+        android:id="@+id/zhuce"	
+        android:layout_width="0dp"
+        android:layout_weight="1"
+		 android:layout_height="37sp"
+        android:text="@string/shouye_zhuce"
+        android:textColor="#d3d3d3"
+        android:background="@drawable/shouye_zhucebutton" 
+       />   
+   </LinearLayout>
+   
+	 	<TextView
+	    android:id="@+id/wangji"	
+	    android:layout_below="@id/anniu"	
+       android:layout_marginTop="15dip"
+       android:layout_alignRight="@id/anniu"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/shouye_wangji"
+		android:textColor="#FD7B5D"
+	    />	 
+   
+</RelativeLayout>

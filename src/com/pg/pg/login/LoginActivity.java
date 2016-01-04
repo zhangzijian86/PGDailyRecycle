@@ -9,12 +9,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
@@ -22,6 +25,8 @@ public class LoginActivity extends Activity {
 	private Button btzhuce;
 	private EditText passwdedit;
 	private EditText namededit;
+	private TextView nametext;
+	private TextView passwdtext;
 	String usermobile;
 	String loginPass;
 	private LoadingProgressDialog dialog;
@@ -34,6 +39,10 @@ public class LoginActivity extends Activity {
 		 btdenglu = (Button)findViewById(R.id.denglu);
 	     passwdedit = (EditText)findViewById(R.id.passwdedittext);
 	     namededit = (EditText)findViewById(R.id.nameedittext);
+	     nametext = (TextView)findViewById(R.id.nametext);
+	     passwdtext = (TextView)findViewById(R.id.passwdtext);
+	     namededit.addTextChangedListener(textWatcher);
+	     passwdedit.addTextChangedListener(textWatcher);
 		 btzhuce.setOnClickListener(new OnClickListener() {
 			 @Override
 			 public void onClick(View view) {				
@@ -64,6 +73,35 @@ public class LoginActivity extends Activity {
 		//初始化dialog
 		 dialog=new LoadingProgressDialog(this,"正在加载...");
 	 }
+	 
+	    private TextWatcher textWatcher = new TextWatcher() {  
+	    	  
+	    	@Override  
+	    	public void onTextChanged(CharSequence s, int start, int before,  
+	    	int count) {  	  
+			   if(namededit.getText().toString().equals("")){
+				   nametext.setVisibility(View.VISIBLE);
+			   }else{
+				   nametext.setVisibility(View.INVISIBLE);
+			   }
+			   if(passwdedit.getText().toString().equals("")){
+				   passwdtext.setVisibility(View.VISIBLE);
+			   }else{
+				   passwdtext.setVisibility(View.INVISIBLE);
+			   }
+	    	}  
+	    	  
+	    	@Override  
+	    	public void beforeTextChanged(CharSequence s, int start, int count,  
+	    	int after) {  
+	    	  
+	    	}  
+	    	  
+	    	@Override  
+	    	public void afterTextChanged(Editable s) {   
+	    		
+	    	}  
+    	}; 
 	 	 
  	/**
  	 * dis：AsyncTask参数类型：

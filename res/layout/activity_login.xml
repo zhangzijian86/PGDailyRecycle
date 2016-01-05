@@ -2,24 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F0F0F0"
+    android:background="#45BFCE"
      >  
     
     <LinearLayout
         android:id="@+id/tou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="#45BFCE"
         >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dip"
         android:layout_marginBottom="6dip"
-        android:text="@string/shouye_tou" 
+        android:text="" 
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="#FD7B5D"
+        android:textColor="#FFFFFF"
 		 android:gravity="center"		 
         />
     </LinearLayout>
@@ -127,7 +127,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="@string/shouye_wangji"
-		android:textColor="#FD7B5D"
+		android:textColor="#d3d3d3"
 	    />	 
    
 </RelativeLayout>

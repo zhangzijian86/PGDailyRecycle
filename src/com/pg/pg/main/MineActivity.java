@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MineActivity extends Activity{
-	
-	private ViewPager viewPager;  
+	 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,5 +20,4 @@ public class MineActivity extends Activity{
 		tv.setGravity(Gravity.CENTER);
 		setContentView(tv);
 	}
-
 }

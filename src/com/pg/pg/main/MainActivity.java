@@ -63,9 +63,9 @@ public class MainActivity  extends TabActivity implements OnCheckedChangeListene
 					mRcycleRadioButton.setTextColor(Color.parseColor("#109200"));//
 					mMineRadioButton.setTextColor(Color.parseColor("#000000"));//
 					Drawable drawable0=this.getResources().getDrawable(R.drawable.home_lv); 
-					drawable0.setBounds(0, 0, drawable0.getMinimumWidth(), drawable0.getMinimumHeight());
+					drawable0.setBounds(0, 0, drawable0.getMinimumWidth(), drawable0.getMinimumHeight()-1);
 					Drawable drawable1=this.getResources().getDrawable(R.drawable.ren_hei); 					
-					drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
+					drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight()-1);
 					mRcycleRadioButton.setCompoundDrawables(null,drawable0,null,null);
 					mMineRadioButton.setCompoundDrawables(null,drawable1,null,null);
 					break;
@@ -74,9 +74,9 @@ public class MainActivity  extends TabActivity implements OnCheckedChangeListene
 					mRcycleRadioButton.setTextColor(Color.parseColor("#000000"));//
 					mMineRadioButton.setTextColor(Color.parseColor("#109200"));//
 					Drawable drawable2=this.getResources().getDrawable(R.drawable.home_hei); 
-					drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
+					drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight()-1);
 					Drawable drawable3=this.getResources().getDrawable(R.drawable.ren_lv); 
-					drawable3.setBounds(0, 0, drawable3.getMinimumWidth(), drawable3.getMinimumHeight());
+					drawable3.setBounds(0, 0, drawable3.getMinimumWidth(), drawable3.getMinimumHeight()-1);
 					mRcycleRadioButton.setCompoundDrawables(null,drawable2,null,null);
 					mMineRadioButton.setCompoundDrawables(null,drawable3,null,null);
 					break;

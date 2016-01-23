@@ -19,5 +19,17 @@
 	<string name="shouye_denglu">登陆</string>
 	<string name="shouye_zhuce">注册</string>
 	<string name="shouye_wangji">忘记密码？</string>
+	
+	<string name="recycle_diqu">北京</string>
+	<string name="recycle_wode">我的</string> 
+	
+	<string name="recycle_shouji">手机</string>
+	<string name="recycle_jiuyifu">就衣服</string>
+	<string name="recycle_suliaoping">塑料瓶</string>	
+	<string name="recycle_yilaguan">易拉罐</string>
+	<string name="recycle_zhilei">纸类</string>
+	<string name="recycle_dianzi">电子设备</string>
+	<string name="recycle_jiadian">家电</string>	
+	<string name="recycle_qita">其他</string>
 
 </resources>

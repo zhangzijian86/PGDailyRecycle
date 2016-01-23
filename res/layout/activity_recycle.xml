@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFFFFF"
+    android:background="#ffffff"
     android:orientation="vertical" >
-
+  <RelativeLayout
+        android:id="@+id/tou"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        >       
+      
+   <TextView
+        android:id="@+id/bangdingshebeitu"
+        android:layout_alignParentLeft="true" 
+        android:layout_marginLeft="6dip"
+        android:text="@string/recycle_diqu" 
+        android:textSize="18sp"
+        android:textColor="#EEEE00"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerVertical="true"
+	 />   
+      
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="6dip"
+        android:text="@string/shouye_tou" 
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#7FFF00"
+        android:layout_centerInParent="true"
+		android:gravity="center"		 
+        />    
+    </RelativeLayout>
     <FrameLayout
+        android:id="@+id/zoumadeng"
+        android:layout_below="@id/tou"
+        android:layout_centerInParent="true"
         android:layout_width="fill_parent"
         android:layout_height="140dip" >
 
@@ -26,7 +60,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="中国家庭院校园区域名字体现"
+                android:text=""
                 android:textColor="#ffffff" />
 
             <LinearLayout
@@ -58,5 +92,216 @@
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
-
-</LinearLayout>
+    <LinearLayout
+          android:id="@+id/tubiaolan1"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="15dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/zoumadeng"
+		  android:layout_height="50dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#ffffff"
+		  android:orientation="horizontal"
+        > 
+       <RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+	       <ImageView
+	        		android:id="@+id/shouji"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+	        		android:layout_height="30dip"
+		    		android:background="@drawable/shouji_hong"
+		 	/>  
+			 <TextView
+		        android:text="@string/recycle_shouji" 
+		        android:layout_centerHorizontal="true"
+		        android:layout_below="@id/shouji"
+		        android:textSize="12sp"
+		        android:textColor="#109200"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+		 	/> 
+	 	</RelativeLayout>
+	 	<RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+	        <ImageView
+	        		android:id="@+id/jiuyifu"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+	        		android:layout_height="30dip"
+		    		android:background="@drawable/jiuyifu_lv"
+		 	/>  
+		 	<TextView
+	        android:text="@string/recycle_jiuyifu" 
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/jiuyifu"
+	        android:textSize="12sp"
+	        android:textColor="#109200"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	 		/> 
+	 	</RelativeLayout>
+	   <RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+		 	<ImageView
+	        		android:id="@+id/suliaoping"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+		    		android:layout_height="30dip"
+		    		android:background="@drawable/suliaoping_lv"
+		 	/>   
+		  <TextView
+	        android:text="@string/recycle_suliaoping" 
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/suliaoping"
+	        android:textSize="12sp"
+	        android:textColor="#109200"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	 		/> 
+	 	</RelativeLayout>
+	 	<RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+		 	<ImageView
+	        		android:id="@+id/yilaguan"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+	        		android:layout_height="30dip"
+		    		android:background="@drawable/yilaguan_lv"
+		 	/>   
+		 <TextView
+	        android:text="@string/recycle_yilaguan" 
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/yilaguan"
+	        android:textSize="12sp"
+	        android:textColor="#109200"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	 	/> 
+	 	</RelativeLayout>
+       </LinearLayout>
+    <LinearLayout
+          android:id="@+id/tubiaolan2"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="15dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/tubiaolan1"
+		  android:layout_height="50dip"
+		  android:layout_marginTop="8dip"
+		  android:background="#ffffff"
+		  android:orientation="horizontal"
+        > 
+       <RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+	       <ImageView
+	        		android:id="@+id/zhi"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+	        		android:layout_height="30dip"
+		    		android:background="@drawable/zhixiang_lv"
+		 	/>  
+			 <TextView
+		        android:text="@string/recycle_zhilei" 
+		        android:layout_centerHorizontal="true"
+		        android:layout_below="@id/zhi"
+		        android:textSize="12sp"
+		        android:textColor="#109200"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+		 	/> 
+	 	</RelativeLayout>
+	 	<RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+	        <ImageView
+	        		android:id="@+id/dianzi"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+	        		android:layout_height="30dip"
+		    		android:background="@drawable/dianzi_lv"
+		 	/>  
+		 	<TextView
+	        android:text="@string/recycle_dianzi" 
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/dianzi"
+	        android:textSize="12sp"
+	        android:textColor="#109200"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	 		/> 
+	 	</RelativeLayout>
+	   <RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+		 	<ImageView
+	        		android:id="@+id/jiadian"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+		    		android:layout_height="30dip"
+		    		android:background="@drawable/jiujiadian_lv"
+		 	/>   
+		  <TextView
+	        android:text="@string/recycle_jiadian" 
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/jiadian"
+	        android:textSize="12sp"
+	        android:textColor="#109200"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	 		/> 
+	 	</RelativeLayout>
+	 	<RelativeLayout
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:background="#ffffff"
+           android:layout_weight="1" >
+		 	<ImageView
+	        		android:id="@+id/qita"
+	        		android:layout_centerHorizontal="true"
+	        		android:layout_alignParentTop="true"
+	        		android:layout_width="30dip"
+	        		android:layout_height="30dip"
+		    		android:background="@drawable/gengduo_lv"
+		 	/>   
+		 <TextView
+	        android:text="@string/recycle_qita" 
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/qita"
+	        android:textSize="12sp"
+	        android:textColor="#109200"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+	 	/> 
+	 	</RelativeLayout>
+       </LinearLayout>
+</RelativeLayout>

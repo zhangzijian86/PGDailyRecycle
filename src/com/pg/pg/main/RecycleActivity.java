@@ -7,6 +7,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.pg.pg.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,8 +15,10 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,25 +35,40 @@ public class RecycleActivity extends Activity{
 
 	private TextView tv_title;
 	private int currentItem = 0; // 当前图片的索引号
-
-	// An ExecutorService that can schedule commands to run after a given delay,
-	// or to execute periodically.
-	private ScheduledExecutorService scheduledExecutorService;
 	
-	// 切换当前显示的图片
-	private Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			viewPager.setCurrentItem(currentItem);// 切换当前显示的图片
-		};
-	};
+	private ImageView image_shouji;
+	private ImageView image_jiuyifu;
+	private ImageView image_suliaoping;
+	private ImageView image_yilaguan;
+	private ImageView image_zhi;
+	private ImageView image_dianzi;
+	private ImageView image_jiadian;
+	private ImageView image_qita;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_recycle);      
+        
+       image_shouji = (ImageView) findViewById(R.id.shouji);
+       image_shouji.setOnClickListener(imageViewlistener);
+       image_jiuyifu = (ImageView) findViewById(R.id.jiuyifu);
+       image_jiuyifu.setOnClickListener(imageViewlistener);
+       image_suliaoping = (ImageView) findViewById(R.id.suliaoping);
+       image_suliaoping.setOnClickListener(imageViewlistener);
+       image_yilaguan = (ImageView) findViewById(R.id.yilaguan);
+       image_yilaguan.setOnClickListener(imageViewlistener);
+       image_zhi = (ImageView) findViewById(R.id.zhi);
+       image_zhi.setOnClickListener(imageViewlistener);
+       image_dianzi = (ImageView) findViewById(R.id.dianzi);
+       image_dianzi.setOnClickListener(imageViewlistener);
+       image_jiadian = (ImageView) findViewById(R.id.jiadian);
+       image_jiadian.setOnClickListener(imageViewlistener);
+       image_qita = (ImageView) findViewById(R.id.qita);
+       image_qita.setOnClickListener(imageViewlistener);
 
-		imageResId = new int[] { R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
+		imageResId = new int[] { R.drawable.a, R.drawable.f, R.drawable.g, R.drawable.f, R.drawable.g };
 		titles = new String[imageResId.length];
 		titles[0] = "11111111";
 		titles[1] = "22222222";
@@ -84,6 +102,52 @@ public class RecycleActivity extends Activity{
 		// 设置一个监听器，当ViewPager中的页面改变时调用
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
 	}
+	
+	OnClickListener   imageViewlistener = new OnClickListener() {
+		@Override  
+		public void onClick(View view) {  
+			 int buttonid = view.getId();
+			 switch (buttonid) {
+			    case R.id.shouji:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==shouji====");
+			    	break;
+			    case R.id.jiuyifu:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiuyifu====");
+			    	break;
+			    case R.id.suliaoping:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==suliaoping====");
+			    	break;
+			    case R.id.yilaguan:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==yilaguan====");
+			    	break;
+			    case R.id.zhi:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==zhi====");
+			    	break;
+			    case R.id.dianzi:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==dianzi====");
+			    	break;
+			    case R.id.jiadian:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiadian====");
+			    	break;
+			    case R.id.qita:
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==qita====");
+			    	break;
+			    default:
+			       break;
+			 }
+		}   
+	};
+	
+	// An ExecutorService that can schedule commands to run after a given delay,
+	// or to execute periodically.
+	private ScheduledExecutorService scheduledExecutorService;
+	
+	// 切换当前显示的图片
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			viewPager.setCurrentItem(currentItem);// 切换当前显示的图片
+		};
+	};
 	
 	@Override
 	protected void onStart() {

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         >       
-      
+    <!-- 
    <TextView
         android:id="@+id/bangdingshebeitu"
         android:layout_alignParentLeft="true" 
@@ -20,8 +20,7 @@
         android:textColor="#EEEE00"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_centerVertical="true"
-	 />   
+	    android:layout_centerVertical="true"-->
       
     <TextView
         android:layout_width="match_parent"
@@ -31,10 +30,11 @@
         android:text="@string/shouye_tou" 
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="#7FFF00"
+        android:textColor="#EEEE00"
         android:layout_centerInParent="true"
 		android:gravity="center"		 
         />    
+        <!-- android:textColor="#7FFF00" -->
     </RelativeLayout>
     <FrameLayout
         android:id="@+id/zoumadeng"

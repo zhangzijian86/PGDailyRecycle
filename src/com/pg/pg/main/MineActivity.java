@@ -1,22 +1,52 @@
 package com.pg.pg.main;
 
 import com.pg.pg.R;
+import com.pg.pg.wheel.active.WhellActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class MineActivity extends Activity{
 	 
+	private TextView dizhi;
+	private TextView dingdan;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-       setContentView(R.layout.activity_mine);      
+       setContentView(R.layout.activity_mine);  
+       dizhi = (TextView) findViewById(R.id.dizhi);
+       dingdan = (TextView) findViewById(R.id.dingdan);
+       dizhi.setOnClickListener(textViewlistener);
+       dingdan.setOnClickListener(textViewlistener);
 	}
+	
+	OnClickListener   textViewlistener = new OnClickListener() {
+		@Override  
+		public void onClick(View view) {  
+			 int buttonid = view.getId();
+			 switch (buttonid) {
+			    case R.id.dizhi:
+			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dizhi====");
+			    	startActivity(new Intent(getApplication(), WhellActivity.class));
+			    	break;
+			    case R.id.dingdan:
+			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dingdan====");
+			    	break;
+			    default:
+			       break;
+			 
+			 }
+		}
+	};
 }

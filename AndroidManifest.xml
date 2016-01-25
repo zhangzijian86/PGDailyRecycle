@@ -40,7 +40,10 @@
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterPasswordActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		 <!-- WhellActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.wheel.active.WhellActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		 <!-- MineAddressActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MineAddressActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		
+		 
 	</application>
 
 </manifest>

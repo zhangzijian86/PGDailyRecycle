@@ -38,7 +38,7 @@ public class MineActivity extends Activity{
 			 switch (buttonid) {
 			    case R.id.dizhi:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dizhi====");
-			    	startActivity(new Intent(getApplication(), WhellActivity.class));
+			    	startActivity(new Intent(getApplication(), MineAddressActivity.class));
 			    	break;
 			    case R.id.dingdan:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dingdan====");

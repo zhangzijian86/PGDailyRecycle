@@ -31,5 +31,7 @@
 	<string name="recycle_dianzi">电子设备</string>
 	<string name="recycle_jiadian">家电</string>	
 	<string name="recycle_qita">其他</string>
+	
+	<string name="mine_tianjiadizhi">添加地址</string>
 
 </resources>

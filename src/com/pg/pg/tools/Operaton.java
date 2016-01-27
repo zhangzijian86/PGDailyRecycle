@@ -46,13 +46,11 @@ public class Operaton
 			if (httpResponse.getStatusLine().getStatusCode()==HttpStatus.SC_OK) 
 			{
 				result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
-				if(result.equals("success")){		
-				}else{
-					result="false";
-				}
+				Log.d("====com.pg.pg.tools.Operaton====", "========000======="+result);
 			}
 			else
 			{
+				Log.d("====com.pg.pg.tools.Operaton====", "========111=======");
 				result="false";
 			}
 		} catch (UnsupportedEncodingException e) {

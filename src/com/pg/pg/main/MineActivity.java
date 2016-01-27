@@ -1,18 +1,13 @@
 package com.pg.pg.main;
 
 import com.pg.pg.R;
-import com.pg.pg.bean.Pgdr_user;
-import com.pg.pg.wheel.active.WhellActivity;
+import com.pg.pg.bean.Pgdr_userApp;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -32,7 +27,7 @@ public class MineActivity extends Activity{
        dizhi.setOnClickListener(textViewlistener);
        dingdan.setOnClickListener(textViewlistener);
        phone = (TextView) findViewById(R.id.phone);
-       phone.setText(((Pgdr_user) getApplication()).getUser_mobile());
+       phone.setText(((Pgdr_userApp) getApplication()).getUser_mobile());
 	}
 	
 	OnClickListener   textViewlistener = new OnClickListener() {

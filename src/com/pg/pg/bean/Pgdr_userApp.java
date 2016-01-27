@@ -3,7 +3,7 @@ package com.pg.pg.bean;
 import android.app.Application;  
 
 
-public class Pgdr_user {
+public class Pgdr_userApp extends Application{
 	
 	private String user_id;//USER_ID
 	private String user_name;//USER_NAME

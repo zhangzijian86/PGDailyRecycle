@@ -1,6 +1,7 @@
 package com.pg.pg.main;
 
 import com.pg.pg.R;
+import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.wheel.active.BaseWhellActivity;
 import com.pg.pg.wheel.active.WhellActivity;
 import com.pg.pg.wheel.widget.OnWheelChangedListener;
@@ -42,6 +43,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        diqutext = (EditText) findViewById(R.id.diquEditText);
        diqutext.setInputType(InputType.TYPE_NULL);
        diqutext.setOnClickListener(listener);
+       
+       diqutext.setText(((Pgdr_userApp) getApplication()).getUser_address());
        
        zhucequeding = (Button) findViewById(R.id.zhucequeding);
        zhucequeding.setOnClickListener(listener);

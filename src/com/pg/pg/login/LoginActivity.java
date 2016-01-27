@@ -1,7 +1,11 @@
 package com.pg.pg.login;
 
+import java.util.List;
+
 import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_user;
+import com.pg.pg.bean.Pgdr_userApp;
+import com.pg.pg.json.JsonUtil;
 import com.pg.pg.main.MainActivity;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
@@ -13,6 +17,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -28,14 +33,18 @@ public class LoginActivity extends Activity {
 	private EditText namededit;
 	private TextView nametext;
 	private TextView passwdtext;
-	String usermobile;
-	String loginPass;
+	private Pgdr_userApp puser;
+	private String usermobile;
+	private String loginPass;
 	private LoadingProgressDialog dialog;
 	 @Override
 	 protected void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
 		 requestWindowFeature(Window.FEATURE_NO_TITLE);
 		 setContentView(R.layout.activity_login);
+		 
+		 puser = (Pgdr_userApp) getApplication();
+		 
 		 btzhuce = (Button)findViewById(R.id.zhuce);
 		 btdenglu = (Button)findViewById(R.id.denglu);
 	     passwdedit = (EditText)findViewById(R.id.passwdedittext);
@@ -125,7 +134,31 @@ public class LoginActivity extends Activity {
  			try{
  				Operaton operaton=new Operaton();
  				String result=operaton.login("Login", params[0], params[1]);
- 				return result;
+ 				if(!result.equals("false")){
+ 	 				JsonUtil jsonUtil=new JsonUtil();
+ 					List<Pgdr_user> list1=(List<Pgdr_user>) jsonUtil.StringFromJson(result);
+ 					Pgdr_user user=list1.get(0);  					
+ 					if(user.isUser_return()){
+ 						puser.setUser_id(user.getUser_id());
+ 						puser.setUser_name(user.getUser_name());
+ 						puser.setUser_password(user.getUser_password());
+ 						puser.setUser_mobile(user.getUser_mobile());
+ 						puser.setUser_address(user.getUser_address());
+ 						puser.setUser_email(user.getUser_email());
+ 						puser.setUser_status(user.getUser_status());
+ 						puser.setUser_type(user.getUser_type());
+ 						puser.setUser_photo(user.getUser_photo());
+ 						puser.setUser_return(true); 						
+ 						Log.d("====com.pg.pg.login.LoginActivity====", "getUser_id()"+puser.getUser_id());
+ 						Log.d("====com.pg.pg.login.LoginActivity====", "getUser_mobile()"+puser.getUser_mobile());
+ 						Log.d("====com.pg.pg.login.LoginActivity====", "getUser_password()"+puser.getUser_password());
+ 						return "success";
+ 					}else{
+ 						return "false";
+ 					} 					
+ 				}else{
+ 					return "false";
+ 				}
  			}catch(Exception e){
  				e.printStackTrace();
  				return "false";
@@ -146,8 +179,6 @@ public class LoginActivity extends Activity {
  			super.onPostExecute(result);
  			if("success".equals(result)){
  				Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
- 				//appuser = (Pgdr_user) getApplication();  //获取应用程序
- 				((Pgdr_user) getApplication()).setUser_mobile(usermobile);
  				startActivity(new Intent(getApplication(), MainActivity.class));
  				overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
  				LoginActivity.this.finish();

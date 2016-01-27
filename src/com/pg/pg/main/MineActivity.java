@@ -1,6 +1,7 @@
 package com.pg.pg.main;
 
 import com.pg.pg.R;
+import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.wheel.active.WhellActivity;
 
 import android.app.Activity;
@@ -20,6 +21,7 @@ public class MineActivity extends Activity{
 	 
 	private TextView dizhi;
 	private TextView dingdan;
+	private TextView phone;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +31,8 @@ public class MineActivity extends Activity{
        dingdan = (TextView) findViewById(R.id.dingdan);
        dizhi.setOnClickListener(textViewlistener);
        dingdan.setOnClickListener(textViewlistener);
+       phone = (TextView) findViewById(R.id.phone);
+       phone.setText(((Pgdr_user) getApplication()).getUser_mobile());
 	}
 	
 	OnClickListener   textViewlistener = new OnClickListener() {

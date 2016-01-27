@@ -1,6 +1,9 @@
 package com.pg.pg.bean;
 
-public class Pgdr_user {
+import android.app.Application;  
+
+
+public class Pgdr_user extends Application{
 	
 	private String user_id;//USER_ID
 	private String user_name;//USER_NAME

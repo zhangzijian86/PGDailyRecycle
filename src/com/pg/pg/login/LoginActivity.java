@@ -1,6 +1,7 @@
 package com.pg.pg.login;
 
 import com.pg.pg.R;
+import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.main.MainActivity;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
@@ -145,6 +146,8 @@ public class LoginActivity extends Activity {
  			super.onPostExecute(result);
  			if("success".equals(result)){
  				Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+ 				//appuser = (Pgdr_user) getApplication();  //获取应用程序
+ 				((Pgdr_user) getApplication()).setUser_mobile(usermobile);
  				startActivity(new Intent(getApplication(), MainActivity.class));
  				overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
  				LoginActivity.this.finish();

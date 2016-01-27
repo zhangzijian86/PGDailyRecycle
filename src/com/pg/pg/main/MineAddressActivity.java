@@ -52,7 +52,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        lianxirenEditText.setText( ((Pgdr_userApp) getApplication()).getUser_name());
        
        diqutext.setInputType(InputType.TYPE_NULL);
-       diqutext.setOnClickListener(listener);
+       diqutext.setOnClickListener(listener);  
+       
        
        
        
@@ -75,6 +76,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		setUpViews();
 		setUpListener();
 		setUpData();
+		mCurrentDistrictName = "昌平区";
 	}
 	
 	OnClickListener   listener = new OnClickListener() {
@@ -117,6 +119,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private void setUpData() {
 		initProvinceDatas();
 		mViewProvince.setViewAdapter(new ArrayWheelAdapter<String>(MineAddressActivity.this, mProvinceDatas));
+		mViewProvince.setCurrentItem(1);
 		// 设置可见条目数量
 		mViewProvince.setVisibleItems(7);
 		mViewCity.setVisibleItems(7);
@@ -172,15 +175,16 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_confirm:
-			showSelectedResult();
+			//showSelectedResult();
+			diquxuanze.setVisibility(View.GONE);
+			diqutext.setText(mCurrentProviceName+" "+mCurrentCityName+" "+mCurrentDistrictName);
 			break;
 		default:
 			break;
 		}
 	}
 
-	private void showSelectedResult() {
-		diquxuanze.setVisibility(View.GONE);
+	private void showSelectedResult() {		
 		Toast.makeText(MineAddressActivity.this, "当前选中:"+mCurrentProviceName+","+mCurrentCityName+","
 				+mCurrentDistrictName+","+mCurrentZipCode, Toast.LENGTH_SHORT).show();
 	}

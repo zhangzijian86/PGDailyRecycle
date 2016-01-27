@@ -30,6 +30,9 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private Button mBtnConfirm;
 	
 	private EditText diqutext;
+	private EditText xiangxidizhiEditText;
+	private EditText shoujiEditText;
+	private EditText lianxirenEditText;
 	private Button  zhucequeding;
 	
 	private LinearLayout diquxuanze;;
@@ -41,10 +44,27 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        setContentView(R.layout.activity_mineaddress);  
        
        diqutext = (EditText) findViewById(R.id.diquEditText);
+       xiangxidizhiEditText = (EditText) findViewById(R.id.xiangxidizhiEditText);
+       shoujiEditText = (EditText) findViewById(R.id.shoujiEditText);
+       lianxirenEditText = (EditText) findViewById(R.id.lianxirenEditText);
+       
+       shoujiEditText.setText( ((Pgdr_userApp) getApplication()).getUser_mobile());
+       lianxirenEditText.setText( ((Pgdr_userApp) getApplication()).getUser_name());
+       
        diqutext.setInputType(InputType.TYPE_NULL);
        diqutext.setOnClickListener(listener);
        
-       diqutext.setText(((Pgdr_userApp) getApplication()).getUser_address());
+       
+       
+       if(((Pgdr_userApp) getApplication()).getUser_address()!=null&&!((Pgdr_userApp) getApplication()).getUser_address().equals("")){
+    	   String address[] = ((Pgdr_userApp) getApplication()).getUser_address().split(":");
+    	   diqutext.setText(address[0]);
+    	   if(address.length>=2){
+    		   xiangxidizhiEditText.setText(address[1]);
+    	   }
+       }
+       
+       
        
        zhucequeding = (Button) findViewById(R.id.zhucequeding);
        zhucequeding.setOnClickListener(listener);

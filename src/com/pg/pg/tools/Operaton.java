@@ -101,6 +101,40 @@ public class Operaton
 		return result;  
 	}
 
+	public String UpdateUser(String uripath,String jsonString)
+	{ 
+		String result = null;
+		List<NameValuePair> list=new ArrayList<NameValuePair>();
+		NameValuePair nvp=new BasicNameValuePair("jsonstring", jsonString);
+		list.add(nvp);
+		ConnNet connNet=new ConnNet();
+		HttpPost httpPost=connNet.gethttPost(uripath);
+		try {
+			HttpEntity entity = new UrlEncodedFormEntity(list, HTTP.UTF_8);
+			//此句必须加上否则传到客户端的中文将是乱码
+			httpPost.setEntity(entity);
+			HttpClient client=new DefaultHttpClient();
+			HttpResponse httpResponse=client.execute(httpPost);
+			if (httpResponse.getStatusLine().getStatusCode()==200)
+			{
+				result=EntityUtils.toString(httpResponse.getEntity(), "utf-8");	
+				System.out.println("resu"+result);
+			}
+			else {
+				result="更新失败";
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {			
+			e.printStackTrace();
+		} catch (ParseException e) {		
+			e.printStackTrace();
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		return result;  
+	}
+	
 	public String UpData(String uripath,String jsonString)
 	{ 
 		String result = null;

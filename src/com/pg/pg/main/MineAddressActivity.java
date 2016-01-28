@@ -1,7 +1,15 @@
 package com.pg.pg.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.pg.pg.R;
+import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
+import com.pg.pg.json.WriteJson;
+import com.pg.pg.login.RegisterPasswordActivity;
+import com.pg.pg.tools.LoadingProgressDialog;
+import com.pg.pg.tools.Operaton;
 import com.pg.pg.wheel.active.BaseWhellActivity;
 import com.pg.pg.wheel.active.WhellActivity;
 import com.pg.pg.wheel.widget.OnWheelChangedListener;
@@ -10,6 +18,7 @@ import com.pg.pg.wheel.widget.adapters.ArrayWheelAdapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -35,7 +44,10 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private EditText lianxirenEditText;
 	private Button  zhucequeding;
 	
-	private LinearLayout diquxuanze;;
+	private LinearLayout diquxuanze;
+	private LoadingProgressDialog dialog;
+	private Pgdr_userApp puser;
+	String jsonString;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,13 +55,19 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
        setContentView(R.layout.activity_mineaddress);  
        
+       puser = (Pgdr_userApp) getApplication();
+       
+       
        diqutext = (EditText) findViewById(R.id.diquEditText);
        xiangxidizhiEditText = (EditText) findViewById(R.id.xiangxidizhiEditText);
        shoujiEditText = (EditText) findViewById(R.id.shoujiEditText);
        lianxirenEditText = (EditText) findViewById(R.id.lianxirenEditText);
        
-       shoujiEditText.setText( ((Pgdr_userApp) getApplication()).getUser_mobile());
-       lianxirenEditText.setText( ((Pgdr_userApp) getApplication()).getUser_name());
+       lianxirenEditText.setText(puser.getUser_name());
+       
+       shoujiEditText.setText( puser.getUser_mobile());
+       shoujiEditText.setEnabled(false);
+       lianxirenEditText.setText( puser.getUser_name());
        
        diqutext.setInputType(InputType.TYPE_NULL);
        diqutext.setOnClickListener(this);  
@@ -57,8 +75,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        
        
        
-       if(((Pgdr_userApp) getApplication()).getUser_address()!=null&&!((Pgdr_userApp) getApplication()).getUser_address().equals("")){
-    	   String address[] = ((Pgdr_userApp) getApplication()).getUser_address().split(":");
+       if(puser.getUser_address()!=null&&!puser.getUser_address().equals("")){
+    	   String address[] = puser.getUser_address().split(":");
     	   diqutext.setText(address[0]);
     	   if(address.length>=2){
     		   xiangxidizhiEditText.setText(address[1]);
@@ -77,6 +95,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		setUpListener();
 		setUpData();
 		mCurrentDistrictName = "昌平区";
+		//初始化dialog
+		dialog=new LoadingProgressDialog(this,"正在加载...");
 	}
 	
 	private void setUpViews() {
@@ -170,6 +190,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	    	break;
 	    case R.id.zhucequeding:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
+	    	new UpdateUserAsyncTask().execute(new String[]{});		
 	    	break;
 		default:
 			break;
@@ -179,6 +200,74 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private void showSelectedResult() {		
 		Toast.makeText(MineAddressActivity.this, "当前选中:"+mCurrentProviceName+","+mCurrentCityName+","
 				+mCurrentDistrictName+","+mCurrentZipCode, Toast.LENGTH_SHORT).show();
+	}
+	
+	/**
+	 * dis：AsyncTask参数类型：
+	 * 第一个参数标书传入到异步任务中并进行操作，通常是网络的路径
+	 * 第二个参数表示进度的刻度
+	 * 第三个参数表示返回的结果类型
+	 * */
+	private class UpdateUserAsyncTask extends AsyncTask<String, String, String>{
+		//任务执行之前的操作
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			dialog.show();//显示dialog，数据正在处理....
+		}
+		//完成耗时操作
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			try{
+				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground======");
+				Pgdr_user user=new Pgdr_user();				
+				user.setUser_name(lianxirenEditText.getText().toString());
+				user.setUser_password(puser.getUser_password());
+				user.setUser_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
+				user.setUser_email(puser.getUser_email());
+				user.setUser_status(puser.getUser_status());
+				user.setUser_type(puser.getUser_type());
+				user.setUser_photo(puser.getUser_photo());
+				user.setUser_mobile(puser.getUser_mobile());
+				//构造一个user对象
+				List<Pgdr_user> list=new ArrayList<Pgdr_user>();
+				list.add(user);
+				WriteJson writeJson=new WriteJson();
+				//将user对象写出json形式字符串
+				jsonString= writeJson.getJsonData(list);
+				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground===jsonString==="+jsonString);
+				Operaton operaton=new Operaton();
+ 				String result=operaton.UpdateUser("UpdateUser", jsonString);
+ 				return result;
+			}catch(Exception e){
+				e.printStackTrace();
+				return "";
+			}
+		}
+		
+		@Override
+		protected void onProgressUpdate(String... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+			
+		}
+		
+		//数据处理完毕后更新UI操作
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if(result.equals("yes")){
+				puser.setUser_name(lianxirenEditText.getText().toString());
+				puser.setUser_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
+				Toast.makeText(getApplicationContext(), "更新成功！", Toast.LENGTH_SHORT).show();
+			}else if("".equals(result)){
+				Toast.makeText(getApplicationContext(), "更新失败，请重试！", Toast.LENGTH_SHORT).show();
+			}
+			dialog.dismiss();//dialog关闭，数据处理完毕
+		}
 	}
 	
 }

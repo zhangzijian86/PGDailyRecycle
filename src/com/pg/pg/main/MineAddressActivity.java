@@ -52,7 +52,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        lianxirenEditText.setText( ((Pgdr_userApp) getApplication()).getUser_name());
        
        diqutext.setInputType(InputType.TYPE_NULL);
-       diqutext.setOnClickListener(listener);  
+       diqutext.setOnClickListener(this);  
        
        
        
@@ -68,7 +68,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        
        
        zhucequeding = (Button) findViewById(R.id.zhucequeding);
-       zhucequeding.setOnClickListener(listener);
+       zhucequeding.setOnClickListener(this);
        
        diquxuanze = (LinearLayout)findViewById(R.id.diquxuanze);
        diquxuanze.setVisibility(View.GONE);
@@ -78,25 +78,6 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		setUpData();
 		mCurrentDistrictName = "昌平区";
 	}
-	
-	OnClickListener   listener = new OnClickListener() {
-		@Override  
-		public void onClick(View view) {  
-			 int buttonid = view.getId();
-			 switch (buttonid) {
-			    case R.id.diquEditText:
-			    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
-			    	diquxuanze.setVisibility(View.VISIBLE);
-			    	break;
-			    case R.id.zhucequeding:
-			    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
-			    	break;
-			    default:
-			       break;
-			 
-			 }
-		}
-	};
 	
 	private void setUpViews() {
 		mViewProvince = (WheelView) findViewById(R.id.id_province);
@@ -132,12 +113,16 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	public void onChanged(WheelView wheel, int oldValue, int newValue) {
 		// TODO Auto-generated method stub
 		if (wheel == mViewProvince) {
+			Log.d("=com.pg.pg.main.MineAddressActivity=", "==onChanged===mViewProvince===");
 			updateCities();
 		} else if (wheel == mViewCity) {
+			Log.d("=com.pg.pg.main.MineAddressActivity=", "==onChanged===mViewCity===");
 			updateAreas();
 		} else if (wheel == mViewDistrict) {
+			Log.d("=com.pg.pg.main.MineAddressActivity=", "==onChanged===mViewDistrict=newValue=="+newValue);
 			mCurrentDistrictName = mDistrictDatasMap.get(mCurrentCityName)[newValue];
 			mCurrentZipCode = mZipcodeDatasMap.get(mCurrentDistrictName);
+			Log.d("=com.pg.pg.main.MineAddressActivity=", "==onChanged===mCurrentDistrictName==="+mCurrentDistrictName);
 		}
 	}
 
@@ -154,6 +139,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		}
 		mViewDistrict.setViewAdapter(new ArrayWheelAdapter<String>(this, areas));
 		mViewDistrict.setCurrentItem(0);
+		mCurrentDistrictName = mDistrictDatasMap.get(mCurrentCityName)[0];
 	}
 
 	/**
@@ -175,10 +161,16 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_confirm:
-			//showSelectedResult();
 			diquxuanze.setVisibility(View.GONE);
 			diqutext.setText(mCurrentProviceName+" "+mCurrentCityName+" "+mCurrentDistrictName);
 			break;
+	    case R.id.diquEditText:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
+	    	diquxuanze.setVisibility(View.VISIBLE);
+	    	break;
+	    case R.id.zhucequeding:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
+	    	break;
 		default:
 			break;
 		}

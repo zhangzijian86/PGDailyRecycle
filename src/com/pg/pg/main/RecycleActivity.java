@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import com.pg.pg.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -109,27 +110,51 @@ public class RecycleActivity extends Activity{
 			 int buttonid = view.getId();
 			 switch (buttonid) {
 			    case R.id.shouji:
+			    	Intent intentshouji = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentshouji.putExtra("type", "shouji");
+			    	startActivity(intentshouji);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==shouji====");
 			    	break;
 			    case R.id.jiuyifu:
+			    	Intent intentjiuyifu = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentjiuyifu.putExtra("type", "jiuyifu");
+			    	startActivity(intentjiuyifu);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiuyifu====");
 			    	break;
 			    case R.id.suliaoping:
+			    	Intent intentsuliaoping = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentsuliaoping.putExtra("type", "suliaoping");
+			    	startActivity(intentsuliaoping);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==suliaoping====");
 			    	break;
 			    case R.id.yilaguan:
+			    	Intent intentyilaguan = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentyilaguan.putExtra("type", "yilaguan");
+			    	startActivity(intentyilaguan);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==yilaguan====");
 			    	break;
 			    case R.id.zhi:
+			    	Intent intentzhi = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentzhi.putExtra("type", "zhi");
+			    	startActivity(intentzhi);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==zhi====");
 			    	break;
 			    case R.id.dianzi:
+			    	Intent intentdianzi = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentdianzi.putExtra("type", "dianzi");
+			    	startActivity(intentdianzi);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==dianzi====");
 			    	break;
 			    case R.id.jiadian:
+			    	Intent intentjiadian = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentjiadian.putExtra("type", "jiadian");
+			    	startActivity(intentjiadian);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiadian====");
 			    	break;
 			    case R.id.qita:
+			    	Intent intentqita = new Intent(getApplicationContext(), OrderActivity.class);        
+			    	intentqita.putExtra("type", "qita");
+			    	startActivity(intentqita);
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==qita====");
 			    	break;
 			    default:

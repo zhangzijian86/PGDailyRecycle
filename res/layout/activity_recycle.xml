@@ -116,7 +116,7 @@
 	        		android:layout_alignParentTop="true"
 	        		android:layout_width="30dip"
 	        		android:layout_height="30dip"
-		    		android:background="@drawable/shouji_hong"
+		    		android:background="@drawable/shouji_lv"
 		 	/>  
 			 <TextView
 		        android:text="@string/recycle_shouji" 

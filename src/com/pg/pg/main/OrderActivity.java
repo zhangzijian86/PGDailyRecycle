@@ -7,11 +7,9 @@ import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.json.WriteJson;
-import com.pg.pg.login.RegisterPasswordActivity;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
 import com.pg.pg.wheel.active.BaseWhellActivity;
-import com.pg.pg.wheel.active.WhellActivity;
 import com.pg.pg.wheel.widget.OnWheelChangedListener;
 import com.pg.pg.wheel.widget.WheelView;
 import com.pg.pg.wheel.widget.adapters.ArrayWheelAdapter;
@@ -26,77 +24,144 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.CompoundButton;
 
-public class MineAddressActivity  extends BaseWhellActivity implements OnClickListener, OnWheelChangedListener {
+public class OrderActivity  extends BaseWhellActivity implements OnClickListener, OnWheelChangedListener {
+	private LinearLayout diquxuanze;
+	private EditText diqutext;
+	private EditText xiangxidizhiEditText;
+	private EditText shoujiEditText;
+	
+	private Button  zhucequeding;
 	
 	private WheelView mViewProvince;
 	private WheelView mViewCity;
 	private WheelView mViewDistrict;
 	private Button mBtnConfirm;
 	
-	private EditText diqutext;
-	private EditText xiangxidizhiEditText;
-	private EditText shoujiEditText;
-	private EditText lianxirenEditText;
-	private Button  zhucequeding;
-	
-	private LinearLayout diquxuanze;
 	private LoadingProgressDialog dialog;
 	private Pgdr_userApp puser;
-	String jsonString;
+	
+	private ImageView image;
+	private TextView leixing;
+	private CheckBox zhouqiCheckBox;
+	
+	private String jsonString;
+	private String dailyrecycle_iscycle;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-       this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-       setContentView(R.layout.activity_mineaddress);  
-       
-       puser = (Pgdr_userApp) getApplication();
-       
-       
-       diqutext = (EditText) findViewById(R.id.diquEditText);
-       xiangxidizhiEditText = (EditText) findViewById(R.id.xiangxidizhiEditText);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dailyrecycle_iscycle = "0";
+        setContentView(R.layout.activity_order);  
+        puser = (Pgdr_userApp) getApplication();
+        Intent intent = getIntent(); //用于激活它的意图对象        
+        String type = intent.getStringExtra("type");
+        Log.d("=com.pg.pg.main.OrderActivity=", "==onCreate==type===="+type);
+        
+        image = (ImageView)findViewById(R.id.tu);
+        leixing = (TextView)findViewById(R.id.leixing);
+        if(type.equals("shouji")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.shouji_hong));
+        	leixing.setText("手机回收");
+        }else if(type.equals("jiuyifu")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.jiuyifu_hong));
+        	leixing.setText("衣服回收");
+         }
+        else if(type.equals("suliaoping")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.suliaoping_hong));
+        	leixing.setText("塑料瓶回收");
+         }
+        else if(type.equals("yilaguan")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.yilaguan_hong));
+        	leixing.setText("易拉罐回收");
+         }
+        else if(type.equals("zhi")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.zhixiang_hong));
+        	leixing.setText("纸箱回收");
+         }
+        else if(type.equals("dianzi")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.dianzi_h));
+        	leixing.setText("电子设备回收");
+         }
+        else if(type.equals("jiadian")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.jiujiadian_hong));
+        	leixing.setText("家电回收");
+         }
+        else if(type.equals("qita")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.gengduo_hong));
+        	leixing.setText("其他回收");
+         }
+        
+        zhouqiCheckBox = (CheckBox)findViewById(R.id.zhouqiCheckBox);
+        //给CheckBox设置事件监听 
+        zhouqiCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){ 
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, 
+                    boolean isChecked) { 
+                // TODO Auto-generated method stub 
+                if(isChecked){ 
+                	 dailyrecycle_iscycle = "1";
+                }else{ 
+                	 dailyrecycle_iscycle = "0";
+                } 
+            } 
+        }); 
+        
+        diquxuanze = (LinearLayout)findViewById(R.id.diquxuanze);
+        diquxuanze.setVisibility(View.GONE);
+        diqutext = (EditText) findViewById(R.id.diquEditText);
+        diqutext.setInputType(InputType.TYPE_NULL);
+        diqutext.setOnClickListener(this); 
+        xiangxidizhiEditText = (EditText) findViewById(R.id.xiangxidizhiEditText);
+        
+        zhucequeding = (Button) findViewById(R.id.zhucequeding);
+        zhucequeding.setOnClickListener(this);
+        
+        if(puser.getUser_address()!=null&&!puser.getUser_address().equals("")){
+     	   String address[] = puser.getUser_address().split(":");
+     	   diqutext.setText(address[0]);
+     	   if(address.length>=2){
+     		   xiangxidizhiEditText.setText(address[1]);
+     	   }
+        }
+        
        shoujiEditText = (EditText) findViewById(R.id.shoujiEditText);
-       lianxirenEditText = (EditText) findViewById(R.id.lianxirenEditText);
-       
-       lianxirenEditText.setText(puser.getUser_name());
-       
        shoujiEditText.setText( puser.getUser_mobile());
-       shoujiEditText.setEnabled(false);
-       lianxirenEditText.setText( puser.getUser_name());
-       
-       diqutext.setInputType(InputType.TYPE_NULL);
-       diqutext.setOnClickListener(this);  
-       
-       
-       
-       
-       if(puser.getUser_address()!=null&&!puser.getUser_address().equals("")){
-    	   String address[] = puser.getUser_address().split(":");
-    	   diqutext.setText(address[0]);
-    	   if(address.length>=2){
-    		   xiangxidizhiEditText.setText(address[1]);
-    	   }
-       }
-       
-       
-       
-       zhucequeding = (Button) findViewById(R.id.zhucequeding);
-       zhucequeding.setOnClickListener(this);
-       
-       diquxuanze = (LinearLayout)findViewById(R.id.diquxuanze);
-       diquxuanze.setVisibility(View.GONE);
-       
+        
 		setUpViews();
 		setUpListener();
 		setUpData();
 		mCurrentDistrictName = "昌平区";
 		//初始化dialog
 		dialog=new LoadingProgressDialog(this,"正在加载...");
+    }
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_confirm:
+			diquxuanze.setVisibility(View.GONE);
+			diqutext.setText(mCurrentProviceName+" "+mCurrentCityName+" "+mCurrentDistrictName);
+			break;
+	    case R.id.diquEditText:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
+	    	diquxuanze.setVisibility(View.VISIBLE);
+	    	break;
+	    case R.id.zhucequeding:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
+	    	new UpdateUserAsyncTask().execute(new String[]{});		
+	    	break;
+		default:
+			break;
+		}
 	}
 	
 	private void setUpViews() {
@@ -119,7 +184,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	
 	private void setUpData() {
 		initProvinceDatas();
-		mViewProvince.setViewAdapter(new ArrayWheelAdapter<String>(MineAddressActivity.this, mProvinceDatas));
+		mViewProvince.setViewAdapter(new ArrayWheelAdapter<String>(OrderActivity.this, mProvinceDatas));
 		mViewProvince.setCurrentItem(1);
 		// 设置可见条目数量
 		mViewProvince.setVisibleItems(7);
@@ -176,31 +241,6 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		mViewCity.setCurrentItem(0);
 		updateAreas();
 	}
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btn_confirm:
-			diquxuanze.setVisibility(View.GONE);
-			diqutext.setText(mCurrentProviceName+" "+mCurrentCityName+" "+mCurrentDistrictName);
-			break;
-	    case R.id.diquEditText:
-	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
-	    	diquxuanze.setVisibility(View.VISIBLE);
-	    	break;
-	    case R.id.zhucequeding:
-	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
-	    	new UpdateUserAsyncTask().execute(new String[]{});		
-	    	break;
-		default:
-			break;
-		}
-	}
-
-	private void showSelectedResult() {		
-		Toast.makeText(MineAddressActivity.this, "当前选中:"+mCurrentProviceName+","+mCurrentCityName+","
-				+mCurrentDistrictName+","+mCurrentZipCode, Toast.LENGTH_SHORT).show();
-	}
 	
 	/**
 	 * dis：AsyncTask参数类型：
@@ -223,7 +263,6 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 			try{
 				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground======");
 				Pgdr_user user=new Pgdr_user();				
-				user.setUser_name(lianxirenEditText.getText().toString());
 				user.setUser_password(puser.getUser_password());
 				user.setUser_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
 				user.setUser_email(puser.getUser_email());
@@ -259,16 +298,14 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			if(result.equals("yes")){
-				puser.setUser_name(lianxirenEditText.getText().toString());
-				puser.setUser_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
+			if(result.equals("yes")){				
 				Toast.makeText(getApplicationContext(), "更新成功！", Toast.LENGTH_SHORT).show();
-				MineAddressActivity.this.finish();
+				OrderActivity.this.finish();
 			}else if("".equals(result)){
 				Toast.makeText(getApplicationContext(), "更新失败，请重试！", Toast.LENGTH_SHORT).show();
 			}
 			dialog.dismiss();//dialog关闭，数据处理完毕
 		}
 	}
-	
+
 }

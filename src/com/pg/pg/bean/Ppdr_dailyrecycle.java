@@ -6,7 +6,7 @@ public class Ppdr_dailyrecycle {
 	private String dailyrecycle_user_mobile;//DAILYRECYCLE_USER_MOBILE
 	private String dailyrecycle_date;//DAILYRECYCLE_DATE
 	private String dailyrecycle_week;//DAILYRECYCLE_WEEK
-	private String dailyrecycle_iscycle;//DAILYRECYCLE_ISCYCLE 是否是周期
+	private String dailyrecycle_iscycle;//DAILYRECYCLE_ISCYCLE 是否是周期 1 是 0 否
 	private String dailyrecycle_cycletype;//DAILYRECYCLE_CYCLETYPE 周期类型 每周，每月
 	private String dailyrecycle_isvalid;//DAILYRECYCLE_ISVALID 是否是有效
 	private String dailyrecycle_status;//DAILYRECYCLE_STATUS 状态  1 完成 0未完成

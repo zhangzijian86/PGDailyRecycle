@@ -24,7 +24,7 @@
 	<string name="recycle_wode">我的</string> 
 	
 	<string name="recycle_shouji">手机</string>
-	<string name="recycle_jiuyifu">就衣服</string>
+	<string name="recycle_jiuyifu">旧衣服</string>
 	<string name="recycle_suliaoping">塑料瓶</string>	
 	<string name="recycle_yilaguan">易拉罐</string>
 	<string name="recycle_zhilei">纸类</string>
@@ -33,5 +33,6 @@
 	<string name="recycle_qita">其他</string>
 	
 	<string name="mine_tianjiadizhi">添加地址</string>
+	<string name="mine_yuyue">预约</string>
 
 </resources>

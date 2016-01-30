@@ -291,11 +291,40 @@
 	    		android:layout_width="wrap_content"
 	    		android:background="@drawable/huixian"
 	    		android:layout_centerHorizontal="true"
+	    />        
+         <RadioGroup 
+	        android:id="@+id/yuezhou"
+	        android:layout_below="@id/fenge8"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_centerHorizontal="true"
+	        >
+	        <RadioButton 
+	            android:id="@+id/meizhou"
+	            android:text="每周"
+	            android:textColor="#000000"/>
+	        <RadioButton 
+	            android:id="@+id/meiyue"
+	            android:text="每月"
+	            android:textColor="#000000"/>        
+        </RadioGroup>  
+        <ImageView
+        		android:id="@+id/fenge9"
+        		android:layout_below="@id/yuezhou"
+				android:layout_marginRight="20dip"			
+	    		android:layout_alignParentRight="true"
+	    		android:layout_marginLeft="20dip"				
+	    		android:layout_alignParentLeft="true"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:background="@drawable/huixian"
+	    		android:layout_centerHorizontal="true"
 	    />
         
        <Button
                     android:id="@+id/zhucequeding"
-                    android:layout_below="@id/fenge8"
+                    android:layout_below="@id/fenge9"
                     android:layout_width="150dip"
                     android:layout_height="50dip"                    
                     android:gravity="center"
@@ -374,5 +403,26 @@
         android:textColor="#000000" />
 
 </LinearLayout>
+
+<LinearLayout 
+    android:id="@+id/shijianxuanze"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E9E9E9" 
+    android:orientation="vertical" >  
+  
+    <DatePicker  
+        android:id="@+id/datepicker"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:calendarViewShown="false" />  
+  
+    <TimePicker  
+        android:id="@+id/timepicker"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content" />  
+  
+</LinearLayout>  
         
 </RelativeLayout>

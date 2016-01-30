@@ -7,6 +7,7 @@ import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.json.WriteJson;
+import com.pg.pg.tools.DateTimePickDialogUtil;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
 import com.pg.pg.wheel.active.BaseWhellActivity;
@@ -34,6 +35,7 @@ import android.widget.CompoundButton;
 
 public class OrderActivity  extends BaseWhellActivity implements OnClickListener, OnWheelChangedListener {
 	private LinearLayout diquxuanze;
+	private LinearLayout shijianxuanze;
 	private EditText diqutext;
 	private EditText xiangxidizhiEditText;
 	private EditText shoujiEditText;
@@ -52,8 +54,12 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	private TextView leixing;
 	private CheckBox zhouqiCheckBox;
 	
+	private EditText shijianEditText;
+	
 	private String jsonString;
 	private String dailyrecycle_iscycle;
+	  
+	private String initStartDateTime = "2016年1月12日 22:22"; // 初始化开始时间  
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -135,6 +141,23 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
         
        shoujiEditText = (EditText) findViewById(R.id.shoujiEditText);
        shoujiEditText.setText( puser.getUser_mobile());
+       
+       //===========时间=============
+       shijianxuanze = (LinearLayout)findViewById(R.id.shijianxuanze);
+       shijianxuanze.setVisibility(View.GONE);
+       shijianEditText  = (EditText) findViewById(R.id.shijianEditText);
+       shijianEditText.setText(initStartDateTime);  
+ 
+       shijianEditText.setOnClickListener(new OnClickListener() {  //需要改成自己的public void onClick(View v) 
+ 
+           public void onClick(View v) {  
+        	    //shijianxuanze.setVisibility(View.VISIBLE);
+               DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(  
+            		   OrderActivity.this, initStartDateTime);  
+               dateTimePicKDialog.dateTimePicKDialog(shijianEditText);  
+           }  
+       });  
+       //===========================
         
 		setUpViews();
 		setUpListener();

@@ -6,6 +6,7 @@ import java.util.List;
 import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
+import com.pg.pg.bean.Ppdr_dailyrecycle;
 import com.pg.pg.json.WriteJson;
 import com.pg.pg.tools.DateTimePickDialogUtil;
 import com.pg.pg.tools.LoadingProgressDialog;
@@ -29,12 +30,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton;
 
 public class OrderActivity  extends BaseWhellActivity implements OnClickListener, OnWheelChangedListener {
 	private LinearLayout diquxuanze;
+	private RadioGroup yuezhou;
 	private LinearLayout shijianxuanze;
 	private EditText diqutext;
 	private EditText xiangxidizhiEditText;
@@ -57,7 +60,10 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	private EditText shijianEditText;
 	
 	private String jsonString;
+	private String type;
 	private String dailyrecycle_iscycle;
+	
+	private String yuezhouflag;
 	  
 	private String initStartDateTime = "2016年1月12日 22:22"; // 初始化开始时间  
 	
@@ -74,37 +80,11 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
         
         image = (ImageView)findViewById(R.id.tu);
         leixing = (TextView)findViewById(R.id.leixing);
-        if(type.equals("shouji")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.shouji_hong));
-        	leixing.setText("手机回收");
-        }else if(type.equals("jiuyifu")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.jiuyifu_hong));
-        	leixing.setText("衣服回收");
-         }
-        else if(type.equals("suliaoping")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.suliaoping_hong));
-        	leixing.setText("塑料瓶回收");
-         }
-        else if(type.equals("yilaguan")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.yilaguan_hong));
-        	leixing.setText("易拉罐回收");
-         }
-        else if(type.equals("zhi")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.zhixiang_hong));
-        	leixing.setText("纸箱回收");
-         }
-        else if(type.equals("dianzi")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.dianzi_h));
-        	leixing.setText("电子设备回收");
-         }
-        else if(type.equals("jiadian")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.jiujiadian_hong));
-        	leixing.setText("家电回收");
-         }
-        else if(type.equals("qita")){
-        	image.setImageDrawable(getResources().getDrawable(R.drawable.gengduo_hong));
-        	leixing.setText("其他回收");
-         }
+        
+        yuezhou = (RadioGroup)findViewById(R.id.yuezhou);
+        yuezhou.setVisibility(View.GONE);    
+        
+        yuezhou.setOnCheckedChangeListener(mChangeRadio);
         
         zhouqiCheckBox = (CheckBox)findViewById(R.id.zhouqiCheckBox);
         //给CheckBox设置事件监听 
@@ -115,14 +95,58 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
                 // TODO Auto-generated method stub 
                 if(isChecked){ 
                 	 dailyrecycle_iscycle = "1";
+                	 yuezhou.setVisibility(View.VISIBLE);
                 }else{ 
                 	 dailyrecycle_iscycle = "0";
+                	 yuezhou.setVisibility(View.GONE);
                 } 
             } 
         }); 
         
+        if(type.equals("shouji")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.shouji_hong));
+        	leixing.setText("手机回收");
+        	type = "手机回收";
+        	zhouqiCheckBox.setEnabled(false);
+        }else if(type.equals("jiuyifu")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.jiuyifu_hong));
+        	leixing.setText("衣服回收");
+        	type = "衣服回收";
+         }
+        else if(type.equals("suliaoping")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.suliaoping_hong));
+        	leixing.setText("塑料瓶回收");
+        	type = "塑料瓶回收";
+         }
+        else if(type.equals("yilaguan")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.yilaguan_hong));
+        	leixing.setText("易拉罐回收");
+        	type = "易拉罐回收";
+         }
+        else if(type.equals("zhi")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.zhixiang_hong));
+        	leixing.setText("纸箱回收");
+        	type = "纸箱回收";
+         }
+        else if(type.equals("dianzi")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.dianzi_h));
+        	leixing.setText("电子设备回收");
+        	type = "电子设备回收";
+         }
+        else if(type.equals("jiadian")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.jiujiadian_hong));
+        	leixing.setText("家电回收");
+        	type = "家电回收";
+         }
+        else if(type.equals("qita")){
+        	image.setImageDrawable(getResources().getDrawable(R.drawable.gengduo_hong));
+        	leixing.setText("其他回收");
+        	type = "其他回收";
+         }
+        
         diquxuanze = (LinearLayout)findViewById(R.id.diquxuanze);
-        diquxuanze.setVisibility(View.GONE);
+        diquxuanze.setVisibility(View.GONE);        
+       
         diqutext = (EditText) findViewById(R.id.diquEditText);
         diqutext.setInputType(InputType.TYPE_NULL);
         diqutext.setOnClickListener(this); 
@@ -147,16 +171,8 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
        shijianxuanze.setVisibility(View.GONE);
        shijianEditText  = (EditText) findViewById(R.id.shijianEditText);
        shijianEditText.setText(initStartDateTime);  
- 
-       shijianEditText.setOnClickListener(new OnClickListener() {  //需要改成自己的public void onClick(View v) 
- 
-           public void onClick(View v) {  
-        	    //shijianxuanze.setVisibility(View.VISIBLE);
-               DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(  
-            		   OrderActivity.this, initStartDateTime);  
-               dateTimePicKDialog.dateTimePicKDialog(shijianEditText);  
-           }  
-       });  
+       shijianEditText.setInputType(InputType.TYPE_NULL);
+       shijianEditText.setOnClickListener(this);  
        //===========================
         
 		setUpViews();
@@ -166,6 +182,22 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 		//初始化dialog
 		dialog=new LoadingProgressDialog(this,"正在加载...");
     }
+	
+	private RadioGroup.OnCheckedChangeListener mChangeRadio = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            // TODO Auto-generated method stub
+            if (checkedId == R.id.meizhou) {
+                // 把mRadio1的内容传到mTextView1
+            	yuezhouflag = "0";
+            	Log.d("=com.pg.pg.main.MineAddressActivity=", "==OnCheckedChangeListener===yuezhouflag==="+yuezhouflag);
+            } else if (checkedId == R.id.meiyue) {
+                // 把mRadio2的内容传到mTextView1
+            	yuezhouflag = "1";
+            	Log.d("=com.pg.pg.main.MineAddressActivity=", "==OnCheckedChangeListener===yuezhouflag==="+yuezhouflag);
+            }
+        }
+    };
 	
 	@Override
 	public void onClick(View v) {
@@ -181,6 +213,12 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	    case R.id.zhucequeding:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
 	    	new UpdateUserAsyncTask().execute(new String[]{});		
+	    	break;
+	    case R.id.shijianEditText:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==shijianEditText====");
+            DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(  
+         		   OrderActivity.this, initStartDateTime);  
+            dateTimePicKDialog.dateTimePicKDialog(shijianEditText);	
 	    	break;
 		default:
 			break;
@@ -285,23 +323,29 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 			// TODO Auto-generated method stub
 			try{
 				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground======");
-				Pgdr_user user=new Pgdr_user();				
-				user.setUser_password(puser.getUser_password());
-				user.setUser_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
-				user.setUser_email(puser.getUser_email());
-				user.setUser_status(puser.getUser_status());
-				user.setUser_type(puser.getUser_type());
-				user.setUser_photo(puser.getUser_photo());
-				user.setUser_mobile(puser.getUser_mobile());
+				Ppdr_dailyrecycle pdr=new Ppdr_dailyrecycle();	
+				pdr.setDailyrecycle_user_mobile(shoujiEditText.getText().toString());
+				pdr.setDailyrecycle_date(shijianEditText.getText().toString());
+				pdr.setDailyrecycle_week("");
+				pdr.setDailyrecycle_week("");
+				pdr.setDailyrecycle_iscycle(dailyrecycle_iscycle);
+				pdr.setDailyrecycle_cycletype(yuezhouflag);
+				pdr.setDailyrecycle_isvalid("1");
+				pdr.setDailyrecycle_status("0");
+				pdr.setDailyrecycle_recyclingmanphone("");
+				pdr.setDailyrecycle_finishtime("");
+				pdr.setDailyrecycle_type(type);
+				pdr.setDailyrecycle_explain("");
+				pdr.setDailyrecycle_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
 				//构造一个user对象
-				List<Pgdr_user> list=new ArrayList<Pgdr_user>();
-				list.add(user);
+				List<Ppdr_dailyrecycle> list=new ArrayList<Ppdr_dailyrecycle>();
+				list.add(pdr);
 				WriteJson writeJson=new WriteJson();
 				//将user对象写出json形式字符串
 				jsonString= writeJson.getJsonData(list);
-				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground===jsonString==="+jsonString);
+				Log.d("=com.pg.pg.main.OrderActivity=", "==doInBackground===jsonString==="+jsonString);
 				Operaton operaton=new Operaton();
- 				String result=operaton.UpdateUser("UpdateUser", jsonString);
+ 				String result=operaton.AddRecycle("AddRecycle", jsonString);
  				return result;
 			}catch(Exception e){
 				e.printStackTrace();
@@ -322,10 +366,10 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			if(result.equals("yes")){				
-				Toast.makeText(getApplicationContext(), "更新成功！", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "预约成功！", Toast.LENGTH_SHORT).show();
 				OrderActivity.this.finish();
 			}else if("".equals(result)){
-				Toast.makeText(getApplicationContext(), "更新失败，请重试！", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "预约失败，请重试！", Toast.LENGTH_SHORT).show();
 			}
 			dialog.dismiss();//dialog关闭，数据处理完毕
 		}

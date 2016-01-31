@@ -7,11 +7,15 @@ public class Ppdr_dailyrecycle {
 	private String dailyrecycle_date;//DAILYRECYCLE_DATE
 	private String dailyrecycle_week;//DAILYRECYCLE_WEEK
 	private String dailyrecycle_iscycle;//DAILYRECYCLE_ISCYCLE 是否是周期 1 是 0 否
-	private String dailyrecycle_cycletype;//DAILYRECYCLE_CYCLETYPE 周期类型 每周，每月
-	private String dailyrecycle_isvalid;//DAILYRECYCLE_ISVALID 是否是有效
+	private String dailyrecycle_cycletype;//DAILYRECYCLE_CYCLETYPE 周期类型 每周 0，每月 1
+	private String dailyrecycle_isvalid;//DAILYRECYCLE_ISVALID 是否是有效 1 有效 0 无效
 	private String dailyrecycle_status;//DAILYRECYCLE_STATUS 状态  1 完成 0未完成
 	private String dailyrecycle_recyclingmanphone;//DAILYRECYCLE_RECYCLINGMANPHONE 回收人手机
 	private String dailyrecycle_finishtime;//DAILYRECYCLE_FINISHTIME 回收人手机
+	private String dailyrecycle_type;//DAILYRECYCLE_TYPE 类型  手机 易拉罐等
+	private String dailyrecycle_explain;//DAILYRECYCLE_EXPLAIN 说明 几斤 几个 型号	
+	private String dailyrecycle_address;//DAILYRECYCLE_ADDRESS
+
 	
 	public String getDailyrecycle_id() {
 		return dailyrecycle_id;
@@ -73,5 +77,23 @@ public class Ppdr_dailyrecycle {
 	}
 	public void setDailyrecycle_finishtime(String dailyrecycle_finishtime) {
 		this.dailyrecycle_finishtime = dailyrecycle_finishtime;
+	}
+	public String getDailyrecycle_type() {
+		return dailyrecycle_type;
+	}
+	public void setDailyrecycle_type(String dailyrecycle_type) {
+		this.dailyrecycle_type = dailyrecycle_type;
+	}
+	public String getDailyrecycle_explain() {
+		return dailyrecycle_explain;
+	}
+	public void setDailyrecycle_explain(String dailyrecycle_explain) {
+		this.dailyrecycle_explain = dailyrecycle_explain;
+	}
+	public String getDailyrecycle_address() {
+		return dailyrecycle_address;
+	}
+	public void setDailyrecycle_address(String dailyrecycle_address) {
+		this.dailyrecycle_address = dailyrecycle_address;
 	}
 }

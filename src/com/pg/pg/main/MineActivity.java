@@ -41,6 +41,8 @@ public class MineActivity extends Activity{
 			    	break;
 			    case R.id.dingdan:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dingdan====");
+			    	//startActivity(new Intent(getApplication(), MyOrderActivity.class));
+			    	startActivity(new Intent(getApplication(), MyOrderDetailActivity.class));
 			    	break;
 			    default:
 			       break;

@@ -22,6 +22,8 @@
 	
 	<string name="recycle_diqu">北京</string>
 	<string name="recycle_wode">我的</string> 
+	<string name="recycle_wodedingdan">我的订单</string> 
+	<string name="recycle_ingdanxiangqing">订单详情</string> 
 	
 	<string name="recycle_shouji">手机</string>
 	<string name="recycle_jiuyifu">旧衣服</string>

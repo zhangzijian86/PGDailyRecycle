@@ -45,6 +45,11 @@
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MineAddressActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		  <!-- OrderActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.OrderActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
+	 	 <!-- MyOrderActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MyOrderActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
+		 <!-- MyOrderDetailActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MyOrderDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
+	
 	</application>
 
 </manifest>

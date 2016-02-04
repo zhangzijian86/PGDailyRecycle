@@ -10,20 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        >       
-      
-  <!--  <TextView
-        android:id="@+id/bangdingshebeitu"
-        android:layout_alignParentLeft="true" 
-        android:layout_marginLeft="6dip"
-        android:text="@string/recycle_diqu" 
-        android:textSize="18sp"
-        android:textColor="#EEEE00"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_centerVertical="true" -->
-
-      
+        >             
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,63 +64,296 @@
 	    		android:layout_centerHorizontal="true"
 	    /> 
 	    
-        <!--
-       <TextView
-        android:id="@+id/dizhi"
-        android:layout_below="@id/gerenxinxixian1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
-        android:layout_marginBottom="6dip"
-        android:text="我的收货地址" 
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
-        android:layout_centerHorizontal="true"
-		 android:gravity="center"		 
-        />
-       
-      <ImageView
-        		android:id="@+id/gerenxinxixian2"
-        		android:layout_below="@id/dizhi"
-        		android:layout_marginTop="6dip"
-				android:layout_marginRight="20dip"			
-	    		android:layout_alignParentRight="true"
-	    		android:layout_marginLeft="20dip"				
-	    		android:layout_alignParentLeft="true"
-	    		android:layout_height="wrap_content"
-	    		android:layout_width="wrap_content"
-	    		android:background="@drawable/huixian"
-	    		android:layout_centerHorizontal="true"
-	    /> 
+      <LinearLayout
+          android:id="@+id/lianxiren"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="50dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/gerenxinxixian1"
+		  android:layout_height="40dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#F0F0F0"
+		  android:orientation="horizontal"
+        > 
 	    
-       <TextView
-        android:id="@+id/dingdan"
-        android:layout_below="@id/gerenxinxixian2"
+       <TextView        
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
-        android:layout_marginBottom="6dip"
-        android:text="我的的订单" 
+        android:text="联系人" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_centerHorizontal="true"
-		 android:gravity="center"		 
+        android:layout_weight="1" 
+		android:gravity="center"		 
         />
        
+       	<TextView 
+       	android:id="@+id/lianxirentext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="联系人" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="3" 
+		android:gravity="center"
+		 />       
+        </LinearLayout>
+
        <ImageView
-        		android:id="@+id/gerenxinxixian3"
-        		android:layout_below="@id/dingdan"
-        		android:layout_marginTop="6dip"
-				android:layout_marginRight="20dip"			
-	    		android:layout_alignParentRight="true"
-	    		android:layout_marginLeft="20dip"				
-	    		android:layout_alignParentLeft="true"
-	    		android:layout_height="wrap_content"
-	    		android:layout_width="wrap_content"
-	    		android:background="@drawable/huixian"
-	    		android:layout_centerHorizontal="true"
-	    />-->
-    
+           android:id="@+id/gerenxinxixian2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_below="@id/lianxiren"
+           android:layout_centerHorizontal="true"
+           android:layout_marginLeft="20dip"
+           android:layout_marginRight="20dip"
+           android:layout_marginTop="12dip"
+           android:background="@drawable/huixian" />
+ 
+       <LinearLayout
+          android:id="@+id/shouji"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="50dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/gerenxinxixian2"
+		  android:layout_height="40dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#F0F0F0"
+		  android:orientation="horizontal"
+        > 
+	    
+       <TextView        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手机" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="1" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/shoujitext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手机" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="3" 
+		android:gravity="center"
+		 />       
+        </LinearLayout>
+        
+       <ImageView
+           android:id="@+id/gerenxinxixian3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_below="@id/shouji"
+           android:layout_centerHorizontal="true"
+           android:layout_marginLeft="20dip"
+           android:layout_marginRight="20dip"
+           android:layout_marginTop="12dip"
+           android:background="@drawable/huixian" />
+       
+       <LinearLayout
+          android:id="@+id/leixing"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="50dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/gerenxinxixian3"
+		  android:layout_height="40dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#F0F0F0"
+		  android:orientation="horizontal"
+        > 
+	    
+       <TextView        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="类型" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="1" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/leixingtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="类型" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="3" 
+		android:gravity="center"
+		 />       
+        </LinearLayout>
+        
+        <ImageView
+           android:id="@+id/gerenxinxixian4"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_below="@id/leixing"
+           android:layout_centerHorizontal="true"
+           android:layout_marginLeft="20dip"
+           android:layout_marginRight="20dip"
+           android:layout_marginTop="12dip"
+           android:background="@drawable/huixian" />
+        
+       <LinearLayout
+          android:id="@+id/dizhi"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="50dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/gerenxinxixian4"
+		  android:layout_height="40dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#F0F0F0"
+		  android:orientation="horizontal"
+        > 
+	    
+       <TextView        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="地址" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="1" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/dizhitext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="地址" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="3" 
+		android:gravity="center"
+		 />       
+        </LinearLayout>
+        
+       <ImageView
+           android:id="@+id/gerenxinxixian5"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_below="@id/dizhi"
+           android:layout_centerHorizontal="true"
+           android:layout_marginLeft="20dip"
+           android:layout_marginRight="20dip"
+           android:layout_marginTop="12dip"
+           android:background="@drawable/huixian" />
+       
+      <LinearLayout
+          android:id="@+id/shijian"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="50dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/gerenxinxixian5"
+		  android:layout_height="40dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#F0F0F0"
+		  android:orientation="horizontal"
+        > 
+	    
+       <TextView        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="时间" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="1" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/shijiantext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="时间" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="3" 
+		android:gravity="center"
+		 />       
+        </LinearLayout>
+        <ImageView
+           android:id="@+id/gerenxinxixian6"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentRight="true"
+           android:layout_below="@id/shijian"
+           android:layout_centerHorizontal="true"
+           android:layout_marginLeft="20dip"
+           android:layout_marginRight="20dip"
+           android:layout_marginTop="12dip"
+           android:background="@drawable/huixian" />
+        
+        <LinearLayout
+          android:id="@+id/zhuangtai"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="50dip"
+          android:layout_marginLeft="15dip"
+          android:layout_width="wrap_content"
+          android:layout_below="@id/gerenxinxixian6"
+		  android:layout_height="40dip"
+		  android:layout_marginTop="13dip"
+		  android:background="#F0F0F0"
+		  android:orientation="horizontal"
+        > 
+	    
+       <TextView        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="状态" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="1" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/zhuangtaitext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="状态" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="3" 
+		android:gravity="center"
+		 />       
+        </LinearLayout>
+      
 </RelativeLayout>

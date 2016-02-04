@@ -42,6 +42,7 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	private EditText diqutext;
 	private EditText xiangxidizhiEditText;
 	private EditText shoujiEditText;
+	private EditText lianxirenEditText;
 	
 	private Button  zhucequeding;
 	
@@ -75,7 +76,7 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
         setContentView(R.layout.activity_order);  
         puser = (Pgdr_userApp) getApplication();
         Intent intent = getIntent(); //用于激活它的意图对象        
-        String type = intent.getStringExtra("type");
+        type = intent.getStringExtra("type");
         Log.d("=com.pg.pg.main.OrderActivity=", "==onCreate==type===="+type);
         
         image = (ImageView)findViewById(R.id.tu);
@@ -165,6 +166,9 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
         
        shoujiEditText = (EditText) findViewById(R.id.shoujiEditText);
        shoujiEditText.setText( puser.getUser_mobile());
+       
+       lianxirenEditText = (EditText) findViewById(R.id.lianxirenEditText);
+       lianxirenEditText.setText( puser.getUser_name());
        
        //===========时间=============
        shijianxuanze = (LinearLayout)findViewById(R.id.shijianxuanze);
@@ -322,11 +326,11 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			try{
-				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground======");
+				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground===type==="+type);
 				Ppdr_dailyrecycle pdr=new Ppdr_dailyrecycle();	
+				pdr.setDailyrecycle_name(shoujiEditText.getText().toString());
 				pdr.setDailyrecycle_user_mobile(shoujiEditText.getText().toString());
 				pdr.setDailyrecycle_date(shijianEditText.getText().toString());
-				pdr.setDailyrecycle_week("");
 				pdr.setDailyrecycle_week("");
 				pdr.setDailyrecycle_iscycle(dailyrecycle_iscycle);
 				pdr.setDailyrecycle_cycletype(yuezhouflag);
@@ -336,6 +340,7 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 				pdr.setDailyrecycle_finishtime("");
 				pdr.setDailyrecycle_type(type);
 				pdr.setDailyrecycle_explain("");
+				pdr.setDailyrecycle_name(lianxirenEditText.getText().toString());				
 				pdr.setDailyrecycle_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
 				//构造一个user对象
 				List<Ppdr_dailyrecycle> list=new ArrayList<Ppdr_dailyrecycle>();

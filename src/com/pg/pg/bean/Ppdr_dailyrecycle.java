@@ -3,6 +3,7 @@ package com.pg.pg.bean;
 public class Ppdr_dailyrecycle {
 
 	private String dailyrecycle_id;//DAILYRECYCLE_ID
+	private String dailyrecycle_name;//DAILYRECYCLE_NAME
 	private String dailyrecycle_user_mobile;//DAILYRECYCLE_USER_MOBILE
 	private String dailyrecycle_date;//DAILYRECYCLE_DATE
 	private String dailyrecycle_week;//DAILYRECYCLE_WEEK
@@ -95,5 +96,11 @@ public class Ppdr_dailyrecycle {
 	}
 	public void setDailyrecycle_address(String dailyrecycle_address) {
 		this.dailyrecycle_address = dailyrecycle_address;
+	}
+	public String getDailyrecycle_name() {
+		return dailyrecycle_name;
+	}
+	public void setDailyrecycle_name(String dailyrecycle_name) {
+		this.dailyrecycle_name = dailyrecycle_name;
 	}
 }

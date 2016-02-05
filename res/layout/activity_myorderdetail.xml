@@ -79,25 +79,25 @@
         > 
 	    
        <TextView        
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="联系人" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="2" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/lianxirentext"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="联系人" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
         android:layout_weight="1" 
-		android:gravity="center"		 
-        />
-       
-       	<TextView 
-       	android:id="@+id/lianxirentext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="联系人" 
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
-        android:layout_weight="3" 
 		android:gravity="center"
 		 />       
         </LinearLayout>
@@ -130,25 +130,25 @@
         > 
 	    
        <TextView        
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="手机" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="2" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/shoujitext"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="手机" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
         android:layout_weight="1" 
-		android:gravity="center"		 
-        />
-       
-       	<TextView 
-       	android:id="@+id/shoujitext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="手机" 
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
-        android:layout_weight="3" 
 		android:gravity="center"
 		 />       
         </LinearLayout>
@@ -181,25 +181,25 @@
         > 
 	    
        <TextView        
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="类型" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="2" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/leixingtext"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="类型" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
         android:layout_weight="1" 
-		android:gravity="center"		 
-        />
-       
-       	<TextView 
-       	android:id="@+id/leixingtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="类型" 
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
-        android:layout_weight="3" 
 		android:gravity="center"
 		 />       
         </LinearLayout>
@@ -218,40 +218,41 @@
            android:background="@drawable/huixian" />
         
        <LinearLayout
-          android:id="@+id/dizhi"
+          android:id="@+id/dizhidetail"
           android:layout_alignParentLeft="true"
           android:layout_alignParentRight="true"
           android:layout_marginRight="50dip"
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian4"
-		  android:layout_height="40dip"
+		  android:layout_height="wrap_content"
 		  android:layout_marginTop="13dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="地址" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<TextView 
        	android:id="@+id/dizhitext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="地址" 
+        android:gravity="left"
+        android:singleLine="false"
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="3" 
-		android:gravity="center"
+        android:layout_weight="1" 
 		 />       
         </LinearLayout>
         
@@ -283,25 +284,25 @@
         > 
 	    
        <TextView        
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="时间" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="2" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/shijiantext"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="时间" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
         android:layout_weight="1" 
-		android:gravity="center"		 
-        />
-       
-       	<TextView 
-       	android:id="@+id/shijiantext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="时间" 
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
-        android:layout_weight="3" 
 		android:gravity="center"
 		 />       
         </LinearLayout>
@@ -333,25 +334,25 @@
         > 
 	    
        <TextView        
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="状态" 
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:layout_weight="2" 
+		android:gravity="center"		 
+        />
+       
+       	<TextView 
+       	android:id="@+id/zhuangtaitext"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="状态" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
         android:layout_weight="1" 
-		android:gravity="center"		 
-        />
-       
-       	<TextView 
-       	android:id="@+id/zhuangtaitext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="状态" 
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
-        android:layout_weight="3" 
 		android:gravity="center"
 		 />       
         </LinearLayout>

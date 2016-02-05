@@ -10,7 +10,9 @@ import com.pg.pg.json.JsonUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MyOrderDetailActivity extends Activity {
@@ -23,10 +25,12 @@ public class MyOrderDetailActivity extends Activity {
 	private TextView dizhitext;
 	private TextView shijiantext;
 	private TextView zhuangtaitext;
+	private LinearLayout dizhidetail;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
         setContentView(R.layout.activity_myorderdetail);  
         phone = (TextView) findViewById(R.id.phone);
         phone.setText(((Pgdr_userApp) getApplication()).getUser_mobile());
@@ -55,6 +59,22 @@ public class MyOrderDetailActivity extends Activity {
         	}else{
         		zhuangtaitext.setText("已完成");
         	}        	
+        }
+        dizhidetail = (LinearLayout) findViewById(R.id.dizhidetail);
+        if(dizhitext.getLineCount()==1){
+            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(      
+                   40,      
+                   LinearLayout.LayoutParams.WRAP_CONTENT      
+            );
+            dizhitext.setGravity(Gravity.CENTER);
+        	//dizhidetail.setLayoutParams(p);
+        }else{
+            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(      
+            		LinearLayout.LayoutParams.MATCH_PARENT,      
+                    LinearLayout.LayoutParams.WRAP_CONTENT      
+             );
+            dizhitext.setGravity(Gravity.LEFT);
+         	//dizhidetail.setLayoutParams(p);
         }
 	}
 }

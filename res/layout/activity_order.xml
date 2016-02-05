@@ -73,28 +73,28 @@
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/fenge1"
-		  android:layout_height="33dip"
+		  android:layout_height="50dip"
 		  android:layout_marginTop="6dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
         <TextView
         android:id="@+id/lianxirentext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="联系人" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/lianxirenEditText"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -120,28 +120,28 @@
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/fengelianxiren"
-		  android:layout_height="33dip"
+		  android:layout_height="50dip"
 		  android:layout_marginTop="6dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
         <TextView
         android:id="@+id/shoujitext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="手机" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/shoujiEditText"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -167,28 +167,31 @@
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/fenge4"
-		  android:layout_height="33dip"
+		  android:layout_height="50dip"
 		  android:layout_marginTop="6dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
         <TextView
         android:id="@+id/diqutext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="地区" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/diquEditText"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:singleLine="false"    
+		android:scrollHorizontally="false"
+		android:inputType="textMultiLine"
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -213,28 +216,31 @@
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/fenge5"
-		  android:layout_height="33dip"
+		  android:layout_height="50dip"
 		  android:layout_marginTop="6dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
         <TextView
         android:id="@+id/xiangxidizhitext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="详细地址" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/xiangxidizhiEditText"
-		android:layout_width="wrap_content"
+       	android:gravity="top"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:lines="2"    
+       	android:maxLines="2"    
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -259,27 +265,27 @@
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/fenge6"
-		  android:layout_height="33dip"
+		  android:layout_height="50dip"
 		  android:layout_marginTop="6dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
         <TextView
         android:id="@+id/shijianText"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="时间" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
       <EditText 
       	android:id="@+id/shijianEditText"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -304,25 +310,25 @@
           android:layout_marginLeft="15dip"
           android:layout_width="wrap_content"
           android:layout_below="@id/fenge7"
-		  android:layout_height="33dip"
+		  android:layout_height="50dip"
 		  android:layout_marginTop="6dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
         <TextView
         android:id="@+id/zhouqi"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="周期" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
 		<CheckBox
     		android:id="@+id/zhouqiCheckBox"
-    		android:layout_width="wrap_content"
+    		android:layout_width="fill_parent"
     		android:layout_height="wrap_content"
     		android:text=""
     		android:layout_weight="1" 
@@ -344,7 +350,7 @@
 	        android:id="@+id/yuezhou"
 	        android:layout_below="@id/fenge8"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="50dip"
 	        android:orientation="horizontal"
 	        android:layout_centerHorizontal="true"
 	        >

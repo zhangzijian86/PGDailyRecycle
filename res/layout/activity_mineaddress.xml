@@ -56,21 +56,22 @@
 	    
        <TextView
         android:id="@+id/lianxirentext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="联系人" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/lianxirenEditText"
-		android:layout_width="wrap_content"
+       	android:maxLines="1"      
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
        
@@ -136,21 +137,22 @@
         > 
         <TextView
         android:id="@+id/shoujitext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="手机" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/shoujiEditText"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:maxLines="1"      
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -184,21 +186,25 @@
         > 
         <TextView
         android:id="@+id/diqutext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="地区" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
+        android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
        	<EditText 
        	android:id="@+id/diquEditText"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:layout_weight="1" 
+		android:maxLines="2"  
+		android:singleLine="false"    
+		android:scrollHorizontally="false"
+		android:inputType="textMultiLine"
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>
@@ -230,21 +236,24 @@
         > 
         <TextView
         android:id="@+id/xiangxidizhitext"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="详细地址" 
         android:textStyle="bold"
         android:textSize="12sp"
         android:textColor="#000000"
-        android:layout_weight="1" 
-		android:gravity="center"		 
+        android:layout_weight="2" 
+		android:gravity="center"	  	 
         />
        
        	<EditText 
        	android:id="@+id/xiangxidizhiEditText"
-		android:layout_width="wrap_content"
+       	android:gravity="top"
+       	android:lines="2"    
+       	android:maxLines="2"    
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:layout_weight="2" 
+		android:layout_weight="1" 
 		android:background="@drawable/shouye_textedit" 
 		 />
         </LinearLayout>

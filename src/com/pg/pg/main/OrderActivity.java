@@ -1,8 +1,10 @@
 package com.pg.pg.main;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-
 import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
@@ -15,7 +17,7 @@ import com.pg.pg.wheel.active.BaseWhellActivity;
 import com.pg.pg.wheel.widget.OnWheelChangedListener;
 import com.pg.pg.wheel.widget.WheelView;
 import com.pg.pg.wheel.widget.adapters.ArrayWheelAdapter;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -68,7 +70,7 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	  
 	private String initStartDateTime = "2016年1月12日 22:22"; // 初始化开始时间  
 	
-	@Override
+	@SuppressLint("SimpleDateFormat") @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -174,6 +176,11 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
        shijianxuanze = (LinearLayout)findViewById(R.id.shijianxuanze);
        shijianxuanze.setVisibility(View.GONE);
        shijianEditText  = (EditText) findViewById(R.id.shijianEditText);
+       
+       Date d = new Date();  
+       Log.d("=com.pg.pg.main.MineAddressActivity=","=data="+d);  
+       SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");  
+       initStartDateTime = sdf.format(d);  
        shijianEditText.setText(initStartDateTime);  
        shijianEditText.setInputType(InputType.TYPE_NULL);
        shijianEditText.setOnClickListener(this);  

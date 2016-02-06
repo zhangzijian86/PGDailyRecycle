@@ -262,7 +262,7 @@
            android:layout_height="wrap_content"
            android:layout_alignParentLeft="true"
            android:layout_alignParentRight="true"
-           android:layout_below="@id/dizhi"
+           android:layout_below="@id/dizhidetail"
            android:layout_centerHorizontal="true"
            android:layout_marginLeft="20dip"
            android:layout_marginRight="20dip"

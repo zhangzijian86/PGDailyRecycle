@@ -169,7 +169,7 @@ public class RegisterActivity extends Activity {
 				Toast.makeText(getApplicationContext(), "验证码请求失败，请重新请求！", Toast.LENGTH_SHORT).show();
 			}
 			dialog.dismiss();//dialog关闭，数据处理完毕
-			if(result.startsWith("no")){				
+			if(result!=null&&result.startsWith("no")){				
 				timer.schedule(task,1, 1000); //延时1000ms后执行，1000ms执行一次
 			}
 		}

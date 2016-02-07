@@ -62,7 +62,7 @@ public class MyOrderActivity extends Activity {
 						intentDetail.putExtra("jsonstring", jsonstring);
 						intentDetail.putExtra("type", "0");
 				    	startActivity(intentDetail);
-						Log.d("MyOrderActivity", "getDailyrecycle_user_mobile:"+pdr.getDailyrecycle_user_mobile()+",getDailyrecycle_id:"+pdr.getDailyrecycle_id()+",id:"+id);
+						Log.d("MyOrderActivity", "getDailyrecycle_user_mobile:"+pdr.getDailyrecycle_user_mobile()+",getDailyrecycle_name:"+pdr.getDailyrecycle_name()+",id:"+id);
 					}
 				}	 		
 			});   

@@ -27,6 +27,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private LoadingProgressDialog dialog;
 	private Pgdr_userApp puser;
 	String jsonString;
+	
+	private ImageView fanhui;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -97,6 +100,9 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		mCurrentDistrictName = "昌平区";
 		//初始化dialog
 		dialog=new LoadingProgressDialog(this,"正在加载...");
+		
+	   fanhui  = (ImageView)findViewById(R.id.fanhui);
+	   fanhui.setOnClickListener(this);
 	}
 	
 	private void setUpViews() {
@@ -191,6 +197,10 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	    case R.id.zhucequeding:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
 	    	new UpdateUserAsyncTask().execute(new String[]{});		
+	    	break;
+	    case R.id.fanhui:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==fanhui====");
+	    	finish();
 	    	break;
 		default:
 			break;

@@ -166,7 +166,7 @@ public class GuideViewActivity extends Activity {
 		editor.putString("firstOpen", "1");
 		//提交修改，将数据写到文件
 		editor.commit();
-		startActivity(new Intent(GuideViewActivity.this, LoginActivity.class));
+		startActivity(new Intent(GuideViewActivity.this, MainActivity.class));
 		overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
 		GuideViewActivity.this.finish();
 	}

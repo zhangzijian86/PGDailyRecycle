@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
@@ -17,6 +18,7 @@ import com.pg.pg.wheel.active.BaseWhellActivity;
 import com.pg.pg.wheel.widget.OnWheelChangedListener;
 import com.pg.pg.wheel.widget.WheelView;
 import com.pg.pg.wheel.widget.adapters.ArrayWheelAdapter;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -68,12 +70,14 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	
 	private String yuezhouflag;
 	  
-	private String initStartDateTime = "2016年1月12日 22:22"; // 初始化开始时间  
+	private String initStartDateTime = "2016年1月12日 22:22"; // 初始化开始时间 
+	
+	private ImageView fanhui;
 	
 	@SuppressLint("SimpleDateFormat") @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);        
         dailyrecycle_iscycle = "0";
         setContentView(R.layout.activity_order);  
         puser = (Pgdr_userApp) getApplication();
@@ -190,6 +194,10 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 		setUpListener();
 		setUpData();
 		mCurrentDistrictName = "昌平区";
+		
+       fanhui  = (ImageView)findViewById(R.id.fanhui);
+       fanhui.setOnClickListener(this);
+		
 		//初始化dialog
 		dialog=new LoadingProgressDialog(this,"正在加载...");
     }
@@ -230,6 +238,10 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
             DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(  
          		   OrderActivity.this, initStartDateTime);  
             dateTimePicKDialog.dateTimePicKDialog(shijianEditText);	
+	    	break;
+	    case R.id.fanhui:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==fanhui====");
+	    	finish();
 	    	break;
 		default:
 			break;

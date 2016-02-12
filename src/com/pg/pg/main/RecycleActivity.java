@@ -7,9 +7,14 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.pg.pg.R;
+import com.pg.pg.bean.Pgdr_userApp;
+import com.pg.pg.login.LoginActivity;
+import com.pg.pg.login.RegisterActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -45,6 +50,7 @@ public class RecycleActivity extends Activity{
 	private ImageView image_dianzi;
 	private ImageView image_jiadian;
 	private ImageView image_qita;
+	private Pgdr_userApp puser;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +108,24 @@ public class RecycleActivity extends Activity{
 		viewPager.setAdapter(new MyAdapter());// 设置填充ViewPager页面的适配器
 		// 设置一个监听器，当ViewPager中的页面改变时调用
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
+		//初始化用户数据
+		puser = (Pgdr_userApp) getApplication();
+		puser.setUser_name(getValue("name"));
+		puser.setUser_password(getValue("password"));
+		puser.setUser_mobile(getValue("mobile"));
+		puser.setUser_address(getValue("address"));
+		puser.setUser_email(getValue("email"));
+		puser.setUser_status(getValue("status"));
+		puser.setUser_type(getValue("type"));
+		puser.setUser_photo(getValue("photo"));
+		puser.setUser_return(true); 
+	}
+	
+	private String getValue(String name){
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//若没有数据，返回默认值""
+		String value=sp.getString(name, "");
+		return value;
 	}
 	
 	OnClickListener   imageViewlistener = new OnClickListener() {
@@ -110,51 +134,35 @@ public class RecycleActivity extends Activity{
 			 int buttonid = view.getId();
 			 switch (buttonid) {
 			    case R.id.shouji:
-			    	Intent intentshouji = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentshouji.putExtra("type", "shouji");
-			    	startActivity(intentshouji);
+			    	doSomething("shouji");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==shouji====");
 			    	break;
 			    case R.id.jiuyifu:
-			    	Intent intentjiuyifu = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentjiuyifu.putExtra("type", "jiuyifu");
-			    	startActivity(intentjiuyifu);
+			    	doSomething("jiuyifu");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiuyifu====");
 			    	break;
 			    case R.id.suliaoping:
-			    	Intent intentsuliaoping = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentsuliaoping.putExtra("type", "suliaoping");
-			    	startActivity(intentsuliaoping);
+			    	doSomething("suliaoping");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==suliaoping====");
 			    	break;
 			    case R.id.yilaguan:
-			    	Intent intentyilaguan = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentyilaguan.putExtra("type", "yilaguan");
-			    	startActivity(intentyilaguan);
+			    	doSomething("yilaguan");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==yilaguan====");
 			    	break;
 			    case R.id.zhi:
-			    	Intent intentzhi = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentzhi.putExtra("type", "zhi");
-			    	startActivity(intentzhi);
+			    	doSomething("zhi");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==zhi====");
 			    	break;
 			    case R.id.dianzi:
-			    	Intent intentdianzi = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentdianzi.putExtra("type", "dianzi");
-			    	startActivity(intentdianzi);
+			    	doSomething("dianzi");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==dianzi====");
 			    	break;
 			    case R.id.jiadian:
-			    	Intent intentjiadian = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentjiadian.putExtra("type", "jiadian");
-			    	startActivity(intentjiadian);
+			    	doSomething("jiadian");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiadian====");
 			    	break;
 			    case R.id.qita:
-			    	Intent intentqita = new Intent(getApplicationContext(), OrderActivity.class);        
-			    	intentqita.putExtra("type", "qita");
-			    	startActivity(intentqita);
+			    	doSomething("qita");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==qita====");
 			    	break;
 			    default:
@@ -162,6 +170,17 @@ public class RecycleActivity extends Activity{
 			 }
 		}   
 	};
+	
+	private void doSomething(String type){
+		if(puser.getUser_mobile().equals("")){
+			 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+			 startActivity(intent); 
+		}else{
+			Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+			intent.putExtra("type", type);
+			startActivity(intent);
+		}
+	}
 	
 	// An ExecutorService that can schedule commands to run after a given delay,
 	// or to execute periodically.

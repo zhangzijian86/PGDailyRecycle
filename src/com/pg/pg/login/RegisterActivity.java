@@ -6,11 +6,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.pg.pg.R;
+import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,6 +39,7 @@ public class RegisterActivity extends Activity {
 	private String yanzhengmaReturn;
 	private Timer timer;
 	private int miao;
+	private Pgdr_userApp puser;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,10 +54,22 @@ public class RegisterActivity extends Activity {
 				String yanZhengMa = yanzhengma.getText().toString().trim();
 				if(!TextUtils.isEmpty(phoneNumber)&&!TextUtils.isEmpty(yanZhengMa)){
 					if(yanzhengmaReturn.equals(yanZhengMa)){
-						 Intent intent = new Intent();
-						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
-						 intent.putExtra("phoneNumber", phoneNumber);
-						 startActivity(intent);
+						Toast.makeText(getApplicationContext(), "注册成功！", Toast.LENGTH_SHORT).show();
+						puser = (Pgdr_userApp) getApplication();
+						puser.setUser_mobile(phoneNumber);
+						//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+						SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+						//获取编辑器
+						Editor editor=sp.edit();
+						//通过editor进行设置
+						editor.putString("mobile", phoneNumber);
+						//提交修改，将数据写到文件
+						editor.commit();
+						finish();
+//						 Intent intent = new Intent();
+//						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
+//						 intent.putExtra("phoneNumber", phoneNumber);
+//						 startActivity(intent);
 					}else{
 						Toast.makeText(getApplicationContext(), "验证码错误！", Toast.LENGTH_SHORT).show();
 					}

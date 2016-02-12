@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -31,6 +32,7 @@ public class MyOrderActivity extends Activity {
 	private List<Ppdr_dailyrecycle> myorderlistdetail = new ArrayList<Ppdr_dailyrecycle>();	
 	private Pgdr_userApp puser;
 	private TextView phone;
+	private ImageView fanhui;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -92,6 +94,13 @@ public class MyOrderActivity extends Activity {
 				}	 		
 			});  
         }
+ 	   fanhui  = (ImageView)findViewById(R.id.fanhui);
+ 	   fanhui.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View arg0) {				
+				finish();
+			}
+		});
 	}
 	public void init(String result){
 		JsonUtil jsonUtil=new JsonUtil();

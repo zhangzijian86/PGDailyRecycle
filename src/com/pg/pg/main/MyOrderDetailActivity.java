@@ -11,7 +11,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +29,7 @@ public class MyOrderDetailActivity extends Activity {
 	private TextView shijiantext;
 	private TextView zhuangtaitext;
 	private LinearLayout dizhidetail;
+	private ImageView fanhui;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,5 +80,12 @@ public class MyOrderDetailActivity extends Activity {
             dizhitext.setGravity(Gravity.LEFT);
          	//dizhidetail.setLayoutParams(p);
         }
+  	   fanhui  = (ImageView)findViewById(R.id.fanhui);
+  	   fanhui.setOnClickListener(new OnClickListener() {			
+ 			@Override
+ 			public void onClick(View arg0) {				
+ 				finish();
+ 			}
+ 		});
 	}
 }

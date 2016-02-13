@@ -7,17 +7,22 @@ import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.bean.Ppdr_dailyrecycle;
 import com.pg.pg.json.JsonUtil;
+import com.pg.pg.login.RegisterActivity;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,19 +30,42 @@ public class MineActivity extends Activity{
 	 
 	private TextView dizhi;
 	private TextView dingdan;
-	private TextView phone;
+	TextView phone;
+	Button tuichudangqiandenglu;
 	private LoadingProgressDialog dialog;
+	private Pgdr_userApp puser;
+	
+    @Override  
+    protected void onStart() {  
+    	super.onStart();  
+    	Log.d("=MineActivity=", "==onStart===");
+    	phone.setText(puser.getUser_mobile());
+        if(puser.getUser_mobile().equals("")){
+     	   tuichudangqiandenglu.setVisibility(View.GONE);
+         }else{
+         	tuichudangqiandenglu.setVisibility(View.VISIBLE);
+         }
+    }  
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
        setContentView(R.layout.activity_mine);  
+       puser = (Pgdr_userApp) getApplication();
        dizhi = (TextView) findViewById(R.id.dizhi);
        dingdan = (TextView) findViewById(R.id.dingdan);
        dizhi.setOnClickListener(textViewlistener);
        dingdan.setOnClickListener(textViewlistener);
        phone = (TextView) findViewById(R.id.phone);
-       phone.setText(((Pgdr_userApp) getApplication()).getUser_mobile());
+       phone.setText(puser.getUser_mobile());
+       tuichudangqiandenglu  = (Button) findViewById(R.id.tuichudangqiandenglu);
+       tuichudangqiandenglu.setOnClickListener(textViewlistener);
+       if(puser.getUser_mobile().equals("")){
+    	   tuichudangqiandenglu.setVisibility(View.GONE);
+        }else{
+        	tuichudangqiandenglu.setVisibility(View.VISIBLE);
+        }
        dialog=new LoadingProgressDialog(this,"正在加载...");
 	}
 	
@@ -48,11 +76,37 @@ public class MineActivity extends Activity{
 			 switch (buttonid) {
 			    case R.id.dizhi:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dizhi====");
-			    	startActivity(new Intent(getApplication(), MineAddressActivity.class));
+			    	if(puser.getUser_mobile().equals("")){
+						 Intent intent = new Intent(MineActivity.this,RegisterActivity.class);
+						 startActivityForResult(intent, 1000);
+			    	}else{
+			    		startActivity(new Intent(getApplication(), MineAddressActivity.class));
+			    	}
 			    	break;
 			    case R.id.dingdan:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dingdan====");
-			    	new MyOrderRegisterYanZhengMaAsyncTask().execute(new String[]{((Pgdr_userApp) getApplication()).getUser_mobile().toString()});				
+			    	if(puser.getUser_mobile().equals("")){
+						 Intent intent = new Intent(MineActivity.this,RegisterActivity.class);
+						 startActivityForResult(intent, 1000);
+			    	}else{
+			    		new MyOrderRegisterYanZhengMaAsyncTask().execute(new String[]{((Pgdr_userApp) getApplication()).getUser_mobile().toString()});				
+			    	}
+			    	break;
+			    case R.id.tuichudangqiandenglu:
+			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==tuichudangqiandenglu====");			
+					//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+					SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+					//获取编辑器
+					Editor editor=sp.edit();
+					//通过editor进行设置
+					editor.putString("mobile", "");
+					editor.putString("oldmobile", puser.getUser_mobile());
+					//提交修改，将数据写到文件
+					editor.commit();		
+					puser.setUser_mobile("");
+					puser.setUser_status("1");
+					phone.setText("");		
+					tuichudangqiandenglu.setVisibility(View.GONE);
 			    	break;
 			    default:
 			       break;
@@ -60,6 +114,19 @@ public class MineActivity extends Activity{
 			 }
 		}
 	};
+	
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+       super.onActivityResult(requestCode, resultCode, data);
+   		Log.d("=MineActivity=", "==onActivityResult==resultCode===="+resultCode);
+   		Log.d("=MineActivity=", "==onActivityResult==requestCode===="+requestCode);
+       if(requestCode == 1000 && resultCode == 1001)
+        {
+        	phone.setText(puser.getUser_mobile());
+        	tuichudangqiandenglu.setVisibility(View.VISIBLE);
+        }
+    }
 	
 	/**
 	 * dis：AsyncTask参数类型：

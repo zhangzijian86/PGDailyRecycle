@@ -145,7 +145,7 @@ public class LoginActivity extends Activity {
  						puser.setUser_mobile(user.getUser_mobile());
  						puser.setUser_address(user.getUser_address());
  						puser.setUser_email(user.getUser_email());
- 						puser.setUser_status(user.getUser_status());
+ 						puser.setUser_status("1");
  						puser.setUser_type(user.getUser_type());
  						puser.setUser_photo(user.getUser_photo());
  						puser.setUser_return(true); 						

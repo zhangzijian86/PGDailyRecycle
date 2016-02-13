@@ -54,7 +54,7 @@ public class RegisterActivity extends Activity {
 				String yanZhengMa = yanzhengma.getText().toString().trim();
 				if(!TextUtils.isEmpty(phoneNumber)&&!TextUtils.isEmpty(yanZhengMa)){
 					if(yanzhengmaReturn.equals(yanZhengMa)){
-						Toast.makeText(getApplicationContext(), "注册成功！", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getApplicationContext(), "登陆成功！", Toast.LENGTH_SHORT).show();
 						puser = (Pgdr_userApp) getApplication();
 						puser.setUser_mobile(phoneNumber);
 						//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
@@ -65,6 +65,9 @@ public class RegisterActivity extends Activity {
 						editor.putString("mobile", phoneNumber);
 						//提交修改，将数据写到文件
 						editor.commit();
+						Intent intent = new Intent();
+			          setResult(1001, intent);
+			          Log.d("==RegisterActivity===", "====finish====");
 						finish();
 //						 Intent intent = new Intent();
 //						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
@@ -177,7 +180,7 @@ public class RegisterActivity extends Activity {
 					Log.d("======yanzhengmaReturn========", yanzhengmaReturn);
 				}
 				else if("yesphoneNumber".equals(result)){
-					Toast.makeText(getApplicationContext(), "手机号已注册！", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "登陆失败请重试！", Toast.LENGTH_SHORT).show();
 				}
 				else if("false".equals(result)){
 					Toast.makeText(getApplicationContext(), "验证码请求失败，请重新请求！", Toast.LENGTH_SHORT).show();

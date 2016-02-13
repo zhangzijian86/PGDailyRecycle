@@ -36,7 +36,7 @@
 		 <!-- LoginActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.LoginActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		 <!-- RegisterActivity -->		 
-		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterActivity" android:screenOrientation="portrait"></activity>
 		 <!-- RegisterPasswordActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.login.RegisterPasswordActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>
 		 <!-- WhellActivity -->		 

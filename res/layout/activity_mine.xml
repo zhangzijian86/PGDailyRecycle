@@ -134,5 +134,18 @@
 	    		android:background="@drawable/huixian"
 	    		android:layout_centerHorizontal="true"
 	    />
+       
+              <Button
+                    android:id="@+id/tuichudangqiandenglu"
+                    android:layout_below="@id/gerenxinxixian3"
+                    android:layout_width="150dip"
+                    android:layout_height="30dip"                    
+                    android:gravity="center"
+                    android:text="退出当前登陆"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="20dip"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/zhuce_queding"  
+                    android:textSize="18sp" />
     
 </RelativeLayout>

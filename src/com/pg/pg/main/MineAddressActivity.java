@@ -17,7 +17,10 @@ import com.pg.pg.wheel.widget.WheelView;
 import com.pg.pg.wheel.widget.adapters.ArrayWheelAdapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
@@ -212,6 +215,17 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 				+mCurrentDistrictName+","+mCurrentZipCode, Toast.LENGTH_SHORT).show();
 	}
 	
+	private void setValue(String type,String value){
+		//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//获取编辑器
+		Editor editor=sp.edit();
+		//通过editor进行设置
+		editor.putString(type,value);
+		//提交修改，将数据写到文件
+		editor.commit();	
+	}
+	
 	/**
 	 * dis：AsyncTask参数类型：
 	 * 第一个参数标书传入到异步任务中并进行操作，通常是网络的路径
@@ -234,13 +248,20 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 				Log.d("=com.pg.pg.main.MineAddressActivity=", "==doInBackground======");
 				Pgdr_user user=new Pgdr_user();				
 				user.setUser_name(lianxirenEditText.getText().toString());
+				setValue("name",lianxirenEditText.getText().toString());
 				user.setUser_password(puser.getUser_password());
+				setValue("password",puser.getUser_password());
 				user.setUser_address(diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
+				setValue("address",diqutext.getText().toString()+":"+xiangxidizhiEditText.getText().toString());
 				user.setUser_email(puser.getUser_email());
-				user.setUser_status(puser.getUser_status());
+				setValue("email",puser.getUser_email());
+				user.setUser_status("1");
 				user.setUser_type(puser.getUser_type());
+				setValue("type",puser.getUser_type());
 				user.setUser_photo(puser.getUser_photo());
+				setValue("photo",puser.getUser_photo());
 				user.setUser_mobile(puser.getUser_mobile());
+				
 				//构造一个user对象
 				List<Pgdr_user> list=new ArrayList<Pgdr_user>();
 				list.add(user);

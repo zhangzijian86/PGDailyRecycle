@@ -252,7 +252,7 @@ public class RegisterActivity extends Activity {
                 Log.e(TAG, logs);
             }
             
-            ExampleUtil.showToast(logs, getApplicationContext());
+            //ExampleUtil.showToast(logs, getApplicationContext());
         }
 	    
 	};

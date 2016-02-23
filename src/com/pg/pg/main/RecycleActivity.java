@@ -180,7 +180,7 @@ public class RecycleActivity extends Activity{
                 Log.e(TAG, logs);
             }
             
-            ExampleUtil.showToast(logs, getApplicationContext());
+            //ExampleUtil.showToast(logs, getApplicationContext());
         }
 	    
 	};

@@ -83,7 +83,9 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        
        if(puser.getUser_address()!=null&&!puser.getUser_address().equals("")){
     	   String address[] = puser.getUser_address().split(":");
-    	   diqutext.setText(address[0]);
+    	   if(address.length>=1){
+    		   diqutext.setText(address[0]);
+    	   }
     	   if(address.length>=2){
     		   xiangxidizhiEditText.setText(address[1]);
     	   }

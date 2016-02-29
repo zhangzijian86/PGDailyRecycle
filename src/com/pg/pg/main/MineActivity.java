@@ -29,6 +29,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,9 @@ public class MineActivity extends Activity{
 	Button tuichudangqiandenglu;
 	private LoadingProgressDialog dialog;
 	private Pgdr_userApp puser;
+	
+	private LinearLayout dizhiLinearLayout;
+	private LinearLayout dingdanLinearLayout;
 	
     @Override  
     protected void onStart() {  
@@ -72,6 +76,10 @@ public class MineActivity extends Activity{
         }else{
         	tuichudangqiandenglu.setVisibility(View.VISIBLE);
         }
+       dizhiLinearLayout = (LinearLayout) findViewById(R.id.dizhiLinearLayout);
+       dizhiLinearLayout.setOnClickListener(textViewlistener);
+       dingdanLinearLayout = (LinearLayout) findViewById(R.id.dingdanLinearLayout);
+       dingdanLinearLayout.setOnClickListener(textViewlistener);
        dialog=new LoadingProgressDialog(this,"正在加载...");
 	}
 	
@@ -80,6 +88,15 @@ public class MineActivity extends Activity{
 		public void onClick(View view) {  
 			 int buttonid = view.getId();
 			 switch (buttonid) {
+			 	case R.id.dizhiLinearLayout:
+			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dizhi====");
+			    	if(puser.getUser_mobile().equals("")){
+						 Intent intent = new Intent(MineActivity.this,RegisterActivity.class);
+						 startActivityForResult(intent, 1000);
+			    	}else{
+			    		startActivity(new Intent(getApplication(), MineAddressActivity.class));
+			    	}
+			    	break;
 			    case R.id.dizhi:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dizhi====");
 			    	if(puser.getUser_mobile().equals("")){
@@ -90,6 +107,15 @@ public class MineActivity extends Activity{
 			    	}
 			    	break;
 			    case R.id.dingdan:
+			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dingdan====");
+			    	if(puser.getUser_mobile().equals("")){
+						 Intent intent = new Intent(MineActivity.this,RegisterActivity.class);
+						 startActivityForResult(intent, 1000);
+			    	}else{
+			    		new MyOrderRegisterYanZhengMaAsyncTask().execute(new String[]{((Pgdr_userApp) getApplication()).getUser_mobile().toString()});				
+			    	}
+			    	break;
+			    case R.id.dingdanLinearLayout:
 			    	Log.d("=com.pg.pg.main.MineActivity=", "==textViewlistener==dingdan====");
 			    	if(puser.getUser_mobile().equals("")){
 						 Intent intent = new Intent(MineActivity.this,RegisterActivity.class);

@@ -52,6 +52,7 @@ public class SplashActivity extends Activity {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
+			
 			if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
               String messge = intent.getStringExtra(KEY_MESSAGE);
               String extras = intent.getStringExtra(KEY_EXTRAS);

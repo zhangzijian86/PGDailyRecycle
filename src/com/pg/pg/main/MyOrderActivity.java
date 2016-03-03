@@ -33,6 +33,7 @@ public class MyOrderActivity extends Activity {
 	private Pgdr_userApp puser;
 	private TextView phone;
 	private ImageView fanhui;
+	ListView listviewdatail;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,7 +45,13 @@ public class MyOrderActivity extends Activity {
         init(result);
         phone = (TextView) findViewById(R.id.phone);
         phone.setText(((Pgdr_userApp) getApplication()).getUser_mobile());
-        
+        listviewdatail = (ListView)findViewById(R.id.myorderlistviewdatail);	
+        Log.d("MyOrderActivity", "==puser.getUser_type()=="+puser.getUser_type());
+	 	if(puser.getUser_type().equals("2")){
+	 		listviewdatail.setVisibility(View.VISIBLE);
+	 	}else{
+	 		listviewdatail.setVisibility(View.GONE);
+	 	}	
         if(myorderlist!=null&&myorderlist.size()>1){        
 	        PdrAdapter pdradapter = new PdrAdapter(
 	        		MyOrderActivity.this,R.layout.activity_myorderlistview,myorderlist);
@@ -72,8 +79,7 @@ public class MyOrderActivity extends Activity {
 	 	
         if(myorderlistdetail!=null&&myorderlistdetail.size()>1){     
 		 	PdrAdapterDetail pdradapterdetail = new PdrAdapterDetail(
-	        		MyOrderActivity.this,R.layout.activity_deliveryorderlistview,myorderlistdetail);
-		 	ListView listviewdatail = (ListView)findViewById(R.id.myorderlistviewdatail);
+	        		MyOrderActivity.this,R.layout.activity_deliveryorderlistview,myorderlistdetail);	 		
 		 	listviewdatail.setAdapter(pdradapterdetail);	
 		 	listviewdatail.setOnItemClickListener(new OnItemClickListener() {
 				@Override
@@ -117,6 +123,12 @@ public class MyOrderActivity extends Activity {
 					myorderlistdetail.add(pdr);
 				}
 				Ppdr_dailyrecycle pdreach = list1.get(i);
+				if(i==1){
+					Log.d("MyOrderActivity", "MyOrderActivity=pdreach.getUser_type()="+pdreach.getUser_type());
+					if(pdreach.getUser_type()!=null&&(!pdreach.getUser_type().equals(""))){
+						puser.setUser_type(pdreach.getUser_type());
+					}
+				}
 				if(pdreach.getDailyrecycle_user_mobile().equals(puser.getUser_mobile())){
 					myorderlist.add(pdreach);
 				}		

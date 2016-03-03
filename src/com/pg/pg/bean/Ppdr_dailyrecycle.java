@@ -16,7 +16,15 @@ public class Ppdr_dailyrecycle {
 	private String dailyrecycle_type;//DAILYRECYCLE_TYPE 类型  手机 易拉罐等
 	private String dailyrecycle_explain;//DAILYRECYCLE_EXPLAIN 说明 几斤 几个 型号	
 	private String dailyrecycle_address;//DAILYRECYCLE_ADDRESS
-
+	
+	private String user_type;//DAILYRECYCLE_ADDRESS
+	
+	public String getUser_type() {
+		return user_type;
+	}
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
+	}
 	
 	public String getDailyrecycle_id() {
 		return dailyrecycle_id;

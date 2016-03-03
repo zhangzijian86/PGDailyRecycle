@@ -71,7 +71,7 @@ public class LoginActivity extends Activity {
 					 loginPass = passwdedit.getText().toString().trim();
 					 if(!TextUtils.isEmpty(usermobile)&&!TextUtils.isEmpty(loginPass)){
 						 //执行验证的异步操作
-						 new UserLoginAsyncTask().execute(new String[]{usermobile,loginPass});						 
+//						 new UserLoginAsyncTask().execute(new String[]{usermobile,loginPass});						 
 					 }else{
 						 Toast.makeText(getApplicationContext(), "手机号或者密码不能为空！", Toast.LENGTH_SHORT).show();
 					 }
@@ -133,7 +133,7 @@ public class LoginActivity extends Activity {
  			// TODO Auto-generated method stub
  			try{
  				Operaton operaton=new Operaton();
- 				String result=operaton.login("Login", params[0], params[1]);
+ 				String result="";//operaton.login("Login", params[0], params[1]);
  				if(!result.equals("false")){
  	 				JsonUtil jsonUtil=new JsonUtil();
  					List<Pgdr_user> list1=(List<Pgdr_user>) jsonUtil.StringFromJson(result);

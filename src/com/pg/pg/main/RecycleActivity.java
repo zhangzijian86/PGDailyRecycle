@@ -115,19 +115,19 @@ public class RecycleActivity extends Activity{
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
 		//初始化用户数据
 		puser = (Pgdr_userApp) getApplication();
-		if(!getValue("mobile").equals("")&&getValue("mobile").equals(getValue("oldmobile"))){
-			puser.setUser_name(getValue("name"));
-			puser.setUser_password(getValue("password"));
-			puser.setUser_address(getValue("address"));
-			puser.setUser_email(getValue("email"));
-			puser.setUser_status("1");
-			puser.setUser_type(getValue("type"));
-			puser.setUser_photo(getValue("photo"));
-			puser.setUser_return(true); 
-			mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, getValue("mobile").trim()));
-		}
-		puser.setUser_mobile(getValue("mobile"));
-		puser.setUser_status("1");
+//		if(!getValue("mobile").equals("")&&getValue("mobile").equals(getValue("oldmobile"))){
+//			puser.setUser_name(getValue("name"));
+//			puser.setUser_password(getValue("password"));
+//			puser.setUser_address(getValue("address"));
+//			puser.setUser_email(getValue("email"));
+//			puser.setUser_status("1");
+//			puser.setUser_type(getValue("type"));
+//			puser.setUser_photo(getValue("photo"));
+//			puser.setUser_return(true); 
+//			mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, getValue("mobile").trim()));
+//		}
+//		puser.setUser_mobile(getValue("mobile"));
+//		puser.setUser_status("1");
 	}
 	
 	private static final String TAG = "JPush";

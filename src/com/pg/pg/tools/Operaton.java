@@ -30,13 +30,12 @@ import android.util.Log;
 public class Operaton 
 {
 
-	public String login(String url,String usermobile,String password) 
+	public String login(String url,String usermobile) 
 	{    
 		String result = null;
 		ConnNet connNet=new ConnNet();
 		List<NameValuePair> params=new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("usermobile", usermobile));//USER_MOBILE
-		params.add(new BasicNameValuePair("password", password));
 		try {
 			HttpEntity entity=new UrlEncodedFormEntity(params, HTTP.UTF_8);
 			HttpPost httpPost=connNet.gethttPost(url);

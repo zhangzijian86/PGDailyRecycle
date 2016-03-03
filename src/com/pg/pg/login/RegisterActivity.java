@@ -1,6 +1,8 @@
 package com.pg.pg.login;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
@@ -11,6 +13,9 @@ import cn.jpush.android.api.TagAliasCallback;
 
 import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_userApp;
+import com.pg.pg.bean.Ppdr_dailyrecycle;
+import com.pg.pg.json.WriteJson;
+import com.pg.pg.main.OrderActivity;
 import com.pg.pg.tools.ExampleUtil;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
@@ -45,11 +50,19 @@ public class RegisterActivity extends Activity {
 	private Timer timer;
 	private int miao;
 	private Pgdr_userApp puser;
+	private String jsonString;
+	private String type;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_register);
+		
+	   Intent intent = getIntent(); //用于激活它的意图对象        
+	   type = intent.getStringExtra("type");
+		
+	   Log.d("==RegisterActivity===", "====type===="+type);
+	   
 		btqueding = (Button) findViewById(R.id.queding);
 		yanzhengmaBtn = (Button) findViewById(R.id.yanzhengmaBtn);
 		btqueding.setOnClickListener(new OnClickListener() {
@@ -75,7 +88,13 @@ public class RegisterActivity extends Activity {
 			           //调用JPush API设置Alias
 			  		   mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, phoneNumber));
 			          Log.d("==RegisterActivity===", "====finish====");
-						finish();
+			          if(type!=null&&type.equals("yijianyuyue")){
+			        	    Log.d("==RegisterActivity===", "====yijianyuyue===="+phoneNumber);
+			        	    type = "yijianyuyuefinish";
+			        	    new UserRegisterYanZhengMaAsyncTask().execute(new String[]{phoneNumber});
+			          }else{
+			            	finish();
+			            }						
 //						 Intent intent = new Intent();
 //						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
 //						 intent.putExtra("phoneNumber", phoneNumber);
@@ -160,7 +179,21 @@ public class RegisterActivity extends Activity {
 			// TODO Auto-generated method stub
 			try{
 				Operaton operaton=new Operaton();
- 				String result=operaton.checkPhoneNumber("Check", params[0]);
+				String result = "";
+				if(type!=null&&type.equals("yijianyuyuefinish")){
+					Ppdr_dailyrecycle pdr=new Ppdr_dailyrecycle();	
+					pdr.setDailyrecycle_user_mobile(params[0]);
+					//构造一个user对象
+					List<Ppdr_dailyrecycle> list=new ArrayList<Ppdr_dailyrecycle>();
+					list.add(pdr);
+					WriteJson writeJson=new WriteJson();
+					//将user对象写出json形式字符串
+					jsonString= writeJson.getJsonData(list);
+					Log.d("=com.pg.pg.main.RegisterActivity=", "==doInBackground===jsonString==="+jsonString);
+	 				result=operaton.AddRecycle("AddRecycle", jsonString);
+				}else{
+					result=operaton.checkPhoneNumber("Check", params[0]);					
+				}
  				return result;
 			}catch(Exception e){
 				e.printStackTrace();
@@ -180,20 +213,29 @@ public class RegisterActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			if(result!=null){
-				if(result.startsWith("no")){
-					Toast.makeText(getApplicationContext(), "请求成功，等待短信验证码发送！", Toast.LENGTH_SHORT).show();
-					yanzhengmaReturn = result.substring(2, result.length());
-					Log.d("======yanzhengmaReturn========", yanzhengmaReturn);
+			if(type!=null&&type.equals("yijianyuyuefinish")){
+				if(result.equals("yes")){				
+					Toast.makeText(getApplicationContext(), "预约成功！", Toast.LENGTH_SHORT).show();					
+				}else if("".equals(result)){
+					Toast.makeText(getApplicationContext(), "预约失败，请重试！", Toast.LENGTH_SHORT).show();
 				}
-				else if("yesphoneNumber".equals(result)){
-					Toast.makeText(getApplicationContext(), "登陆失败请重试！", Toast.LENGTH_SHORT).show();
-				}
-				else if("false".equals(result)){
+				finish();
+			}else{
+				if(result!=null){
+					if(result.startsWith("no")){
+						Toast.makeText(getApplicationContext(), "请求成功，等待短信验证码发送！", Toast.LENGTH_SHORT).show();
+						yanzhengmaReturn = result.substring(2, result.length());
+						Log.d("======yanzhengmaReturn========", yanzhengmaReturn);
+					}
+					else if("yesphoneNumber".equals(result)){
+						Toast.makeText(getApplicationContext(), "登陆失败请重试！", Toast.LENGTH_SHORT).show();
+					}
+					else if("false".equals(result)){
+						Toast.makeText(getApplicationContext(), "验证码请求失败，请重新请求！", Toast.LENGTH_SHORT).show();
+					}
+				}else{
 					Toast.makeText(getApplicationContext(), "验证码请求失败，请重新请求！", Toast.LENGTH_SHORT).show();
 				}
-			}else{
-				Toast.makeText(getApplicationContext(), "验证码请求失败，请重新请求！", Toast.LENGTH_SHORT).show();
 			}
 			dialog.dismiss();//dialog关闭，数据处理完毕
 			if(result!=null&&result.startsWith("no")){				

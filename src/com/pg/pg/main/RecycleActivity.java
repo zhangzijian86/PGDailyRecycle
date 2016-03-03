@@ -12,7 +12,6 @@ import cn.jpush.android.api.TagAliasCallback;
 
 import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_userApp;
-import com.pg.pg.login.LoginActivity;
 import com.pg.pg.login.RegisterActivity;
 import com.pg.pg.tools.ExampleUtil;
 
@@ -31,6 +30,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
@@ -44,6 +44,8 @@ public class RecycleActivity extends Activity{
 	private int[] imageResId; // 图片ID
 	private List<View> dots; // 图片标题正文的那些点
 
+	private Button  yijianyuyue;
+	
 	private TextView tv_title;
 	private int currentItem = 0; // 当前图片的索引号
 	
@@ -115,6 +117,10 @@ public class RecycleActivity extends Activity{
 		viewPager.setOnPageChangeListener(new MyPageChangeListener());
 		//初始化用户数据
 		puser = (Pgdr_userApp) getApplication();
+		
+		yijianyuyue  = (Button) findViewById(R.id.yijianyuyue);
+		yijianyuyue.setOnClickListener(imageViewlistener);
+		
 //		if(!getValue("mobile").equals("")&&getValue("mobile").equals(getValue("oldmobile"))){
 //			puser.setUser_name(getValue("name"));
 //			puser.setUser_password(getValue("password"));
@@ -229,6 +235,17 @@ public class RecycleActivity extends Activity{
 			    	doSomething("qita");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==qita====");
 			    	break;
+			    case R.id.yijianyuyue:
+					if(puser.getUser_mobile().equals("")){
+						 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+						 intent.putExtra("type", "yijianyuyue");
+						 startActivity(intent); 
+					}else{
+						Intent intent = new Intent(getApplicationContext(), AkeyAppointment.class);
+						startActivity(intent);
+					}
+			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==yijianyuyue====");
+			    	break;			    	
 			    default:
 			       break;
 			 }

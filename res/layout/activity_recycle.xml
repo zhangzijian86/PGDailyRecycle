@@ -304,4 +304,17 @@
 	 	/> 
 	 	</RelativeLayout>
        </LinearLayout>
+
+  <Button
+      android:id="@+id/yijianyuyue"
+      android:layout_width="150dip"
+      android:layout_height="50dip"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="40dip"
+      android:background="@drawable/zhuce_queding"
+      android:gravity="center"
+      android:text="一键预约"
+      android:textColor="#ffffff"
+      android:textSize="18sp" />
 </RelativeLayout>

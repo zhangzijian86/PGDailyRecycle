@@ -192,9 +192,11 @@ public class Operaton
 			{
 				result=EntityUtils.toString(httpResponse.getEntity(), "utf-8");	
 				System.out.println("resu"+result);
+				Log.d("=com.pg.pg.main.RegisterActivity=", "==AddRecycle===000===");
 			}
 			else {
 				result="预约失败";
+				Log.d("=com.pg.pg.main.RegisterActivity=", "==AddRecycle===111===");
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

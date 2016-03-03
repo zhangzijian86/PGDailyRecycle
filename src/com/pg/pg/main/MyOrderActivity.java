@@ -47,7 +47,7 @@ public class MyOrderActivity extends Activity {
         phone.setText(((Pgdr_userApp) getApplication()).getUser_mobile());
         listviewdatail = (ListView)findViewById(R.id.myorderlistviewdatail);	
         Log.d("MyOrderActivity", "==puser.getUser_type()=="+puser.getUser_type());
-	 	if(puser.getUser_type().equals("2")){
+	 	if(puser.getUser_type()!=null&&puser.getUser_type().equals("2")){
 	 		listviewdatail.setVisibility(View.VISIBLE);
 	 	}else{
 	 		listviewdatail.setVisibility(View.GONE);
@@ -157,17 +157,26 @@ public class MyOrderActivity extends Activity {
 			TextView shoujiordertext = (TextView)view.findViewById(R.id.shoujiordertext);
 			shoujiordertext.setText(pdr.getDailyrecycle_user_mobile().trim());
 			TextView leixingordertext = (TextView)view.findViewById(R.id.leixingordertext);
-			leixingordertext.setText(pdr.getDailyrecycle_type().trim());
+			if(pdr.getDailyrecycle_type()!=null){
+				leixingordertext.setText(pdr.getDailyrecycle_type().trim());
+			}else{
+				leixingordertext.setText("");
+			}
 			TextView shijianordertext = (TextView)view.findViewById(R.id.shijianordertext);
-			shijianordertext.setText(pdr.getDailyrecycle_date().trim());
+			if(pdr.getDailyrecycle_date()!=null){
+				shijianordertext.setText(pdr.getDailyrecycle_date().trim());
+			}else{
+				shijianordertext.setText("");
+			}
+			
 			if(position==0){
 				shoujiordertext.setGravity(Gravity.CENTER);
 				leixingordertext.setGravity(Gravity.CENTER);
 				shijianordertext.setGravity(Gravity.CENTER);
 			}
-			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_user_mobile()="+pdr.getDailyrecycle_user_mobile());
-			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_type()="+pdr.getDailyrecycle_type());
-			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_date()="+pdr.getDailyrecycle_date());
+//			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_user_mobile()="+pdr.getDailyrecycle_user_mobile());
+//			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_type()="+pdr.getDailyrecycle_type());
+//			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_date()="+pdr.getDailyrecycle_date());
 			return view;				
 		}
 	}
@@ -189,17 +198,22 @@ public class MyOrderActivity extends Activity {
 			TextView shoujiordertextdetail = (TextView)view.findViewById(R.id.shoujiordertextdetail);
 			shoujiordertextdetail.setText(pdr.getDailyrecycle_user_mobile().trim());
 			TextView leixingordertextdetail = (TextView)view.findViewById(R.id.leixingordertextdetail);
-			leixingordertextdetail.setText(pdr.getDailyrecycle_type().trim());
+			if(pdr.getDailyrecycle_type()!=null){
+				leixingordertextdetail.setText(pdr.getDailyrecycle_type().trim());
+			}else{
+				leixingordertextdetail.setText("");
+			}
 			TextView shijianordertextdetail = (TextView)view.findViewById(R.id.shijianordertextdetail);
-			shijianordertextdetail.setText(pdr.getDailyrecycle_date().trim());
+			if(pdr.getDailyrecycle_date()!=null){
+				shijianordertextdetail.setText(pdr.getDailyrecycle_date().trim());
+			}else{
+				shijianordertextdetail.setText("");
+			}
 			if(position==0){
 				shoujiordertextdetail.setGravity(Gravity.CENTER);
 				leixingordertextdetail.setGravity(Gravity.CENTER);
 				shijianordertextdetail.setGravity(Gravity.CENTER);
 			}
-			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_user_mobile()="+pdr.getDailyrecycle_user_mobile());
-			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_type()="+pdr.getDailyrecycle_type());
-			Log.d("MyOrderActivity", "=pdr.getDailyrecycle_date()="+pdr.getDailyrecycle_date());
 			return view;				
 		}
 	}

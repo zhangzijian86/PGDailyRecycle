@@ -173,6 +173,16 @@ public class GuideViewActivity extends Activity {
     private void saveGuideView(){
     	if(getValue("mobile")==null||getValue("mobile").equals("")){
     		Log.d("GuideViewActivity", "=GuideViewActivity==00000==");
+    		puser.setUser_id("");
+    		puser.setUser_name("");
+    		puser.setUser_password("");
+    		puser.setUser_mobile("");
+    		puser.setUser_address("");
+    		puser.setUser_email("");
+    		puser.setUser_status("");
+    		puser.setUser_type("");
+    		puser.setUser_photo("");
+    		puser.setUser_return(false); 
 			//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
 			SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
 			//获取编辑器

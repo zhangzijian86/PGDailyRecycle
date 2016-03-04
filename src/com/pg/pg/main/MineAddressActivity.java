@@ -51,7 +51,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private LinearLayout diquxuanze;
 	private LoadingProgressDialog dialog;
 	private Pgdr_userApp puser;
-	String jsonString;
+	private String jsonString;
 	
 	private ImageView fanhui;
 	

@@ -145,6 +145,40 @@
 	    		android:background="@drawable/huixian"
 	    		android:layout_centerHorizontal="true"
 	    />
+      <LinearLayout
+          android:id="@+id/sheqingjiaru"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/gerenxinxixian3"
+	      android:layout_marginTop="10dip"
+	      android:layout_marginBottom="6dip" 
+	       android:gravity="center"		> 
+	       <TextView
+	        android:id="@+id/sheqingjiaruText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="申请加入取件行列" 
+	        android:textStyle="bold"
+			 android:textSize="20sp"
+		    android:textColor="#71C100"		 
+	        />
+       </LinearLayout>
+       
+       <ImageView
+        		android:id="@+id/gerenxinxixian4"
+        		android:layout_below="@id/sheqingjiaru"
+        		android:layout_marginTop="6dip"
+				android:layout_marginRight="20dip"			
+	    		android:layout_alignParentRight="true"
+	    		android:layout_marginLeft="20dip"				
+	    		android:layout_alignParentLeft="true"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:background="@drawable/huixian"
+	    		android:layout_centerHorizontal="true"
+	    />
        
               <Button
                     android:id="@+id/tuichudangqiandenglu"

@@ -183,6 +183,8 @@ public class RegisterActivity extends Activity {
 				if(type!=null&&type.equals("yijianyuyuefinish")){
 					Ppdr_dailyrecycle pdr=new Ppdr_dailyrecycle();	
 					pdr.setDailyrecycle_user_mobile(params[0]);
+					pdr.setDailyrecycle_status("0");
+					pdr.setDailyrecycle_iscycle("1");
 					//构造一个user对象
 					List<Ppdr_dailyrecycle> list=new ArrayList<Ppdr_dailyrecycle>();
 					list.add(pdr);

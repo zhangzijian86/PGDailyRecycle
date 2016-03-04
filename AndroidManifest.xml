@@ -69,7 +69,11 @@
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MyOrderActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
 		 <!-- MyOrderDetailActivity -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MyOrderDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
+	     <!-- AkeyAppointment -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.AkeyAppointment" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
 	
+		 
+		 
 		         <!-- Rich push 核心功能 since 2.0.6-->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"

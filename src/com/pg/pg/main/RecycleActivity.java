@@ -14,11 +14,14 @@ import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.login.RegisterActivity;
 import com.pg.pg.tools.ExampleUtil;
+import com.pg.pg.tools.LoadingProgressDialog;
+import com.pg.pg.tools.Operaton;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -33,6 +36,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ImageView.ScaleType;
 
 public class RecycleActivity extends Activity{
@@ -58,6 +62,10 @@ public class RecycleActivity extends Activity{
 	private ImageView image_jiadian;
 	private ImageView image_qita;
 	private Pgdr_userApp puser;
+	
+	private String typeflag; // 当前图片的索引号
+	
+	private LoadingProgressDialog dialog;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -121,6 +129,7 @@ public class RecycleActivity extends Activity{
 		yijianyuyue  = (Button) findViewById(R.id.yijianyuyue);
 		yijianyuyue.setOnClickListener(imageViewlistener);
 		
+		dialog=new LoadingProgressDialog(this,"正在加载...");		
 //		if(!getValue("mobile").equals("")&&getValue("mobile").equals(getValue("oldmobile"))){
 //			puser.setUser_name(getValue("name"));
 //			puser.setUser_password(getValue("password"));
@@ -257,9 +266,8 @@ public class RecycleActivity extends Activity{
 			 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 			 startActivity(intent); 
 		}else{
-			Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
-			intent.putExtra("type", type);
-			startActivity(intent);
+			typeflag = type;
+			new MyOrderRegisterYanZhengMaAsyncTask().execute(new String[]{type});			
 		}
 	}
 	
@@ -384,6 +392,62 @@ public class RecycleActivity extends Activity{
 		@Override
 		public void finishUpdate(View arg0) {
 
+		}
+	}
+	
+	/**
+	 * dis：AsyncTask参数类型：
+	 * 第一个参数标书传入到异步任务中并进行操作，通常是网络的路径
+	 * 第二个参数表示进度的刻度
+	 * 第三个参数表示返回的结果类型
+	 * */
+	private class MyOrderRegisterYanZhengMaAsyncTask extends AsyncTask<String, String, String>{
+		//任务执行之前的操作
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			dialog.show();//显示dialog，数据正在处理....
+		}
+		//完成耗时操作
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			try{
+				Operaton operaton=new Operaton();
+ 				String result=operaton.getPriceByType("GetPrice", params[0]);
+ 				return result;
+			}catch(Exception e){
+				e.printStackTrace();
+				return "false";
+			}
+		}
+		
+		@Override
+		protected void onProgressUpdate(String... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+			
+		}
+		
+		//数据处理完毕后更新UI操作
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if(result!=null){
+				if("false".equals(result)){
+					Toast.makeText(getApplicationContext(), "数据加载失败，请重新请求！", Toast.LENGTH_SHORT).show();
+				}else{
+					Intent intent = new Intent(getApplicationContext(), PriceActivity.class);
+					intent.putExtra("result", result);
+					intent.putExtra("type", typeflag);
+					startActivity(intent);
+				}
+			}else{
+				Toast.makeText(getApplicationContext(), "数据加载失败，请重新请求！", Toast.LENGTH_SHORT).show();
+			}
+			dialog.dismiss();//dialog关闭，数据处理完毕
 		}
 	}
 

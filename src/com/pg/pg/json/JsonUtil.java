@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.pg.pg.bean.Pgdr_price;
 import com.pg.pg.bean.Pgdr_user;
 import com.pg.pg.bean.Ppdr_dailyrecycle;
 
@@ -23,6 +24,14 @@ public class JsonUtil {
 		Type listType = new TypeToken<List<Ppdr_dailyrecycle>>(){}.getType();
 		Gson gson=new Gson();
 		ArrayList<Ppdr_dailyrecycle> list=gson.fromJson(jsondata, listType);
+		return list;
+
+	}
+	public List<Pgdr_price> StringFromJsonPrice(String jsondata)
+	{     
+		Type listType = new TypeToken<List<Pgdr_price>>(){}.getType();
+		Gson gson=new Gson();
+		ArrayList<Pgdr_price> list=gson.fromJson(jsondata, listType);
 		return list;
 
 	}

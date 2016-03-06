@@ -71,6 +71,8 @@
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.MyOrderDetailActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
 	     <!-- AkeyAppointment -->		 
 		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.AkeyAppointment" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
+		 <!-- PriceActivity -->		 
+		 <activity android:theme="@android:style/Theme.NoTitleBar" android:name="com.pg.pg.main.PriceActivity" android:screenOrientation="portrait" android:launchMode="singleTask"></activity>			 
 	
 		 
 		 

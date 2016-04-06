@@ -93,13 +93,15 @@ public class MineActivity extends Activity{
         	tuichudangqiandenglu.setVisibility(View.VISIBLE);
         }
        
-       if(!puser.getUser_mobile().equals("")&&puser.getUser_type().equals("0")){
-    	   sheqingjiaru.setVisibility(View.VISIBLE);
-    	   gerenxinxixian4.setVisibility(View.VISIBLE);
-       }else{
-    	   sheqingjiaru.setVisibility(View.GONE);
-    	   gerenxinxixian4.setVisibility(View.GONE);
-       }
+//       if(!puser.getUser_mobile().equals("")&&puser.getUser_type().equals("0")){
+//    	   sheqingjiaru.setVisibility(View.VISIBLE);
+//    	   gerenxinxixian4.setVisibility(View.VISIBLE);
+//       }else{
+//    	   sheqingjiaru.setVisibility(View.GONE);
+//    	   gerenxinxixian4.setVisibility(View.GONE);
+//       }
+       sheqingjiaru.setVisibility(View.GONE);
+       gerenxinxixian4.setVisibility(View.GONE);	
        
        dialog=new LoadingProgressDialog(this,"正在加载...");
 	}

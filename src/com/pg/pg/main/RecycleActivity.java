@@ -54,14 +54,6 @@ public class RecycleActivity extends Activity{
 	private TextView tv_title;
 	private int currentItem = 0; // 当前图片的索引号
 	
-//	private ImageView image_shouji;
-	private ImageView image_jiuyifu;
-	private ImageView image_suliaoping;
-	private ImageView image_yilaguan;
-	private ImageView image_zhi;
-	private ImageView image_dianzi;
-	private ImageView image_jiadian;
-//	private ImageView image_qita;
 	private Pgdr_userApp puser;	
 	
 	private RelativeLayout jiuyifuR;
@@ -80,22 +72,7 @@ public class RecycleActivity extends Activity{
 		super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_recycle);      
-        
-//       image_shouji = (ImageView) findViewById(R.id.shouji);
-//       image_shouji.setOnClickListener(imageViewlistener);
-/*       image_jiuyifu = (ImageView) findViewById(R.id.jiuyifu);
-       image_jiuyifu.setOnClickListener(imageViewlistener);
-       image_suliaoping = (ImageView) findViewById(R.id.suliaoping);
-       image_suliaoping.setOnClickListener(imageViewlistener);
-       image_yilaguan = (ImageView) findViewById(R.id.yilaguan);
-       image_yilaguan.setOnClickListener(imageViewlistener);
-       image_zhi = (ImageView) findViewById(R.id.zhi);
-       image_zhi.setOnClickListener(imageViewlistener);
-       image_dianzi = (ImageView) findViewById(R.id.dianzi); 
-       image_dianzi.setOnClickListener(imageViewlistener);
-       image_jiadian = (ImageView) findViewById(R.id.jiadian);
-       image_jiadian.setOnClickListener(imageViewlistener);*/
-       
+               
        jiuyifuR = (RelativeLayout) findViewById(R.id.jiuyifuR); 
        jiuyifuR.setOnClickListener(imageViewlistener);
        suliaopingR = (RelativeLayout) findViewById(R.id.suliaopingR); 

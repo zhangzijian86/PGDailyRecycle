@@ -157,13 +157,13 @@ public class MyOrderActivity extends Activity {
 			TextView shoujiordertext = (TextView)view.findViewById(R.id.shoujiordertext);
 			shoujiordertext.setText(pdr.getDailyrecycle_user_mobile().trim());
 			TextView leixingordertext = (TextView)view.findViewById(R.id.leixingordertext);
-			if(pdr.getDailyrecycle_type()!=null){
+			if(pdr.getDailyrecycle_type()!=null&&!pdr.getDailyrecycle_type().trim().equals("")){
 				leixingordertext.setText(pdr.getDailyrecycle_type().trim());
 			}else{
 				leixingordertext.setText("");
 			}
 			TextView shijianordertext = (TextView)view.findViewById(R.id.shijianordertext);
-			if(pdr.getDailyrecycle_date()!=null){
+			if(pdr.getDailyrecycle_date()!=null&&!pdr.getDailyrecycle_date().trim().equals("")){
 				shijianordertext.setText(pdr.getDailyrecycle_date().trim());
 			}else{
 				shijianordertext.setText("");
@@ -198,13 +198,13 @@ public class MyOrderActivity extends Activity {
 			TextView shoujiordertextdetail = (TextView)view.findViewById(R.id.shoujiordertextdetail);
 			shoujiordertextdetail.setText(pdr.getDailyrecycle_user_mobile().trim());
 			TextView leixingordertextdetail = (TextView)view.findViewById(R.id.leixingordertextdetail);
-			if(pdr.getDailyrecycle_type()!=null){
+			if(pdr.getDailyrecycle_type()!=null&&!pdr.getDailyrecycle_type().trim().equals("")){
 				leixingordertextdetail.setText(pdr.getDailyrecycle_type().trim());
 			}else{
 				leixingordertextdetail.setText("");
 			}
 			TextView shijianordertextdetail = (TextView)view.findViewById(R.id.shijianordertextdetail);
-			if(pdr.getDailyrecycle_date()!=null){
+			if(pdr.getDailyrecycle_date()!=null&&!pdr.getDailyrecycle_date().trim().equals("")){
 				shijianordertextdetail.setText(pdr.getDailyrecycle_date().trim());
 			}else{
 				shijianordertextdetail.setText("");

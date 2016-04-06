@@ -4,44 +4,62 @@
     android:layout_height="35dip"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="35dip"
-	    android:gravity="center_vertical"
+	    android:gravity="center"
 	    android:orientation="horizontal" >
 	    <TextView
 	        android:id="@+id/shoujiordertext"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="10dip"
 	        android:text="手机" 
 	        android:textStyle="bold"
 	        android:textSize="12sp"
-	        android:textColor="#000000"
-	        android:layout_weight="1" 
+	        android:textColor="#109200"
 			android:gravity="right" 	 
+	        />	   
+	  <TextView
+	        android:id="@+id/zhongjian"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:text="" 	 
 	        />
-	   <TextView
+	  <TextView
 	        android:id="@+id/leixingordertext"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_toLeftOf="@id/zhongjian"
+	        android:layout_centerVertical="true"
 	        android:text="类型" 
 	        android:textStyle="bold"
 	        android:textSize="12sp"
-	        android:textColor="#000000"
-	        android:layout_weight="1" 
+	        android:textColor="#109200"
 			android:gravity="right" 	 
 	        />
 	   	<TextView
 	        android:id="@+id/shijianordertext"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginRight="10dip"
 	        android:text="时间" 
 	        android:textStyle="bold"
 	        android:textSize="12sp"
-	        android:textColor="#000000"
-	        android:layout_weight="1" 
+	        android:textColor="#109200"
 			android:gravity="right" 	 
 	        />
 	
-	</LinearLayout>
+	</RelativeLayout>
+	<ImageView
+        		android:id="@+id/gerenxinxixian1"
+	    		android:layout_height="wrap_content"
+	    		android:layout_width="wrap_content"
+	    		android:background="@drawable/huixian"
+	/> 
 </LinearLayout>

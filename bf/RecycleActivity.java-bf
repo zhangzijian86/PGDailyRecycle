@@ -35,7 +35,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageView.ScaleType;
@@ -54,22 +53,15 @@ public class RecycleActivity extends Activity{
 	private TextView tv_title;
 	private int currentItem = 0; // 当前图片的索引号
 	
-//	private ImageView image_shouji;
+	private ImageView image_shouji;
 	private ImageView image_jiuyifu;
 	private ImageView image_suliaoping;
 	private ImageView image_yilaguan;
 	private ImageView image_zhi;
 	private ImageView image_dianzi;
 	private ImageView image_jiadian;
-//	private ImageView image_qita;
-	private Pgdr_userApp puser;	
-	
-	private RelativeLayout jiuyifuR;
-	private RelativeLayout suliaopingR;
-	private RelativeLayout yilaguanR;
-	private RelativeLayout zhiR;
-	private RelativeLayout dianziR;
-	private RelativeLayout jiadianR;
+	private ImageView image_qita;
+	private Pgdr_userApp puser;
 	
 	private String typeflag; // 当前图片的索引号
 	
@@ -81,9 +73,9 @@ public class RecycleActivity extends Activity{
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_recycle);      
         
-//       image_shouji = (ImageView) findViewById(R.id.shouji);
-//       image_shouji.setOnClickListener(imageViewlistener);
-/*       image_jiuyifu = (ImageView) findViewById(R.id.jiuyifu);
+       image_shouji = (ImageView) findViewById(R.id.shouji);
+       image_shouji.setOnClickListener(imageViewlistener);
+       image_jiuyifu = (ImageView) findViewById(R.id.jiuyifu);
        image_jiuyifu.setOnClickListener(imageViewlistener);
        image_suliaoping = (ImageView) findViewById(R.id.suliaoping);
        image_suliaoping.setOnClickListener(imageViewlistener);
@@ -91,34 +83,20 @@ public class RecycleActivity extends Activity{
        image_yilaguan.setOnClickListener(imageViewlistener);
        image_zhi = (ImageView) findViewById(R.id.zhi);
        image_zhi.setOnClickListener(imageViewlistener);
-       image_dianzi = (ImageView) findViewById(R.id.dianzi); 
+       image_dianzi = (ImageView) findViewById(R.id.dianzi);
        image_dianzi.setOnClickListener(imageViewlistener);
        image_jiadian = (ImageView) findViewById(R.id.jiadian);
-       image_jiadian.setOnClickListener(imageViewlistener);*/
-       
-       jiuyifuR = (RelativeLayout) findViewById(R.id.jiuyifuR); 
-       jiuyifuR.setOnClickListener(imageViewlistener);
-       suliaopingR = (RelativeLayout) findViewById(R.id.suliaopingR); 
-       suliaopingR.setOnClickListener(imageViewlistener);
-       yilaguanR = (RelativeLayout) findViewById(R.id.yilaguanR); 
-       yilaguanR.setOnClickListener(imageViewlistener);
-       zhiR = (RelativeLayout) findViewById(R.id.zhiR); 
-       zhiR.setOnClickListener(imageViewlistener);
-       dianziR = (RelativeLayout) findViewById(R.id.dianziR); 
-       dianziR.setOnClickListener(imageViewlistener);
-       jiadianR = (RelativeLayout) findViewById(R.id.jiadianR); 
-       jiadianR.setOnClickListener(imageViewlistener);
-       
-//       image_qita = (ImageView) findViewById(R.id.qita);
-//       image_qita.setOnClickListener(imageViewlistener);
+       image_jiadian.setOnClickListener(imageViewlistener);
+       image_qita = (ImageView) findViewById(R.id.qita);
+       image_qita.setOnClickListener(imageViewlistener);
 
-		imageResId = new int[] { R.drawable.a};
+		imageResId = new int[] { R.drawable.a, R.drawable.f, R.drawable.g, R.drawable.f, R.drawable.g };
 		titles = new String[imageResId.length];
-		titles[0] = "";
-/*		titles[1] = "22222222";
+		titles[0] = "11111111";
+		titles[1] = "22222222";
 		titles[2] = "33333333";
 		titles[3] = "44444444";
-		titles[4] = "55555555";*/
+		titles[4] = "55555555";
 
 		imageViews = new ArrayList<ImageView>();
 
@@ -133,10 +111,10 @@ public class RecycleActivity extends Activity{
 		
 		dots = new ArrayList<View>();
 		dots.add(findViewById(R.id.v_dot0));
-/*		dots.add(findViewById(R.id.v_dot1));
+		dots.add(findViewById(R.id.v_dot1));
 		dots.add(findViewById(R.id.v_dot2));
 		dots.add(findViewById(R.id.v_dot3));
-		dots.add(findViewById(R.id.v_dot4));*/
+		dots.add(findViewById(R.id.v_dot4));
 
 		tv_title = (TextView) findViewById(R.id.tv_title);
 		tv_title.setText(titles[0]);//
@@ -152,6 +130,19 @@ public class RecycleActivity extends Activity{
 		yijianyuyue.setOnClickListener(imageViewlistener);
 		
 		dialog=new LoadingProgressDialog(this,"正在加载...");		
+//		if(!getValue("mobile").equals("")&&getValue("mobile").equals(getValue("oldmobile"))){
+//			puser.setUser_name(getValue("name"));
+//			puser.setUser_password(getValue("password"));
+//			puser.setUser_address(getValue("address"));
+//			puser.setUser_email(getValue("email"));
+//			puser.setUser_status("1");
+//			puser.setUser_type(getValue("type"));
+//			puser.setUser_photo(getValue("photo"));
+//			puser.setUser_return(true); 
+//			mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, getValue("mobile").trim()));
+//		}
+//		puser.setUser_mobile(getValue("mobile"));
+//		puser.setUser_status("1");
 	}
 	
 	private static final String TAG = "JPush";
@@ -221,38 +212,38 @@ public class RecycleActivity extends Activity{
 		public void onClick(View view) {  
 			 int buttonid = view.getId();
 			 switch (buttonid) {
-/*			    case R.id.shouji:
+			    case R.id.shouji:
 			    	doSomething("shouji");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==shouji====");
-			    	break;*/
-			    case R.id.jiuyifuR:
+			    	break;
+			    case R.id.jiuyifu:
 			    	doSomething("jiuyifu");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiuyifu====");
 			    	break;
-			    case R.id.suliaopingR:
+			    case R.id.suliaoping:
 			    	doSomething("suliaoping");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==suliaoping====");
 			    	break;
-			    case R.id.yilaguanR:
+			    case R.id.yilaguan:
 			    	doSomething("yilaguan");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==yilaguan====");
 			    	break;
-			    case R.id.zhiR:
+			    case R.id.zhi:
 			    	doSomething("zhi");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==zhi====");
 			    	break;
-			    case R.id.dianziR:
+			    case R.id.dianzi:
 			    	doSomething("dianzi");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==dianzi====");
 			    	break;
-			    case R.id.jiadianR:
+			    case R.id.jiadian:
 			    	doSomething("jiadian");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==jiadian====");
 			    	break;
-/*			    case R.id.qita:
+			    case R.id.qita:
 			    	doSomething("qita");
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==qita====");
-			    	break;*/
+			    	break;
 			    case R.id.yijianyuyue:
 					if(puser.getUser_mobile().equals("")){
 						 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
@@ -340,8 +331,8 @@ public class RecycleActivity extends Activity{
 		public void onPageSelected(int position) {
 			currentItem = position;
 			tv_title.setText(titles[position]);
-//			dots.get(oldPosition).setBackgroundResource(R.drawable.dot_normal);
-//			dots.get(position).setBackgroundResource(R.drawable.dot_focused);
+			dots.get(oldPosition).setBackgroundResource(R.drawable.dot_normal);
+			dots.get(position).setBackgroundResource(R.drawable.dot_focused);
 			oldPosition = position;
 		}
 

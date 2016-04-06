@@ -55,6 +55,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	
 	private ImageView fanhui;
 	
+	private LinearLayout diqudianji;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,7 +78,10 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
        lianxirenEditText.setText( puser.getUser_name());
        
        diqutext.setInputType(InputType.TYPE_NULL);
-       diqutext.setOnClickListener(this);  
+       //diqutext.setOnClickListener(this);  
+       
+       diqudianji  = (LinearLayout)findViewById(R.id.diqudianji);
+       diqudianji.setOnClickListener(this); 
        
        
        
@@ -195,7 +200,11 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 			diquxuanze.setVisibility(View.GONE);
 			diqutext.setText(mCurrentProviceName+" "+mCurrentCityName+" "+mCurrentDistrictName);
 			break;
-	    case R.id.diquEditText:
+//	    case R.id.diquEditText:diqudianji
+//	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
+//	    	diquxuanze.setVisibility(View.VISIBLE);
+//	    	break;
+		case R.id.diqudianji:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
 	    	diquxuanze.setVisibility(View.VISIBLE);
 	    	break;

@@ -41,6 +41,7 @@ import android.widget.CompoundButton;
 
 public class OrderActivity  extends BaseWhellActivity implements OnClickListener, OnWheelChangedListener {
 	private LinearLayout diquxuanze;
+	private LinearLayout diqudianji;
 	private RadioGroup yuezhou;
 	private LinearLayout shijianxuanze;
 	private EditText diqutext;
@@ -153,10 +154,13 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
         
         diquxuanze = (LinearLayout)findViewById(R.id.diquxuanze);
         diquxuanze.setVisibility(View.GONE);        
-       
+        
+        diqudianji  = (LinearLayout)findViewById(R.id.diqudianji);
+        diqudianji.setOnClickListener(this); 
+        
         diqutext = (EditText) findViewById(R.id.diquEditText);
         diqutext.setInputType(InputType.TYPE_NULL);
-        diqutext.setOnClickListener(this); 
+//        diqutext.setOnClickListener(this); 
         xiangxidizhiEditText = (EditText) findViewById(R.id.xiangxidizhiEditText);
         
         zhucequeding = (Button) findViewById(R.id.zhucequeding);
@@ -225,7 +229,11 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 			diquxuanze.setVisibility(View.GONE);
 			diqutext.setText(mCurrentProviceName+" "+mCurrentCityName+" "+mCurrentDistrictName);
 			break;
-	    case R.id.diquEditText:
+/*	    case R.id.diquEditText:
+	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
+	    	diquxuanze.setVisibility(View.VISIBLE);
+	    	break;*/
+	    case R.id.diqudianji:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==diquEditText====");
 	    	diquxuanze.setVisibility(View.VISIBLE);
 	    	break;

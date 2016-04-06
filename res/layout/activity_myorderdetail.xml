@@ -53,8 +53,8 @@
         android:layout_marginBottom="6dip"
         android:text="13581905786" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_centerHorizontal="true"
 		 android:gravity="center"		 
         />  
@@ -82,18 +82,18 @@
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian1"
 		  android:layout_height="40dip"
-		  android:layout_marginTop="13dip"
+		  android:layout_marginTop="10dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="联系人" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -101,11 +101,11 @@
        	<TextView 
        	android:id="@+id/lianxirentext"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="联系人" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -121,7 +121,7 @@
            android:layout_centerHorizontal="true"
            android:layout_marginLeft="20dip"
            android:layout_marginRight="20dip"
-           android:layout_marginTop="12dip"
+           android:layout_marginTop="10dip"
            android:background="@drawable/huixian" />
  
        <LinearLayout
@@ -133,18 +133,18 @@
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian2"
 		  android:layout_height="40dip"
-		  android:layout_marginTop="13dip"
+		  android:layout_marginTop="10dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="手机" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -152,11 +152,11 @@
        	<TextView 
        	android:id="@+id/shoujitext"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="手机" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -172,7 +172,7 @@
            android:layout_centerHorizontal="true"
            android:layout_marginLeft="20dip"
            android:layout_marginRight="20dip"
-           android:layout_marginTop="12dip"
+           android:layout_marginTop="10dip"
            android:background="@drawable/huixian" />
        
        <LinearLayout
@@ -184,18 +184,18 @@
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian3"
 		  android:layout_height="40dip"
-		  android:layout_marginTop="13dip"
+		  android:layout_marginTop="10dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="类型" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -203,11 +203,11 @@
        	<TextView 
        	android:id="@+id/leixingtext"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="类型" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -223,7 +223,7 @@
            android:layout_centerHorizontal="true"
            android:layout_marginLeft="20dip"
            android:layout_marginRight="20dip"
-           android:layout_marginTop="12dip"
+           android:layout_marginTop="10dip"
            android:background="@drawable/huixian" />
         
        <LinearLayout
@@ -235,18 +235,18 @@
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian4"
 		  android:layout_height="wrap_content"
-		  android:layout_marginTop="13dip"
+		  android:layout_marginTop="10dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="地址" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -254,13 +254,13 @@
        	<TextView 
        	android:id="@+id/dizhitext"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="地址" 
         android:gravity="left"
         android:singleLine="false"
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="1" 
 		 />       
         </LinearLayout>
@@ -275,7 +275,7 @@
            android:layout_centerHorizontal="true"
            android:layout_marginLeft="20dip"
            android:layout_marginRight="20dip"
-           android:layout_marginTop="12dip"
+           android:layout_marginTop="10dip"
            android:background="@drawable/huixian" />
        
       <LinearLayout
@@ -287,18 +287,18 @@
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian5"
 		  android:layout_height="40dip"
-		  android:layout_marginTop="13dip"
+		  android:layout_marginTop="10dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="时间" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -306,11 +306,11 @@
        	<TextView 
        	android:id="@+id/shijiantext"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="时间" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -325,7 +325,7 @@
            android:layout_centerHorizontal="true"
            android:layout_marginLeft="20dip"
            android:layout_marginRight="20dip"
-           android:layout_marginTop="12dip"
+           android:layout_marginTop="10dip"
            android:background="@drawable/huixian" />
         
         <LinearLayout
@@ -337,18 +337,18 @@
           android:layout_width="wrap_content"
           android:layout_below="@id/gerenxinxixian6"
 		  android:layout_height="40dip"
-		  android:layout_marginTop="13dip"
+		  android:layout_marginTop="10dip"
 		  android:background="#F0F0F0"
 		  android:orientation="horizontal"
         > 
 	    
        <TextView        
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="状态" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -356,11 +356,11 @@
        	<TextView 
        	android:id="@+id/zhuangtaitext"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:text="状态" 
         android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textColor="#109200"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       

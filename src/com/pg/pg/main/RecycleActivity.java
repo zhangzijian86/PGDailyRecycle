@@ -231,7 +231,7 @@ public class RecycleActivity extends Activity{
 			    	Log.d("=com.pg.pg.main.RecycleActivity=", "==imageViewlistener==qita====");
 			    	break;*/
 			    case R.id.yijianyuyue:
-					if(puser.getUser_mobile().equals("")){
+					if(puser.getUser_mobile()==null||puser.getUser_mobile().equals("")){
 						 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 						 intent.putExtra("type", "yijianyuyue");
 						 startActivity(intent); 
@@ -248,7 +248,7 @@ public class RecycleActivity extends Activity{
 	};
 	
 	private void doSomething(String type){
-		if(puser.getUser_mobile().equals("")){
+		if(puser.getUser_mobile()==null||puser.getUser_mobile().equals("")){
 			 Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
 			 startActivity(intent); 
 		}else{

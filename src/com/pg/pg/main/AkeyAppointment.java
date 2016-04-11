@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class AkeyAppointment extends Activity  implements OnClickListener{
@@ -28,6 +29,7 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 	private String jsonString;
 	private Pgdr_userApp puser;
 	private EditText yijianshoujiEditText;
+	private ImageView fanhui;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,6 +44,10 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
         yijianshoujiEditText = (EditText) findViewById(R.id.yijianshoujiEditText);
         yijianshoujiEditText.setText(puser.getUser_mobile());
         
+        
+       fanhui  = (ImageView)findViewById(R.id.fanhui);
+  	   fanhui.setOnClickListener(this);
+        
         //初始化dialog
         dialog=new LoadingProgressDialog(this,"正在加载...");
 	}
@@ -51,6 +57,9 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.yijianyuyuebt:
 			new UpdateUserAsyncTask().execute(new String[]{yijianshoujiEditText.getText().toString()});		
+		 	break;
+		case R.id.fanhui:
+			finish();
 		 	break;
 		default:
 			break;

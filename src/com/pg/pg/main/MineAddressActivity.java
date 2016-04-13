@@ -42,6 +42,7 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	private WheelView mViewDistrict;
 	private Button mBtnConfirm;
 	
+	private LinearLayout linefanhui;
 	private EditText diqutext;
 	private EditText xiangxidizhiEditText;
 	private EditText shoujiEditText;
@@ -113,6 +114,8 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 		
 	   fanhui  = (ImageView)findViewById(R.id.fanhui);
 	   fanhui.setOnClickListener(this);
+       linefanhui = (LinearLayout)findViewById(R.id.linefanhui);
+       linefanhui.setOnClickListener(this);
 	}
 	
 	private void setUpViews() {
@@ -216,6 +219,9 @@ public class MineAddressActivity  extends BaseWhellActivity implements OnClickLi
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==fanhui====");
 	    	finish();
 	    	break;
+		case R.id.linefanhui:
+			finish();
+			break;
 		default:
 			break;
 		}

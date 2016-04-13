@@ -40,6 +40,7 @@ import android.widget.Toast;
 import android.widget.CompoundButton;
 
 public class OrderActivity  extends BaseWhellActivity implements OnClickListener, OnWheelChangedListener {
+	private LinearLayout linefanhui;
 	private LinearLayout diquxuanze;
 	private LinearLayout diqudianji;
 	private RadioGroup yuezhou;
@@ -152,6 +153,9 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
         	type = "其他回收";
          }
         
+        linefanhui = (LinearLayout)findViewById(R.id.linefanhui);
+        linefanhui.setOnClickListener(this); 
+        
         diquxuanze = (LinearLayout)findViewById(R.id.diquxuanze);
         diquxuanze.setVisibility(View.GONE);        
         
@@ -251,6 +255,9 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==fanhui====");
 	    	finish();
 	    	break;
+		case R.id.linefanhui:
+			finish();
+			break;
 		default:
 			break;
 		}

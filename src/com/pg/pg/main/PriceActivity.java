@@ -22,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class PriceActivity extends Activity  implements OnClickListener{
 	private ImageView pricefanhui;
 	private ImageView priceimage;
 	private TextView pricetitle;
+	private LinearLayout linefanhui;
 	private List<Pgdr_price> pricelist = new ArrayList<Pgdr_price>();	
 	private String type;
 	@Override
@@ -44,6 +46,9 @@ public class PriceActivity extends Activity  implements OnClickListener{
         
         pricefanhui  = (ImageView)findViewById(R.id.pricefanhui);
         pricefanhui.setOnClickListener(this);
+        
+        linefanhui = (LinearLayout)findViewById(R.id.linefanhui);
+        linefanhui.setOnClickListener(this);
         
         priceimage = (ImageView)findViewById(R.id.priceimage);
         
@@ -102,6 +107,9 @@ public class PriceActivity extends Activity  implements OnClickListener{
 			startActivity(intent);
 			break;
 		case R.id.pricefanhui:
+			finish();
+			break;
+		case R.id.linefanhui:
 			finish();
 			break;
 		default:

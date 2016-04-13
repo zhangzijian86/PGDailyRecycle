@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class MyOrderDetailActivity extends Activity {
 	private TextView phone;
 	private Ppdr_dailyrecycle pdr;
-	
+	private LinearLayout linefanhui;
 	private TextView lianxirentext;
 	private TextView shoujitext;
 	private TextView leixingtext;
@@ -49,6 +49,14 @@ public class MyOrderDetailActivity extends Activity {
         dizhitext = (TextView) findViewById(R.id.dizhitext);
         shijiantext = (TextView) findViewById(R.id.shijiantext);
         zhuangtaitext = (TextView) findViewById(R.id.zhuangtaitext);
+        
+        linefanhui = (LinearLayout)findViewById(R.id.linefanhui);
+        linefanhui.setOnClickListener(new OnClickListener() {			
+ 			@Override
+ 			public void onClick(View arg0) {				
+ 				finish();
+ 			}
+ 		});
         
         List<Ppdr_dailyrecycle> list1=(List<Ppdr_dailyrecycle>) jsonUtil.StringFromJsonRecycle(jsonstring);
         if(list1!=null&&list1.size()>0){

@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class AkeyAppointment extends Activity  implements OnClickListener{
@@ -30,6 +31,7 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 	private Pgdr_userApp puser;
 	private EditText yijianshoujiEditText;
 	private ImageView fanhui;
+	private LinearLayout linefanhui;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +49,9 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
         
        fanhui  = (ImageView)findViewById(R.id.fanhui);
   	   fanhui.setOnClickListener(this);
+  	   
+       linefanhui = (LinearLayout)findViewById(R.id.linefanhui);
+       linefanhui.setOnClickListener(this);
         
         //初始化dialog
         dialog=new LoadingProgressDialog(this,"正在加载...");
@@ -61,6 +66,9 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 		case R.id.fanhui:
 			finish();
 		 	break;
+		case R.id.linefanhui:
+			finish();
+			break;
 		default:
 			break;
 		}

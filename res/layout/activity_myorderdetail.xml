@@ -37,7 +37,7 @@
         android:text="@string/recycle_ingdanxiangqing" 
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="#109200"
+        android:textColor="#73bf00"
         android:layout_centerInParent="true"
 		android:gravity="center"		 
         />    
@@ -62,8 +62,8 @@
         android:layout_marginBottom="6dip"
         android:text="13581905786" 
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="20sp"
+        android:textColor="#5b5b5b"
         android:layout_centerHorizontal="true"
 		 android:gravity="center"		 
         />  
@@ -100,21 +100,20 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="联系人" 
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="2" 
-		android:gravity="center"		 
+		 android:gravity="center"		 
         />
        
-       	<TextView 
-       	android:id="@+id/lianxirentext"
+       <TextView 
+        android:id="@+id/lianxirentext"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="联系人" 
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -151,21 +150,20 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="手机" 
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
        
-       	<TextView 
-       	android:id="@+id/shoujitext"
+      <TextView 
+        android:id="@+id/shoujitext"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="手机" 
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -202,9 +200,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="类型" 
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -215,8 +212,8 @@
         android:layout_height="fill_parent"
         android:text="类型" 
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -253,9 +250,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="地址" 
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -268,8 +264,8 @@
         android:gravity="left"
         android:singleLine="false"
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="1" 
 		 />       
         </LinearLayout>
@@ -305,9 +301,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="时间" 
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -318,8 +313,8 @@
         android:layout_height="fill_parent"
         android:text="时间" 
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       
@@ -355,9 +350,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="状态" 
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="2" 
 		android:gravity="center"		 
         />
@@ -368,8 +362,8 @@
         android:layout_height="fill_parent"
         android:text="状态" 
         android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#109200"
+        android:textSize="15sp"
+        android:textColor="#7b7b7b"
         android:layout_weight="1" 
 		android:gravity="center"
 		 />       

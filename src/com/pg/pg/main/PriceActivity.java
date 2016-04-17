@@ -52,6 +52,8 @@ public class PriceActivity extends Activity  implements OnClickListener{
         
         priceimage = (ImageView)findViewById(R.id.priceimage);
         
+        
+        
         pricetitle = (TextView)findViewById(R.id.pricetitle);
         
         Intent intent = getIntent(); 
@@ -63,7 +65,7 @@ public class PriceActivity extends Activity  implements OnClickListener{
 	        		PriceActivity.this,R.layout.activity_mypricelistview,pricelist);
 		 	ListView listview = (ListView)findViewById(R.id.pricelistview);
 		 	listview.setAdapter(pdradapter);	 
-        }
+         }       
         
         if(type.equals("shouji")){
         	priceimage.setImageDrawable(getResources().getDrawable(R.drawable.shouji_hong));
@@ -123,15 +125,15 @@ public class PriceActivity extends Activity  implements OnClickListener{
 		Log.d("MyOrderActivity", "MyOrderActivity=list1="+list1.size());
 		if(list1!=null&&list1.size()>0){
 			for (int i = 0; i < list1.size(); i++) {
-				if(i==0){
-					Pgdr_price pdp = new Pgdr_price();
-					pdp.setPrice_name("名称");
-					pdp.setPrice_price("价格");
-					pricelist.add(pdp);
-				}else{
+//				if(i==0){
+//					Pgdr_price pdp = new Pgdr_price();
+//					pdp.setPrice_name("名称");
+//					pdp.setPrice_price("价格");
+//					pricelist.add(pdp);
+//				}else{
 					Pgdr_price pdpeach = list1.get(i);
 					pricelist.add(pdpeach);
-				}
+//				}
 			}
 		}
 		Log.d("PriceActivity", "=PriceActivity=pricelist="+pricelist.size());
@@ -153,6 +155,25 @@ public class PriceActivity extends Activity  implements OnClickListener{
 				view = convertView;
 			}		
 			TextView pricemingchengtext = (TextView)view.findViewById(R.id.pricemingchengtext);
+			ImageView priceListviewimage = (ImageView)view.findViewById(R.id.priceListviewimage);
+			if(type.equals("jiuyifu")){
+	        	priceListviewimage.setImageDrawable(getResources().getDrawable(R.drawable.jiuyifu_lv));        	
+	         }
+	        else if(type.equals("suliaoping")){
+	        	priceListviewimage.setImageDrawable(getResources().getDrawable(R.drawable.suliaoping_lv));        
+	         }
+	        else if(type.equals("yilaguan")){
+	        	priceListviewimage.setImageDrawable(getResources().getDrawable(R.drawable.yilaguan_lv));        
+	         }
+	        else if(type.equals("zhi")){
+	        	priceListviewimage.setImageDrawable(getResources().getDrawable(R.drawable.zhixiang_lv));        
+	         }
+	        else if(type.equals("dianzi")){
+	        	priceListviewimage.setImageDrawable(getResources().getDrawable(R.drawable.dianzi_lv));        
+	         }
+	        else if(type.equals("jiadian")){
+	        	priceListviewimage.setImageDrawable(getResources().getDrawable(R.drawable.jiujiadian_lv));        
+	         }
 			if(pdp.getPrice_name()!=null){
 				pricemingchengtext.setText(pdp.getPrice_name().trim());
 			}else{

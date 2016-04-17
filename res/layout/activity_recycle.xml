@@ -30,7 +30,7 @@
         android:text="@string/shouye_tou" 
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="#109200"
+        android:textColor="#73bf00"
         android:layout_centerInParent="true"
 		android:gravity="center"		 
         />    

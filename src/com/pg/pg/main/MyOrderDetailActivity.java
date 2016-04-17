@@ -64,7 +64,7 @@ public class MyOrderDetailActivity extends Activity {
         	lianxirentext.setText(pdr.getDailyrecycle_name());
         	shoujitext.setText(pdr.getDailyrecycle_user_mobile());
         	leixingtext.setText(pdr.getDailyrecycle_type());
-        	dizhitext.setText(pdr.getDailyrecycle_address());
+        	dizhitext.setText(pdr.getDailyrecycle_address().replace(":", ""));
         	shijiantext.setText(pdr.getDailyrecycle_date());
         	if(pdr.getDailyrecycle_status().equals("0")){
         		zhuangtaitext.setText("进行中");

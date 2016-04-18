@@ -77,7 +77,7 @@
 	    		android:layout_centerHorizontal="true"
 	    /> 
 	    
-       <LinearLayout
+       <RelativeLayout
           android:id="@+id/dizhiLinearLayout"
           android:layout_alignParentLeft="true"
           android:layout_alignParentRight="true"
@@ -86,18 +86,38 @@
           android:layout_below="@id/gerenxinxixian1"
 	      android:layout_marginTop="10dip"
 	      android:layout_marginBottom="6dip"
-	       android:gravity="center"		> 
+	      	> 
+		   <ImageView
+	        android:id="@+id/dizhiimage"
+	        android:layout_alignParentLeft="true"
+		    android:layout_width="27dip"
+		    android:layout_height="27dip"
+		    android:layout_centerVertical="true"
+		    android:layout_marginLeft="40dip"
+		    android:background="@drawable/mydizhi"
+		 	/>
 	       <TextView
 	        android:id="@+id/dizhi"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="我的收货地址" 
+	        android:text="我的地址" 
 	        android:textStyle="bold"
 	        android:textSize="20sp"
 	        android:textColor="#7b7b7b"
-			 android:gravity="center"		 
+			android:layout_alignParentLeft="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="110dip"	 
 	        />
-       </LinearLayout>
+	       	<ImageView
+	        android:id="@+id/dizhixiangyouimage"
+	        android:layout_alignParentRight="true"
+		    android:layout_width="27dip"
+		    android:layout_height="27dip"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="40dip"
+		    android:background="@drawable/xiangyou"
+		 	/> 
+       </RelativeLayout>
       <ImageView
         		android:id="@+id/gerenxinxixian2"
         		android:layout_below="@id/dizhiLinearLayout"
@@ -112,7 +132,7 @@
 	    		android:layout_centerHorizontal="true"
 	    /> 
 	    
-      <LinearLayout
+      <RelativeLayout
           android:id="@+id/dingdanLinearLayout"
           android:layout_alignParentLeft="true"
           android:layout_alignParentRight="true"
@@ -121,17 +141,38 @@
           android:layout_below="@id/gerenxinxixian2"
 	      android:layout_marginTop="10dip"
 	      android:layout_marginBottom="6dip" 
-	       android:gravity="center"		> 
+	      	>
+	       <ImageView
+	        android:id="@+id/dingdanimage"
+	        android:layout_alignParentLeft="true"
+		    android:layout_width="27dip"
+		    android:layout_height="27dip"
+		    android:layout_centerVertical="true"
+		    android:layout_marginLeft="40dip"
+		    android:background="@drawable/mydingdan"
+		 	/> 
 	       <TextView
 	        android:id="@+id/dingdan"
+	        android:layout_alignParentLeft="true"
+	        android:layout_centerVertical="true"	        
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="我的订单" 
 	        android:textStyle="bold"
-			 android:textSize="20sp"
+			android:textSize="20sp"
 		    android:textColor="#7b7b7b"		 
+		    android:layout_marginLeft="110dip"
 	        />
-       </LinearLayout>
+	       	<ImageView
+	        android:id="@+id/dingdanxiangyouimage"
+	        android:layout_alignParentRight="true"
+		    android:layout_width="27dip"
+		    android:layout_height="27dip"
+		    android:layout_centerVertical="true"
+		    android:layout_marginRight="40dip"
+		    android:background="@drawable/xiangyou"
+		 	/> 
+       </RelativeLayout>
        <ImageView
         		android:id="@+id/gerenxinxixian3"
         		android:layout_below="@id/dingdanLinearLayout"

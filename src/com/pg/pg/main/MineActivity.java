@@ -31,6 +31,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +44,8 @@ public class MineActivity extends Activity{
 	private LoadingProgressDialog dialog;
 	private Pgdr_userApp puser;
 	
-	private LinearLayout dizhiLinearLayout;
-	private LinearLayout dingdanLinearLayout;
+	private RelativeLayout dizhiLinearLayout;
+	private RelativeLayout dingdanLinearLayout;
 	private LinearLayout sheqingjiaru;
 	private ImageView gerenxinxixian4;
 	
@@ -76,9 +77,9 @@ public class MineActivity extends Activity{
        phone.setText(puser.getUser_mobile());
        tuichudangqiandenglu  = (Button) findViewById(R.id.tuichudangqiandenglu);
        tuichudangqiandenglu.setOnClickListener(textViewlistener);
-       dizhiLinearLayout = (LinearLayout) findViewById(R.id.dizhiLinearLayout);
+       dizhiLinearLayout = (RelativeLayout) findViewById(R.id.dizhiLinearLayout);
        dizhiLinearLayout.setOnClickListener(textViewlistener);
-       dingdanLinearLayout = (LinearLayout) findViewById(R.id.dingdanLinearLayout);
+       dingdanLinearLayout = (RelativeLayout) findViewById(R.id.dingdanLinearLayout);
        dingdanLinearLayout.setOnClickListener(textViewlistener);
        sheqingjiaru = (LinearLayout) findViewById(R.id.sheqingjiaru);
        sheqingjiaru.setOnClickListener(textViewlistener);

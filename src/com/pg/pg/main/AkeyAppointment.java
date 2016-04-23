@@ -50,7 +50,7 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
        fanhui  = (ImageView)findViewById(R.id.fanhui);
   	   fanhui.setOnClickListener(this);
   	   
-       linefanhui = (LinearLayout)findViewById(R.id.linefanhui);
+       linefanhui = (LinearLayout)findViewById(R.id.akeylinefanhui);
        linefanhui.setOnClickListener(this);
         
         //初始化dialog
@@ -61,12 +61,25 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.yijianyuyuebt:
-			new UpdateUserAsyncTask().execute(new String[]{yijianshoujiEditText.getText().toString()});		
+	    	if(yijianshoujiEditText.getText().toString().trim().equals("")){
+	    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
+	    	}else{
+	    		if(yijianshoujiEditText.getText().toString().trim().length()!=11){
+	    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
+	    		}else{
+	    			if(isNumeric(yijianshoujiEditText.getText().toString().trim())){
+	    				new UpdateUserAsyncTask().execute(new String[]{yijianshoujiEditText.getText().toString()});	
+	    			}else{
+	    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
+	    			}
+	    		}	    		
+	    	}
+				
 		 	break;
 		case R.id.fanhui:
 			finish();
 		 	break;
-		case R.id.linefanhui:
+		case R.id.akeylinefanhui:
 			finish();
 			break;
 		default:
@@ -74,6 +87,14 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 		}
 	}
 	
+	public boolean isNumeric(String str){
+		for (int i = str.length() ; --i>=0 ; ){   
+			if (!Character.isDigit(str.charAt ( i ) ) ){
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
 	 * dis：AsyncTask参数类型：
 	 * 第一个参数标书传入到异步任务中并进行操作，通常是网络的路径

@@ -1,9 +1,7 @@
 package com.pg.pg.login;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,7 +13,6 @@ import com.pg.pg.R;
 import com.pg.pg.bean.Pgdr_userApp;
 import com.pg.pg.bean.Ppdr_dailyrecycle;
 import com.pg.pg.json.WriteJson;
-import com.pg.pg.main.OrderActivity;
 import com.pg.pg.tools.ExampleUtil;
 import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
@@ -70,48 +67,72 @@ public class RegisterActivity extends Activity {
 			public void onClick(View view) {
 				String phoneNumber = shoujihaoma.getText().toString().trim();
 				String yanZhengMa = yanzhengma.getText().toString().trim();
-				if(!TextUtils.isEmpty(phoneNumber)&&!TextUtils.isEmpty(yanZhengMa)){
-					if(yanzhengmaReturn.equals(yanZhengMa)){
-						Toast.makeText(getApplicationContext(), "登陆成功！", Toast.LENGTH_SHORT).show();
-						puser = (Pgdr_userApp) getApplication();
-						puser.setUser_mobile(phoneNumber);
-						//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
-						SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
-						//获取编辑器
-						Editor editor=sp.edit();
-						//通过editor进行设置
-						editor.putString("mobile", phoneNumber);
-						//提交修改，将数据写到文件
-						editor.commit();
-						Intent intent = new Intent();
-			          setResult(1001, intent);
-			           //调用JPush API设置Alias
-			  		   mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, phoneNumber));
-			          Log.d("==RegisterActivity===", "====finish====");
-			          if(type!=null&&type.equals("yijianyuyue")){
-			        	    Log.d("==RegisterActivity===", "====yijianyuyue===="+phoneNumber);
-			        	    type = "yijianyuyuefinish";
-			        	    new UserRegisterYanZhengMaAsyncTask().execute(new String[]{phoneNumber});
-			          }else{
-			            	finish();
-			            }						
-//						 Intent intent = new Intent();
-//						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
-//						 intent.putExtra("phoneNumber", phoneNumber);
-//						 startActivity(intent);
-					}else{
-						Toast.makeText(getApplicationContext(), "验证码错误！", Toast.LENGTH_SHORT).show();
-					}
-				}else{
-					Toast.makeText(getApplicationContext(), "手机号或者验证码不能为空！", Toast.LENGTH_SHORT).show();
-				}
+		    	if(phoneNumber.equals("")){
+		    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
+		    	}else{
+		    		if(phoneNumber.length()!=11){
+		    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
+		    		}else{
+		    			if(isNumeric(phoneNumber)){
+		    				if(!TextUtils.isEmpty(phoneNumber)&&!TextUtils.isEmpty(yanZhengMa)){
+		    					if(yanzhengmaReturn.equals(yanZhengMa)){
+		    						Toast.makeText(getApplicationContext(), "登陆成功！", Toast.LENGTH_SHORT).show();
+		    						puser = (Pgdr_userApp) getApplication();
+		    						puser.setUser_mobile(phoneNumber);
+		    						//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+		    						SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		    						//获取编辑器
+		    						Editor editor=sp.edit();
+		    						//通过editor进行设置
+		    						editor.putString("mobile", phoneNumber);
+		    						//提交修改，将数据写到文件
+		    						editor.commit();
+		    						Intent intent = new Intent();
+		    			          setResult(1001, intent);
+		    			           //调用JPush API设置Alias
+		    			  		   mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, phoneNumber));
+		    			          Log.d("==RegisterActivity===", "====finish====");
+		    			          if(type!=null&&type.equals("yijianyuyue")){
+		    			        	    Log.d("==RegisterActivity===", "====yijianyuyue===="+phoneNumber);
+		    			        	    type = "yijianyuyuefinish";
+		    			        	    new UserRegisterYanZhengMaAsyncTask().execute(new String[]{phoneNumber});
+		    			          }else{
+		    			            	finish();
+		    			            }						
+//		    						 Intent intent = new Intent();
+//		    						 intent.setClass(RegisterActivity.this, RegisterPasswordActivity.class);
+//		    						 intent.putExtra("phoneNumber", phoneNumber);
+//		    						 startActivity(intent);
+		    					}else{
+		    						Toast.makeText(getApplicationContext(), "验证码错误！", Toast.LENGTH_SHORT).show();
+		    					}
+		    				}else{
+		    					Toast.makeText(getApplicationContext(), "验证码不能为空！", Toast.LENGTH_SHORT).show();
+		    				}	
+		    			}else{
+		    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
+		    			}
+		    		}	    		
+		    	}
 			}
 		});
 		yanzhengmaBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				String phoneNumber = shoujihaoma.getText().toString().trim();
-				new UserRegisterYanZhengMaAsyncTask().execute(new String[]{phoneNumber});
+		    	if(phoneNumber.equals("")){
+		    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
+		    	}else{
+		    		if(phoneNumber.length()!=11){
+		    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
+		    		}else{
+		    			if(isNumeric(phoneNumber)){
+		    				new UserRegisterYanZhengMaAsyncTask().execute(new String[]{phoneNumber});	
+		    			}else{
+		    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
+		    			}
+		    		}	    		
+		    	}				
 			}
 		});
 		
@@ -129,6 +150,15 @@ public class RegisterActivity extends Activity {
 		//初始化dialog end
 		miao = 60;
 		timer = new Timer(true);
+	}
+	
+	public boolean isNumeric(String str){
+		for (int i = str.length() ; --i>=0 ; ){   
+			if (!Character.isDigit(str.charAt ( i ) ) ){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	final Handler handler = new Handler(){  

@@ -13,6 +13,7 @@
         > 
         
     <LinearLayout
+          android:id="@+id/akeylinefanhui"
        	android:layout_width="80dip"
        	android:layout_height="40dip"
        	android:layout_alignParentTop="true"

@@ -243,7 +243,19 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	    	break;
 	    case R.id.zhucequeding:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
-	    	new UpdateUserAsyncTask().execute(new String[]{});		
+	    	if(shoujiEditText.getText().toString().trim().equals("")){
+	    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
+	    	}else{
+	    		if(shoujiEditText.getText().toString().trim().length()!=11){
+	    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
+	    		}else{
+	    			if(isNumeric(shoujiEditText.getText().toString().trim())){
+	    				new UpdateUserAsyncTask().execute(new String[]{});
+	    			}else{
+	    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
+	    			}
+	    		}	    		
+	    	}
 	    	break;
 	    case R.id.shijianEditText:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==shijianEditText====");
@@ -261,6 +273,15 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 		default:
 			break;
 		}
+	}
+	
+	public boolean isNumeric(String str){
+		for (int i = str.length() ; --i>=0 ; ){   
+			if (!Character.isDigit(str.charAt ( i ) ) ){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	private void setUpViews() {

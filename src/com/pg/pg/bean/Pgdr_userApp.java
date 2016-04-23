@@ -14,6 +14,8 @@ public class Pgdr_userApp extends Application{
 	private String user_status;//USER_STATUS 用户状态 -1 删除 0 禁用  1 正常   
 	private String user_type;//USER_TYPE 用户类型 0 普通用户 1小贩
 	private String user_photo;//USER_PHOTO
+	private String user_date;//USER_DATE 登陆日期
+	private String user_times;//USER_DATE 预约测试
 	private boolean user_return;//返回值
 	
 
@@ -76,5 +78,17 @@ public class Pgdr_userApp extends Application{
 	}
 	public void setUser_return(boolean user_return) {
 		this.user_return = user_return;
+	}
+	public String getUser_date() {
+		return user_date;
+	}
+	public void setUser_date(String user_date) {
+		this.user_date = user_date;
+	}
+	public String getUser_times() {
+		return user_times;
+	}
+	public void setUser_times(String user_times) {
+		this.user_times = user_times;
 	}
 }

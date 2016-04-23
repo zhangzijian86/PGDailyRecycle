@@ -1,5 +1,7 @@
 package com.pg.pg;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -38,6 +40,29 @@ public class SplashActivity extends Activity {
         JPushInterface.init(getApplicationContext());
 		puser = (Pgdr_userApp) getApplication();
 		dialog=new LoadingProgressDialog(this,"正在加载...");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+		String date = df.format(new Date());
+		
+		Log.d("","=======user_times========000======="+getValue("user_times"));
+		Log.d("","=======date===000============"+date);
+		Log.d("","=======date===111============"+getValue("user_date"));
+		if(getValue("user_times")==null||getValue("user_times").equals("")){
+			Log.d("","=======user_times=====111=========="+getValue("user_times"));
+			setValue("user_times","10");
+		}
+		Log.d("","=======user_times=========222======"+getValue("user_times"));
+		if(getValue("user_date")==null||getValue("user_date").equals("")){
+			Log.d("","=======user_times======333========="+getValue("user_times"));
+			setValue("user_date",date);
+			setValue("user_times","10");
+		}else{
+			Log.d("","=======user_times======444========="+getValue("user_times"));
+			if(!getValue("user_date").equals(date)){
+				Log.d("","=======date===555============"+date);
+				setValue("user_date",date);
+				setValue("user_times","10");
+			}
+		}
 //        if("".equals(firstOpen)){
 //			startActivity(new Intent(getApplication(), GuideViewActivity.class));
 //			overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
@@ -49,6 +74,17 @@ public class SplashActivity extends Activity {
 //		}
 
     }
+    
+	private void setValue(String type,String value){
+		//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//获取编辑器
+		Editor editor=sp.edit();
+		//通过editor进行设置
+		editor.putString(type,value);
+		//提交修改，将数据写到文件
+		editor.commit();	
+	}
     
 	//for receive customer msg from jpush server
 	private MessageReceiver mMessageReceiver;

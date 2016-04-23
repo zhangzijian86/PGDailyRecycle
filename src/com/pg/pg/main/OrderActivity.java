@@ -21,7 +21,10 @@ import com.pg.pg.wheel.widget.adapters.ArrayWheelAdapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
@@ -75,6 +78,7 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	private String initStartDateTime = "2016年1月12日 22:22"; // 初始化开始时间 
 	
 	private ImageView fanhui;
+	private int times;
 	
 	@SuppressLint("SimpleDateFormat") @Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -206,6 +210,8 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
        fanhui  = (ImageView)findViewById(R.id.fanhui);
        fanhui.setOnClickListener(this);
 		
+       times = Integer.parseInt(getValue("user_times").trim());
+       
 		//初始化dialog
 		dialog=new LoadingProgressDialog(this,"正在加载...");
     }
@@ -243,18 +249,22 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 	    	break;
 	    case R.id.zhucequeding:
 	    	Log.d("=com.pg.pg.main.MineAddressActivity=", "==listener==zhucequeding====");
-	    	if(shoujiEditText.getText().toString().trim().equals("")){
-	    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
+	    	if(times<=0){
+	    		Toast.makeText(getApplicationContext(), "您今日已经预约了10次，不能再预约！", Toast.LENGTH_SHORT).show();
 	    	}else{
-	    		if(shoujiEditText.getText().toString().trim().length()!=11){
-	    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
+	    		if(shoujiEditText.getText().toString().trim().equals("")){
+	    			Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
 	    		}else{
-	    			if(isNumeric(shoujiEditText.getText().toString().trim())){
-	    				new UpdateUserAsyncTask().execute(new String[]{});
+	    			if(shoujiEditText.getText().toString().trim().length()!=11){
+	    				Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
 	    			}else{
-	    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
-	    			}
-	    		}	    		
+	    				if(isNumeric(shoujiEditText.getText().toString().trim())){
+	    					new UpdateUserAsyncTask().execute(new String[]{});
+	    				}else{
+	    					Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
+	    				}
+	    			}	    		
+	    		}
 	    	}
 	    	break;
 	    case R.id.shijianEditText:
@@ -434,5 +444,20 @@ public class OrderActivity  extends BaseWhellActivity implements OnClickListener
 			dialog.dismiss();//dialog关闭，数据处理完毕
 		}
 	}
-
+	private void setValue(String type,String value){
+		//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//获取编辑器
+		Editor editor=sp.edit();
+		//通过editor进行设置
+		editor.putString(type,value);
+		//提交修改，将数据写到文件
+		editor.commit();	
+	}
+	private String getValue(String name){
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//若没有数据，返回默认值""
+		String value=sp.getString(name, "");
+		return value;
+	}
 }

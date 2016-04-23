@@ -11,6 +11,9 @@ import com.pg.pg.tools.LoadingProgressDialog;
 import com.pg.pg.tools.Operaton;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +35,7 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 	private EditText yijianshoujiEditText;
 	private ImageView fanhui;
 	private LinearLayout linefanhui;
+	private int times;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,6 +57,7 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
        linefanhui = (LinearLayout)findViewById(R.id.akeylinefanhui);
        linefanhui.setOnClickListener(this);
         
+       times = Integer.parseInt(getValue("user_times").trim());
         //初始化dialog
         dialog=new LoadingProgressDialog(this,"正在加载...");
 	}
@@ -61,20 +66,23 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.yijianyuyuebt:
-	    	if(yijianshoujiEditText.getText().toString().trim().equals("")){
-	    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
-	    	}else{
-	    		if(yijianshoujiEditText.getText().toString().trim().length()!=11){
-	    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
-	    		}else{
-	    			if(isNumeric(yijianshoujiEditText.getText().toString().trim())){
-	    				new UpdateUserAsyncTask().execute(new String[]{yijianshoujiEditText.getText().toString()});	
-	    			}else{
-	    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
-	    			}
-	    		}	    		
-	    	}
-				
+			if(times<=0){
+				Toast.makeText(getApplicationContext(), "您今日已经预约了10次，不能再预约！", Toast.LENGTH_SHORT).show();
+			}else{
+				if(yijianshoujiEditText.getText().toString().trim().equals("")){
+		    		Toast.makeText(getApplicationContext(), "请填写手机号码！", Toast.LENGTH_SHORT).show();
+		    	}else{
+		    		if(yijianshoujiEditText.getText().toString().trim().length()!=11){
+		    			Toast.makeText(getApplicationContext(), "请正确填写11位手机号码！", Toast.LENGTH_SHORT).show();
+		    		}else{
+		    			if(isNumeric(yijianshoujiEditText.getText().toString().trim())){
+		    				new UpdateUserAsyncTask().execute(new String[]{yijianshoujiEditText.getText().toString()});	
+		    			}else{
+		    				Toast.makeText(getApplicationContext(), "手机号码应为数字！", Toast.LENGTH_SHORT).show();
+		    			}
+		    		}	    		
+		    	}
+			}			
 		 	break;
 		case R.id.fanhui:
 			finish();
@@ -150,11 +158,28 @@ public class AkeyAppointment extends Activity  implements OnClickListener{
 			super.onPostExecute(result);
 			if(result.equals("yes")){				
 				Toast.makeText(getApplicationContext(), "预约成功！", Toast.LENGTH_SHORT).show();
+				setValue("user_times",(times-1)+"");
 				AkeyAppointment.this.finish();
 			}else if("".equals(result)){
 				Toast.makeText(getApplicationContext(), "预约失败，请重试！", Toast.LENGTH_SHORT).show();
 			}
 			dialog.dismiss();//dialog关闭，数据处理完毕
 		}
+	}
+	private void setValue(String type,String value){
+		//获取SharedPreferences对象，路径在/data/data/cn.itcast.preferences/shared_pref/paramater.xml
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//获取编辑器
+		Editor editor=sp.edit();
+		//通过editor进行设置
+		editor.putString(type,value);
+		//提交修改，将数据写到文件
+		editor.commit();	
+	}
+	private String getValue(String name){
+		SharedPreferences sp=getSharedPreferences("paramater", Context.MODE_PRIVATE);
+		//若没有数据，返回默认值""
+		String value=sp.getString(name, "");
+		return value;
 	}
 }

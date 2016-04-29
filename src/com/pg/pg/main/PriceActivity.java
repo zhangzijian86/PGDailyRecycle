@@ -60,7 +60,7 @@ public class PriceActivity extends Activity  implements OnClickListener{
         String result = intent.getStringExtra("result");
         type = intent.getStringExtra("type");
         init(result);
-        if(pricelist!=null&&pricelist.size()>1){        
+        if(pricelist!=null){        
 	        PdrAdapter pdradapter = new PdrAdapter(
 	        		PriceActivity.this,R.layout.activity_mypricelistview,pricelist);
 		 	ListView listview = (ListView)findViewById(R.id.pricelistview);

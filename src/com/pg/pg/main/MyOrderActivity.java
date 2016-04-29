@@ -54,7 +54,7 @@ public class MyOrderActivity extends Activity {
 	 	}else{
 	 		listviewdatail.setVisibility(View.GONE);
 	 	}	
-        if(myorderlist!=null&&myorderlist.size()>1){        
+        if(myorderlist!=null){        
 	        PdrAdapter pdradapter = new PdrAdapter(
 	        		MyOrderActivity.this,R.layout.activity_myorderlistview,myorderlist);
 		 	ListView listview = (ListView)findViewById(R.id.myorderlistview);
@@ -79,7 +79,7 @@ public class MyOrderActivity extends Activity {
 			});   
         }
 	 	
-        if(myorderlistdetail!=null&&myorderlistdetail.size()>1){     
+        if(myorderlistdetail!=null){     
 		 	PdrAdapterDetail pdradapterdetail = new PdrAdapterDetail(
 	        		MyOrderActivity.this,R.layout.activity_deliveryorderlistview,myorderlistdetail);	 		
 		 	listviewdatail.setAdapter(pdradapterdetail);	
